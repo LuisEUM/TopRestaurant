@@ -1,0 +1,39 @@
+------------------------------------------------------------------------------------------------------------
+
+router.get("/restaurants", secure.isAuthenticated, restaurants.list);
+router.get("/restaurants/:id", secure.isAuthenticated, restaurants.detail);
+router.post("/restaurants", secure.isAuthenticated, restaurants.create);
+router.patch('/restaurants/:id/edit',secure.isAuthenticated, secure.isOwnedByUser, restaurants.update);
+router.delete("/restaurants/:id/delete", secure.isAuthenticated, secure.isOwnedByUser, restaurants.delete);
+
+router.get("/menusCategory", secure.isAuthenticated, menusCategory.list);
+router.get("/menusCategory/:id", secure.isAuthenticated, menusCategory.detail);
+router.post("/menusCategory/:id/create", secure.isAuthenticated, menusCategory.create);
+router.patch('/menusCategory/:id/edit',secure.isAuthenticated, menusCategory.update);
+router.delete("/menusCategory/:id/delete", secure.isAuthenticated, menusCategory.delete);
+
+router.get("/products", secure.isAuthenticated, products.list);
+router.get("/products/:id", secure.isAuthenticated, products.detail);
+router.post("/products/:id/create", secure.isAuthenticated, products.create);
+router.patch('/products/:id/edit',secure.isAuthenticated, products.update);
+router.delete("/products/:id/delete", secure.isAuthenticated, products.delete);
+
+router.post("/register", auth.register);
+router.get("/profile, secure.isAuthenticated, auth.profile);
+router.post("/authenticate", auth.authenticate);
+router.delete("/logout", auth.logout);
+
+router.get("/restaurants", secure.isAuthenticated, restaurants.list);
+router.get("/restaurants/:id", secure.isAuthenticated, restaurants.detail);
+router.post("/restaurants", secure.isAuthenticated, restaurants.create);
+router.patch('/restaurants/:id/edit',secure.isAuthenticated, secure.isOwnedByUser, restaurants.update);
+router.delete("/restaurants/:id/delete", secure.isAuthenticated, secure.isOwnedByUser, restaurants.delete);
+
+router.get("/products/:id/like", secure.isAuthenticated, products.listLike); 
+router.post("/products/:id/like", secure.isAuthenticated, products.like); Like and dislike
+
+router.get("/restaurants/:id/follow", secure.isAuthenticated, restaurants.listFollow); 
+router.post("/restaurants/:id/follow", secure.isAuthenticated, restaurants.follow); Follow and Unfollow
+
+
+------------------------------------------------------------------------------------------------------------

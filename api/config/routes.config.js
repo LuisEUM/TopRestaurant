@@ -5,6 +5,7 @@ const auth = require("../controllers/auth.controller.js");
 
 router.post("/register", auth.register);
 router.get("/profile", secure.isAuthenticated, auth.profile);
+router.patch("/update", secure.isAuthenticated, auth.update);
 router.post("/authenticate", auth.authenticate);
 router.delete("/logout", auth.logout);
 

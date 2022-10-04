@@ -24,6 +24,25 @@ module.exports.register = (req, res, next) => {
     .catch(next);
 };
 
+module.exports.update = (req, res, next) => {
+  
+    const user = Object.assign(req.user, req.body);
+    console.log(user)
+    user
+      .save()
+      .then((user) => res.status(200).json(user))
+      .catch(
+        e => 
+        next(
+          createError(400, {
+            message: "User creation failed",
+            errors: `${Object.keys(e.keyValue)}: ${Object.values(e.keyValue)} is allready in use`,
+          })
+        )
+      );
+
+};
+
 module.exports.authenticate = (req, res, next) => {
   function invalidAuthError() {
     next(

@@ -9,6 +9,13 @@ const PW_PATTERN = /^.{8,}$/;
 
 const userSchema = new Schema(
   {
+    username: {
+      type: String,
+      required: "Name is required",
+      trim: true,
+      lowercase: true,
+      unique: true,
+    },
     name: {
       type: String,
       required: "Name is required",
