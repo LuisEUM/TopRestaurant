@@ -56,6 +56,6 @@ menuSchema.pre("validate", function (next) {
     next();
 });
 
-const Category = mongoose.model("Category", menuSchema);
+const Menu = mongoose.model("Category", menuSchema);
 
-module.exports = Category;
+module.exports = Menu;

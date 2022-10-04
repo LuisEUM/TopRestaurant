@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
-const type = require('../data/type.restaurants.json')
+const types = require('../data/types.restaurants.json')
 const services = require('../data/services.restaurants.json')
 import { isURL } from '../utils/validations.js';
 
@@ -16,10 +16,10 @@ const restaurantSchema = new Schema ({
         maxLength: [120, "Name needs at max 60 chars"],
         required: true,
     },
-    type: {
+    types: {
         type: [{
             type: String,
-            enum: type,
+            enum: types,
             required: true,
         }]
     },
