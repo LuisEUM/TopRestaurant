@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
+const EMAIL_PATTERN = require('../utils/patterns');
 
 const WORK_FACTOR = 10;
-const EMAIL_PATTERN =
-  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const PW_PATTERN = /^.{8,}$/;
 
 const userSchema = new Schema(
