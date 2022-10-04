@@ -8,7 +8,11 @@ const EMAIL_PATTERN =
 const PW_PATTERN = /^.{8,}$/;
 
 const userSchema = new Schema(
-  {
+  { user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+    },
     name: {
       type: String,
       required: "Name is required",
