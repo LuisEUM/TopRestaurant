@@ -1,6 +1,7 @@
 const createError = require("http-errors");
 const User = require("../models/user.model");
 const mongoose = require("mongoose");
+const EMAIL_PATTERN = require('../utils/patterns');
 
 module.exports.profile = (req, res, next) => {
   res.json(req.user);
@@ -53,8 +54,21 @@ module.exports.authenticate = (req, res, next) => {
     );
   }
 
-  const { email, password } = req.body;
-  User.findOne({ email })
+  const { id , password } = req.body;
+
+  //this func gets the type and the value of the id
+  const idType = (id) => {
+    if(EMAIL_PATTERN.test(id)) {
+       const email = id 
+       return {email}
+      } else { 
+        const username = id 
+        return {username}
+      };
+  }
+
+  
+  User.findOne(idType(id))
     .then((user) => {
       if (!user) {
         invalidAuthError();
