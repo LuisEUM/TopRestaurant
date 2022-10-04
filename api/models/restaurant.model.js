@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const type = require('../data/type.restaurants.json')
 const services = require('../data/services.restaurants.json')
-import { isURL } from '../utils/validations';
+import { isURL } from '../utils/validations.js';
 
 const restaurantSchema = new Schema ({
     user: {
