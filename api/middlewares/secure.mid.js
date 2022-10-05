@@ -17,7 +17,7 @@ module.exports.restaurantIsOwnedByUser = (req, res, next) => {
         req.restaurant = restaurant;
         next();
       } else if (restaurant) {
-        next(createError(403, "Nooooo puedeeeees paasaaaaar"));
+        next(createError(403, "access denied"));
       } else {
         next(createError(404, "restaurant not found"));
       }
