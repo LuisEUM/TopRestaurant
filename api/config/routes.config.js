@@ -1,13 +1,8 @@
 const express = require("express");
+const {Auth, Restaurants} = require('../routes');
 const router = express.Router();
-const secure = require("../middlewares/secure.mid.js");
-const auth = require("../controllers/auth.controller.js");
 
-router.post("/register", auth.register);
-router.get("/profile", secure.isAuthenticated, auth.profile);
-router.patch("/update", secure.isAuthenticated, auth.update);
-router.post("/authenticate", auth.authenticate);
-router.delete("/logout", auth.logout);
-
+router.use('/', Auth);
+router.use('/restaurants', Restaurants);
 
 module.exports = router;

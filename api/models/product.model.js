@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const allergens = require('../data/product.allergens')
-import { isURL } from '../utils/validations';
+const isURL = require('../utils/validations.js');
 
 
 const productSchema = new Schema ({

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
-import { isURL } from '../utils/validations';
+const isURL = require('../utils/validations.js');
 
 const menuSchema = new Schema ({
     user: {
@@ -18,10 +18,6 @@ const menuSchema = new Schema ({
         type: String,
         maxLength: [150, "Description needs max 150 chars"],
         trim: true
-    },
-    menu: {
-        type: Schema.Types.ObjectId,
-        ref: 'Menu'
     },
     coverImage: {
         type: String,

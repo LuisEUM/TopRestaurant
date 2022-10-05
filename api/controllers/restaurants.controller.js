@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 const { Restaurant, User } = require("../models");
 const types = require('../data/types.restaurants.json')
@@ -12,42 +11,54 @@ module.exports.list = (req, res, next) => {
     .catch((error) => next(error));
 }
 
-/*
+
+module.exports.create = (req, res, next) => {
+const restaurant = req.body;
+delete restaurant.user;
+delete restaurant.menu;
+
+restaurant.user = req.user.id;
+
+Restaurant.create(restaurant)
+    .then((restaurant) => res.status(201).json(restaurant))
+    .catch(next);
+}
+
+
 module.exports.detail = (req, res, next) => {
     Restaurant.findById(req.params.id)
-    .populate('menu')
+    .populate("user")
+    .populate("menu")
     .then((restaurant) => {
-        res.render("restaurants/detail", { restaurant })
-    }
-        )
+        if (restaurant) {
+            res.json(restaurant);
+        } else {
+            next(createError(404, "Restaurant not found"));
+        }
+    })
     .catch((error) => next(error));
 };
 
+module.exports.update = (req, res, next) => {
+    const data = req.body;
+    delete data.views;
+    delete data.user;
+    delete data.menu;
 
+    const restaurant = Object.assign(req.restaurant, data);
 
-module.exports.new = (req, res, next) => {
-    res.render("restaurants/new", {types, services});
+    restaurant
+        .save()
+        .then((restaurant) => res.json(restaurant))
+        .catch(next);
 };
 
-module.exports.create = (req, res, next) => {
 
-    
-    const restaurant = {
-        ...req.body,
-        user:req.user.id,
-    };
-
-    if(req.file){
-        restaurant.logo = req.file.path
-        restaurant.save()
-    } 
+/*
 
 Restaurant.create(restaurant)
-
     .then((restaurant) =>{
-
         User.findById(req.user.id)
-
         .then((user) => {
             if (user) {
                 user.restaurant.push(restaurant.id)

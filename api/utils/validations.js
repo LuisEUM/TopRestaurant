@@ -1,4 +1,4 @@
-export function isURL(value) {
+const isURL = (value) => {
   try {
     new URL(value);
     return true;
@@ -6,3 +6,4 @@ export function isURL(value) {
     return false;
   }
 }
+module.exports = isURL;

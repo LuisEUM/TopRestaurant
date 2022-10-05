@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const types = require('../data/types.restaurants.json')
 const services = require('../data/services.restaurants.json')
-import { isURL } from '../utils/validations.js';
+const isURL = require('../utils/validations.js');
 
 const restaurantSchema = new Schema ({
     user: {
@@ -74,7 +74,6 @@ const restaurantSchema = new Schema ({
     menu: {
         type: Schema.Types.ObjectId,
         ref: 'Menu',
-        required: true
     },
     services: {
         type: [{
