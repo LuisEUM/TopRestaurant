@@ -1,13 +1,29 @@
 const mongoose = require("mongoose");
-const { Restaurant, User } = require("../models");
+const { Restaurant, User, Follow, Review } = require("../models");
 const types = require('../data/types.restaurants.json')
 const services = require('../data/services.restaurants.json')
-
+const avergare = require('../utils/average')
 module.exports.list = (req, res, next) => {
     Restaurant.find()
     .populate("user")
+    .populate({
+        path: "review",
+        populate: {
+          path: "user",
+        },
+      })
+    .populate("follow")
     .populate("menu")
-    .then((streams) => res.json(streams))
+    .then((restaurant) => {
+
+        if(restaurant.review !== undefined){
+            restaurant.stars = avergare(restaurant.review)
+        }else{
+            restaurant.stars = 0
+        }
+            
+        return res.json(restaurant)
+    })
     .catch((error) => next(error));
 }
 
@@ -16,6 +32,7 @@ module.exports.create = (req, res, next) => {
 const restaurant = req.body;
 delete restaurant.user;
 delete restaurant.menu;
+delete restaurant.views;
 
 restaurant.user = req.user.id;
 
@@ -28,9 +45,17 @@ Restaurant.create(restaurant)
 module.exports.detail = (req, res, next) => {
     Restaurant.findById(req.params.id)
     .populate("user")
+    .populate({
+        path: "review",
+        populate: {
+          path: "user",
+        },
+      })
+    .populate("follow")
     .populate("menu")
     .then((restaurant) => {
         if (restaurant) {
+            restaurant.stars = avergare(restaurant.review)
             res.json(restaurant);
         } else {
             next(createError(404, "Restaurant not found"));
@@ -53,65 +78,27 @@ module.exports.update = (req, res, next) => {
         .catch(next);
 };
 
-
-/*
-
-Restaurant.create(restaurant)
-    .then((restaurant) =>{
-        User.findById(req.user.id)
-        .then((user) => {
-            if (user) {
-                user.restaurant.push(restaurant.id)
-                user.save();
-            }
-            else throw mongoose.Error.ValidationError
-        })
-        res.redirect("/restaurants")
-    })
-    .catch((error) => {
-        if (error instanceof mongoose.Error.ValidationError) {
-            console.error(error);
-            res.render("restaurants/new", { errors: error.errors, restaurant, types, services });
-        } else {
-            next(error);
-        }
-    });
-};
-
 module.exports.delete = (req, res, next) => {
-    Restaurant.findByIdAndDelete(req.params.id)
-    .then(() => res.redirect("back"))
-    .catch((error) => next(error));
-};
+    Restaurant.deleteOne({ _id: req.restaurant.id })
+      .then(() => res.status(204).send())
+      .catch(next);
+  };
 
+module.exports.follow = (req, res, next) => {
+    const detail = {
+        user: req.user.id,
+        restaurant: req.params.id,
+    };
 
-
-
-module.exports.edit = (req, res, next) => {
-
-    Restaurant.findById(req.params.id)
-        .then((restaurant) => { 
-            if(restaurant.user.toString() === req.user.id){
-                res.render("restaurants/edit", { restaurant, types, services })
-            } else {
-                res.redirect("/");
-            }
-        })
-        .catch((error) => next(error));
-};
-
-
-module.exports.update = (req, res, next) => {
-
-    Restaurant.findByIdAndUpdate(req.params.id, req.body)
-    .then((restaurant) => { 
-        if(req.file){
-            restaurant.logo = req.file.path
-            restaurant.save()
-            res.redirect(`/restaurants/${req.params.id}`);
+    Follow.findOne(detail)
+        .then((follow) => {
+        if (follow) {
+            return Follow.deleteOne(detail);
         } else {
-            res.redirect(`/restaurants/${req.params.id}`);
+            return Follow.create(detail);
         }
-    });
-}
-*/
+        })
+        .then(() => Follow.count(detail))
+        .then((follow) => res.json({ follow }))
+        .catch(next);
+};

@@ -95,6 +95,19 @@ const restaurantSchema = new Schema ({
         },
     })
 
+restaurantSchema.virtual("follow", {
+    ref: "follow",
+    localField: "_id",
+    foreignField: "restaurant",
+    count: true,
+});
+
+restaurantSchema.virtual("review", {
+    ref: "review",
+    localField: "_id",
+    foreignField: "restaurant",
+});
+    
 restaurantSchema.pre("validate", function (next) {
     this.logo = this.logo || undefined;
     this.description = this.description || undefined;

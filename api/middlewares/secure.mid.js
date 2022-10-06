@@ -1,5 +1,5 @@
 const createError = require('http-errors');
-const Restaurant = require('../models/restaurant.model');
+const {Restaurant, Review} = require('../models');
 
 module.exports.isAuthenticated = (req, res, next) => {
   if (req.user) {
@@ -9,7 +9,7 @@ module.exports.isAuthenticated = (req, res, next) => {
   }
 }
 
-module.exports.restaurantIsOwnedByUser = (req, res, next) => {
+module.exports.isRestaurantOwnedByUser = (req, res, next) => {
   const { id } = req.params;
   Restaurant.findById(id)
     .then((restaurant) => {
@@ -20,6 +20,25 @@ module.exports.restaurantIsOwnedByUser = (req, res, next) => {
         next(createError(403, "access denied"));
       } else {
         next(createError(404, "restaurant not found"));
+      }
+    })
+    .catch(next);
+};
+
+module.exports.isreviewOwnedByUser = (req, res, next) => {
+  const { reviewId } = req.params;
+
+  Review.findById(reviewId)
+    .then((review) => {
+      if (review) {
+        if (review.user == req.user.id) {
+          req.review = review;
+          next();
+        } else {
+          next(createError(403, "access denied"));
+        }
+      } else {
+        next(createError(404, "Stream not found"));
       }
     })
     .catch(next);

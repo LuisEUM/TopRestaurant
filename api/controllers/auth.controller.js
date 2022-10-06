@@ -28,7 +28,6 @@ module.exports.register = (req, res, next) => {
 module.exports.update = (req, res, next) => {
   
     const user = Object.assign(req.user, req.body);
-    console.log(user)
     user
       .save()
       .then((user) => res.status(200).json(user))
@@ -54,21 +53,23 @@ module.exports.authenticate = (req, res, next) => {
     );
   }
 
-  const { id , password } = req.body;
+  const { identifier , password } = req.body;
 
   //this func gets the type and the value of the id
-  const idType = (id) => {
-    if(EMAIL_PATTERN.test(id)) {
-       const email = id 
+  const idType = (identifier) => {
+
+    if (identifier === undefined) invalidAuthError()
+
+    if(EMAIL_PATTERN.test(identifier)) {
+       const email = identifier 
        return {email}
       } else { 
-        const username = id 
+        const username = identifier 
         return {username}
       };
   }
 
-  
-  User.findOne(idType(id))
+  User.findOne( idType(identifier) )
     .then((user) => {
       if (!user) {
         invalidAuthError();
