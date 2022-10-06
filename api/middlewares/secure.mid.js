@@ -28,6 +28,8 @@ module.exports.isRestaurantOwnedByUser = (req, res, next) => {
 module.exports.isreviewOwnedByUser = (req, res, next) => {
   const { reviewId } = req.params;
 
+  console.log(req.params)
+
   Review.findById(reviewId)
     .then((review) => {
       if (review) {

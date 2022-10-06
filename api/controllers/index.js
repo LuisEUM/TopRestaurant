@@ -4,6 +4,7 @@ module.exports = {
   auth: require("./auth.controller"),
   users: require("./users.controller.js"),
   restaurants: require("./restaurants.controller"),
-  review: require('./review.controller')
+  review: require('./review.controller'),
+  follow: require('./follow.controller')
 };
 

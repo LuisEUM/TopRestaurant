@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Restaurant, User, Follow, Review } = require("../models");
 const types = require('../data/types.restaurants.json')
 const services = require('../data/services.restaurants.json')
-const avergare = require('../utils/average')
+
 module.exports.list = (req, res, next) => {
     Restaurant.find()
     .populate("user")
@@ -13,16 +13,11 @@ module.exports.list = (req, res, next) => {
         },
       })
     .populate("follow")
-    .populate("menu")
+    .populate("menus")
     .then((restaurant) => {
-
-        if(restaurant.review !== undefined){
-            restaurant.stars = avergare(restaurant.review)
-        }else{
-            restaurant.stars = 0
-        }
             
         return res.json(restaurant)
+        
     })
     .catch((error) => next(error));
 }
@@ -31,7 +26,7 @@ module.exports.list = (req, res, next) => {
 module.exports.create = (req, res, next) => {
 const restaurant = req.body;
 delete restaurant.user;
-delete restaurant.menu;
+delete restaurant.menus;
 delete restaurant.views;
 
 restaurant.user = req.user.id;
@@ -52,10 +47,9 @@ module.exports.detail = (req, res, next) => {
         },
       })
     .populate("follow")
-    .populate("menu")
+    .populate("menus")
     .then((restaurant) => {
         if (restaurant) {
-            restaurant.stars = avergare(restaurant.review)
             res.json(restaurant);
         } else {
             next(createError(404, "Restaurant not found"));
@@ -68,7 +62,7 @@ module.exports.update = (req, res, next) => {
     const data = req.body;
     delete data.views;
     delete data.user;
-    delete data.menu;
+    delete data.menus;
 
     const restaurant = Object.assign(req.restaurant, data);
 
@@ -83,22 +77,3 @@ module.exports.delete = (req, res, next) => {
       .then(() => res.status(204).send())
       .catch(next);
   };
-
-module.exports.follow = (req, res, next) => {
-    const detail = {
-        user: req.user.id,
-        restaurant: req.params.id,
-    };
-
-    Follow.findOne(detail)
-        .then((follow) => {
-        if (follow) {
-            return Follow.deleteOne(detail);
-        } else {
-            return Follow.create(detail);
-        }
-        })
-        .then(() => Follow.count(detail))
-        .then((follow) => res.json({ follow }))
-        .catch(next);
-};

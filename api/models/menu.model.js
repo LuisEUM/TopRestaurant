@@ -3,9 +3,14 @@ const Schema = mongoose.Schema;
 const isURL = require('../utils/validations.js');
 
 const menuSchema = new Schema ({
-    user: {
+    menuOwner: {
         type: Schema.Types.ObjectId,
         ref: 'User',
+        required: true,
+    },
+    restaurant: {
+        ref: "Restaurant",
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
     },
     name: {
@@ -52,6 +57,6 @@ menuSchema.pre("validate", function (next) {
     next();
 });
 
-const Menu = mongoose.model("Category", menuSchema);
+const Menu = mongoose.model("Menu", menuSchema);
 
 module.exports = Menu;

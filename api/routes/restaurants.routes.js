@@ -14,24 +14,4 @@ router.delete(
     restaurants.delete
   );
 
-//follows
-router.post("/:id/follow", secure.isAuthenticated, restaurants.follow);
-
-//coments
-router.post("/:id/review", secure.isAuthenticated, review.create);
-
-router.patch(
-"/:id/review/:commentId",
-secure.isAuthenticated,
-secure.isreviewOwnedByUser,
-review.update
-);
-
-router.delete(
-"/:id/review/:commentId",
-secure.isAuthenticated,
-secure.isreviewOwnedByUser,
-review.delete
-);
-
 module.exports = router;
