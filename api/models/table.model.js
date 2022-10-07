@@ -1,10 +1,16 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const size = require('../data/size.table.json')
 
 const schema = new Schema(
   {
     size: {
       type: Number,
+      enum: size,
+      required: true
+    },
+    name: {
+      type: string,
       required: true
     },
     zones: {

@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const status = require('../data/status.booking.json')
+const duration = require('../data/duration.booking.json')
 
 
 const schema = new Schema ({
-    user: {
+    client: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
@@ -23,7 +24,7 @@ const schema = new Schema ({
   },
     duration: {
       type: String,
-      enum: "1:30",
+      enum: duration,
       required: "Duration is required",
       required: true,
   },

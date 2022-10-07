@@ -24,7 +24,12 @@ const schema = new Schema(
           type: String,
           enum: monthsLong || monthsShort,
           required: true,
-      }]
+      }],
+      year: {
+        type: Number,
+        required: true,
+        min: 2012,
+      },
   },
   menus: [{
     type: Schema.Types.ObjectId,
