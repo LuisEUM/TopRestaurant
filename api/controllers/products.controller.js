@@ -1,77 +1,69 @@
 const mongoose = require("mongoose");
-const { Category, Product, Menu } = require("../models");
-const allergens = require('../data/product.allergens')
-
+const { Product, Menu } = require("../models");
 
 module.exports.list = (req, res, next) => {
   Product.find()
-    .then((products) => {
-      res.render("products/list", { products });
+    .then(products => {
+        return res.json(products)
     })
-    .catch((error) => next(error));
-};
+    .catch(next)
+
+}
 
 module.exports.detail = (req, res, next) => {
   Product.findById(req.params.id)
-  .then((product) => res.render("products/detail", { product }))
+  .then((product) => res.json(product))
   .catch((error) => next(error));
 };
 
-module.exports.new = (req, res, next) => {
-    const product = {
-      category: req.params.id
-  };
-    res.render(('products/new'), {product, categoriesAllergens}) 
-};
-
-
 module.exports.create = (req, res, next) => {
-
-  const producto = {
+  
+  const product = {
     ...req.body,
-    category:req.params.id
+    menu: req.params.menuId,
+    productOwner: req.user.id
+  };
+
+  console.log(product)
+
+  Product.create(product)
+    .then((product) => {
+      Menu.findById(req.params.menuId)
+      .then((menu) => {
+        menu.products.push(product.id)
+        menu.save();
+        console.log(menu)
+        res.status(201).json(product)
+      })
+      .catch((error) =>  res.status(400).json(error));
+    })
+    .catch((error) =>  res.status(400).json(error));
 };
 
-Product.create(producto)
-.then((product) =>{
-    Category.findById(req.params.id)
-    .then((category) => {
-        category.products.push(product.id)
-        category.save();
-    })
-    res.redirect(`/categories/${producto.category}`)
-})
-.catch((error) => {
-    if (error instanceof mongoose.Error.ValidationError) {
-        console.error(error);
-        res.render(`products/new`, { errors: error.errors, product, categoriesAllergens });
-    } else {
-        next(error);
-    }
-});
+module.exports.update = (req, res, next) => {
+    const data = req.body;
+    delete data.productOwner;
+    delete data.menu;
+
+    const product = Object.assign(req.product, data);
+
+    product
+        .save()
+        .then((product) => res.json(product))
+        .catch(next);
 };
 
 module.exports.delete = (req, res, next) => {
-    Product.findByIdAndDelete(req.params.id)
-    .then(() => res.redirect("back"))
-    .catch((error) => next(error));
-};
-
-
-module.exports.edit = (req, res, next) => {
-  Product.findById(req.params.id)
-      .then((product) => { 
-              res.render("products/edit", { product, categoriesAllergens })
+    Menu.findById(req.product.menu)
+      .then((menu) => {
+        const menuProducts = menu.products
+        menuProducts.splice(menuProducts.indexOf(req.product.id), 1);
+        menu.save();
       })
-      .catch((error) => next(error));
-};
-
-
-module.exports.update = (req, res, next) => {
-  Product.findByIdAndUpdate(req.params.id, req.body)
-  .then((product) => { 
-    const category = product.category.toString()
-      res.redirect(`/categories/${category}`);
-  })
-  .catch((error) => next(error));
-}
+      .then(() => {
+        Product.deleteOne({ _id: req.product.id })
+        .then(() => res.status(204).send())
+        .catch(next);
+      })
+      .catch(next);
+  };

@@ -4,6 +4,7 @@ module.exports = {
   User: require('./users.routes'),
   Review: require('./review.routes'),
   Follow: require("./follow.routes"),
-  Menu: require('./menu.routes')
+  Menu: require('./menu.routes'),
+  Product: require('./product.routes')
 }
 

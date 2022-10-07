@@ -5,40 +5,45 @@ const isURL = require('../utils/validations.js');
 
 
 const productSchema = new Schema ({
-        name: {
-            type: String,
-            required: "Name is required",
-            maxLength: [60, "Title needs at least 60 chars"],
-            trim: true
-        },
-        image: {
-            type: String,
-            default: "https://loremflickr.com/320/240/food",
-            validate: {
-                validator: isURL,
-                message: `Invalid URL`,
-                },
+    productOwner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
+    menu: {
+        type: Schema.Types.ObjectId,
+        ref: 'Menu',
+        required: true,
+    },
+    name: {
+        type: String,
+        required: "Name is required",
+        maxLength: [60, "Title needs at least 60 chars"],
+        trim: true
+    },
+    image: {
+        type: String,
+        default: "https://loremflickr.com/320/240/food",
+        validate: {
+            validator: isURL,
+            message: `Invalid URL`,
             },
-        price: {
-            type: Number,
-            trim: true
         },
-        description:{
+    price: {
+        type: Number,
+        trim: true
+    },
+    description:{
+        type: String,
+        trim: true
+    },
+    allergens:{
+        type: [{
             type: String,
+            enum:  allergens.map((allergen) => allergen.value),
             trim: true
-        },
-        allergens:{
-            type: [{
-                type: String,
-                enum:  allergens.map((allergen) => allergen.value),
-                trim: true
-            }]
-        },
-        category: {
-            type: Schema.Types.ObjectId,
-            ref: 'Category',
-        },
-        
+        }]
+    },
 },
 {
     timestamps: true,
@@ -53,7 +58,6 @@ const productSchema = new Schema ({
     },
 }
 )
-
 
 productSchema.pre("validate", function (next) {
     this.image = this.image || undefined;

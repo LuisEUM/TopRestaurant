@@ -1,5 +1,5 @@
 const createError = require('http-errors');
-const {Restaurant, Review} = require('../models');
+const {Restaurant, Review, Product} = require('../models');
 const Menu = require('../models/menu.model');
 
 module.exports.isAuthenticated = (req, res, next) => {
@@ -46,13 +46,32 @@ module.exports.isreviewOwnedByUser = (req, res, next) => {
 };
 
 module.exports.ismenuOwnedByUser = (req, res, next) => {
-  const { menuId } = req.params;
+  const { id } = req.params;
 
-  Menu.findById(menuId)
+  Menu.findById(id)
     .then((menu) => {
       if (menu) {
         if (menu.menuOwner == req.user.id) {
           req.menu = menu;
+          next();
+        } else {
+          next(createError(403, "access denied"));
+        }
+      } else {
+        next(createError(404, "Menu not found"));
+      }
+    })
+    .catch(next);
+};
+
+module.exports.isproductOwnedByUser = (req, res, next) => {
+  const { id } = req.params;
+
+  Product.findById(id)
+    .then((product) => {
+      if (product) {
+        if (product.productOwner == req.user.id) {
+          req.product = product;
           next();
         } else {
           next(createError(403, "access denied"));
