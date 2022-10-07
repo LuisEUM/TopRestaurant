@@ -16,12 +16,12 @@ const menuSchema = new Schema ({
     name: {
         type: String,
         required: "Name is required",
-        maxLength: [60, "Name needs max 60 chars"],
+        maxLength: [60, "Name max 60 chars"],
         trim: true
     },
     description:{
         type: String,
-        maxLength: [150, "Description needs max 150 chars"],
+        maxLength: [150, "Description max 150 chars"],
         trim: true
     },
     coverImage: {
