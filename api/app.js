@@ -57,7 +57,7 @@ if (process.env.NODE_ENV !== "test") {
   const port = process.env.PORT || 4001;
 
   app.listen(port, () =>
-    console.log(`iron streams api running at port ${port}`)
+    console.log(`Top Restaurant running at port ${port}`)
   );
 }
 

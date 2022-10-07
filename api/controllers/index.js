@@ -6,6 +6,10 @@ module.exports = {
   restaurants: require("./restaurants.controller"),
   review: require('./review.controller'),
   follow: require('./follow.controller'),
-  likes: require('./likes.controller')
+  likes: require('./likes.controller'),
+  bookings: require('./bookings.controller.js'),
+  tables: require('./tables.controller'),
+  timeslots: require('./timeslots.controller.js'),
+
 };
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const secure = require("../middlewares/secure.mid.js");
-const {restaurants, review} = require('../controllers');
+const {restaurants} = require('../controllers');
 
 router.post("/", secure.isAuthenticated, restaurants.create);
 router.get("/", secure.isAuthenticated, restaurants.list);

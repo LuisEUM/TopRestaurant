@@ -5,18 +5,17 @@ const size = require('../data/size.table.json')
 const schema = new Schema(
   {
     size: {
-      type: Number,
+      type: String,
       enum: size,
       required: true
     },
     name: {
-      type: string,
+      type: String,
       required: true
     },
     zones: {
       type: [{
           type: String,
-          enum: services,
           required: true,
       }]
   },

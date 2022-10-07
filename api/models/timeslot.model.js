@@ -31,9 +31,9 @@ const schema = new Schema(
         min: 2012,
       },
   },
-  menus: [{
+  table: [{
     type: Schema.Types.ObjectId,
-    ref: 'Menu',
+    ref: 'Table',
   }],
   },
   {

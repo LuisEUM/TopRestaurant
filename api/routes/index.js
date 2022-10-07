@@ -7,5 +7,8 @@ module.exports = {
   Restaurants: require('./restaurants.routes'),
   Review: require('./review.routes'),
   User: require('./users.routes'),
+  Tables: require('./tables.routes'),
+  Timeslot: require('./timeslot.routes'),
+  Bookings: require('./bookings.routes'),
 }
 

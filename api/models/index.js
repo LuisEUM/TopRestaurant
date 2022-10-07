@@ -7,6 +7,9 @@ module.exports = {
     Review: require('./review.model'),
     User: require('./user.model'),
     Views: require('./views.model'),
+    Table: require('./table.model'),
+    Booking: require('./booking.model'),
+    Timeslot: require('./timeslot.model'),
   }
 
   
