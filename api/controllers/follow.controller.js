@@ -6,14 +6,43 @@ module.exports.userFollowList = (req, res, next) => {
     const user = req.user.id;
   
     Follow.find({ user })
-    .populate("restaurant")
-    .then((follow) => {
+        .populate("restaurant")
+        .then((follow) => {
+                
+            return res.json(follow)
             
-        return res.json(follow)
-        
-    })
-    .catch((error) => next(error));
-  }
+        })
+        .catch((error) => next(error));
+}
+
+module.exports.userFollowBool = (req, res, next) => {
+
+    if (req.params.restaurantId === undefined)
+    next(
+        createError(400, {
+        message: "User validation failed",
+        errors: { restaurant: { message: "invalid restaurant id" } },
+        })
+    );
+
+const detail = {
+    user: req.user.id,
+    restaurant: req.params.restaurantId,
+};
+
+    Follow.findOne(detail)
+        .then((follow) => {
+
+            let followB = false
+
+            if (follow) 
+                followB = true
+
+            res.json({ followB })
+
+        })
+        .catch((error) => next(error));
+}
 
 module.exports.follow = (req, res, next) => {
 

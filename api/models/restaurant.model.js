@@ -95,15 +95,15 @@ const restaurantSchema = new Schema ({
         },
     })
 
-restaurantSchema.virtual("follow", {
-    ref: "follow",
+restaurantSchema.virtual("Follow", {
+    ref: "Follow",
     localField: "_id",
     foreignField: "restaurant",
     count: true,
 });
 
-restaurantSchema.virtual("review", {
-    ref: "review",
+restaurantSchema.virtual("Review", {
+    ref: "Review",
     localField: "_id",
     foreignField: "restaurant",
 });

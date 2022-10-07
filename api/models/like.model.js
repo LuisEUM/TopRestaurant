@@ -3,24 +3,13 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema(
   {
-    rate: {
-        type: Number,
-        required: true,
-        min: 0,
-        max: 5,
-        required: true,
-      },
-    text: {
-      type: String,
-      required: true,
-    },
     user: {
       ref: "User",
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
-    restaurant: {
-      ref: "Restaurant",
+    product: {
+      ref: "Product",
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
@@ -38,5 +27,5 @@ const schema = new Schema(
   }
 );
 
-const Review = mongoose.model("Review", schema);
-module.exports = Review;
+const Like = mongoose.model("Like", schema);
+module.exports = Like;

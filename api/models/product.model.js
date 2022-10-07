@@ -59,6 +59,13 @@ const productSchema = new Schema ({
 }
 )
 
+productSchema.virtual("Like", {
+    ref: "Like",
+    localField: "_id",
+    foreignField: "product",
+    count: true,
+});
+
 productSchema.pre("validate", function (next) {
     this.image = this.image || undefined;
     this.description = this.description || undefined;

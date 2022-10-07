@@ -1,11 +1,12 @@
 module.exports = {
-    Product: require('./product.model'),
-    User: require('./user.model'),
-    Restaurant: require('./restaurant.model'),
-    Menu: require('./menu.model'),
-    Review: require('./review.model'),
     Follow: require('./follow.model'),
-    Views: require('./views.model')
+    Like: require('./like.model'),
+    Menu: require('./menu.model'),
+    Product: require('./product.model'),
+    Restaurant: require('./restaurant.model'),
+    Review: require('./review.model'),
+    User: require('./user.model'),
+    Views: require('./views.model'),
   }
 
   

@@ -1,10 +1,11 @@
 module.exports = {
   Auth: require('./auth.routes'),
-  Restaurants: require('./restaurants.routes'),
-  User: require('./users.routes'),
-  Review: require('./review.routes'),
   Follow: require("./follow.routes"),
+  Like: require('./like.routes'),
   Menu: require('./menu.routes'),
-  Product: require('./product.routes')
+  Product: require('./product.routes'),
+  Restaurants: require('./restaurants.routes'),
+  Review: require('./review.routes'),
+  User: require('./users.routes'),
 }
 

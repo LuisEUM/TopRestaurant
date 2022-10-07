@@ -1,5 +1,5 @@
 const createError = require("http-errors");
-const User = require("../models/user.model");
+const {User} = require("../models");
 const mongoose = require("mongoose");
 const EMAIL_PATTERN = require('../utils/patterns');
 
