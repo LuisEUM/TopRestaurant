@@ -11,23 +11,23 @@ const schema = new Schema ({
         required: true
     },
     table: {
-      type: Schema.Types.ObjectId,
-      ref: 'Table',
-      required: true
-  },
-  status: {
-    type: [{
-        type: String,
-        enum: status,
-        required: true,
-    }]
-  },
+        type: Schema.Types.ObjectId,
+        ref: 'Table',
+        required: true
+    },
+    status: {
+        type: [{
+            type: String,
+            enum: status,
+            required: true,
+        }]
+    },
     duration: {
-      type: String,
-      enum: duration,
-      required: "Duration is required",
-      required: true,
-  },
+        type: String,
+        enum: duration,
+        required: "Duration is required",
+        required: true,
+    },
     timestart: {
         type: Date,
         required: true,
@@ -37,7 +37,7 @@ const schema = new Schema ({
         required: true
     },        
     phoneNumber: {
-      type: Number
+        type: Number
     },
     note:{
         type: String,

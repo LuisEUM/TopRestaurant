@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const types = require('../data/types.restaurants.json')
 const services = require('../data/services.restaurants.json')
+const zones = require('../data/zones.restaurants.json')
+
 const isURL = require('../utils/validations.js');
 
 const restaurantSchema = new Schema ({
@@ -10,9 +12,21 @@ const restaurantSchema = new Schema ({
         ref: 'User',
         required: true
     },
+    services: {
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Table',
+        }]
+    },
     name: {
         type: String,
         required: "Title is required",
+        maxLength: [120, "Name needs at max 60 chars"],
+        required: true,
+    },
+    tables: {
+        type: String,
+        required: "Titles is required",
         maxLength: [120, "Name needs at max 60 chars"],
         required: true,
     },
@@ -81,7 +95,19 @@ const restaurantSchema = new Schema ({
             enum: services,
             required: true,
         }]
-    },},
+    },
+    schedules : {
+        type: [{
+            type: String,
+        }]
+    },
+    zones : {
+        type: [{
+            type: String,
+            enum: zones,
+        }]
+    },
+},
     {
         timestamps: true,
         toJSON: {
