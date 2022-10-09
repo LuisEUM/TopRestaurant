@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const isURL = require('../utils/validations.js');
 
 const menuSchema = new Schema ({
-    menuOwner: {
+    owner: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,
@@ -13,6 +13,10 @@ const menuSchema = new Schema ({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
     },
+    products: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Product'
+        }],
     name: {
         type: String,
         required: "Name is required",
@@ -31,11 +35,7 @@ const menuSchema = new Schema ({
             validator: isURL,
             message: `Invalid URL`,
             },
-        },
-    products: [{
-            type: Schema.Types.ObjectId,
-            ref: 'Product'
-        }],
+        }
 },
 {
     timestamps: true,

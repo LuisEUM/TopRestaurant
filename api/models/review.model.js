@@ -3,6 +3,16 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema(
   {
+    owner: {
+      ref: "User",
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
+    restaurant: {
+      ref: "Restaurant",
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
     rate: {
         type: Number,
         required: true,
@@ -13,17 +23,7 @@ const schema = new Schema(
     text: {
       type: String,
       required: true,
-    },
-    user: {
-      ref: "User",
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-    },
-    restaurant: {
-      ref: "Restaurant",
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-    },
+    }
   },
   {
     timestamps: true,

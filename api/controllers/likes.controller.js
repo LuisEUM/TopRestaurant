@@ -26,7 +26,7 @@ module.exports.userLikeBool = (req, res, next) => {
     );
 
     const detail = {
-        user: req.user.id,
+        owner: req.user.id,
         product: req.params.productId,
     };
 
@@ -55,7 +55,7 @@ module.exports.like = (req, res, next) => {
         );
 
     const detail = {
-        user: req.user.id,
+        owner: req.user.id,
         product: req.params.productId,
     };
 

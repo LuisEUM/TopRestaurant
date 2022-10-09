@@ -10,5 +10,6 @@ module.exports = {
   Tables: require('./tables.routes'),
   Timeslot: require('./timeslot.routes'),
   Bookings: require('./bookings.routes'),
+  Zones: require('./zones.routes'),
 }
 

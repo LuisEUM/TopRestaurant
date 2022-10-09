@@ -5,7 +5,7 @@ const isURL = require('../utils/validations.js');
 
 
 const productSchema = new Schema ({
-    productOwner: {
+    owner: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,

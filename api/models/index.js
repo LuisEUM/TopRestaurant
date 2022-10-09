@@ -10,6 +10,7 @@ module.exports = {
     Table: require('./table.model'),
     Booking: require('./booking.model'),
     Timeslot: require('./timeslot.model'),
+    Zone: require('./zone.model'),
   }
 
   

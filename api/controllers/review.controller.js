@@ -30,7 +30,7 @@ module.exports.create = (req, res, next) => {
     rate: req.body.rate,
     text: req.body.text,
     restaurant: req.params.restaurantId,
-    user: req.user.id,
+    owner: req.user.id,
   })
     .then((review) => res.status(201).json(review))
     .catch(next);

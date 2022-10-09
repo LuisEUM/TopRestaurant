@@ -12,7 +12,7 @@ const schema = new Schema(
           enum: time,
           required: true,
       }]
-  },
+    },
     date: {
       type: Number,
       required: true,
@@ -25,12 +25,12 @@ const schema = new Schema(
           enum: monthsLong || monthsShort,
           required: true,
       }],
-      year: {
-        type: Number,
-        required: true,
-        min: 2012,
-      },
-  },
+    },
+    year: {
+      type: Number,
+      required: true,
+      min: 2012,
+    },
   table: [{
     type: Schema.Types.ObjectId,
     ref: 'Table',

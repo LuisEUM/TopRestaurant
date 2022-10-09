@@ -21,7 +21,7 @@ module.exports.create = (req, res, next) => {
   const product = {
     ...req.body,
     menu: req.params.menuId,
-    productOwner: req.user.id
+    owner: req.user.id
   };
 
   console.log(product)
@@ -42,7 +42,7 @@ module.exports.create = (req, res, next) => {
 
 module.exports.update = (req, res, next) => {
     const data = req.body;
-    delete data.productOwner;
+    delete data.owner;
     delete data.menu;
 
     const product = Object.assign(req.product, data);

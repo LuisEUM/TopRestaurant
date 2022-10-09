@@ -2,17 +2,18 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const status = require('../data/status.booking.json')
 const duration = require('../data/duration.booking.json')
-
+const prefixNumbers = require('../data/prefix.numbers.json')
+const zones = require('../data/zones.restaurants.json')
 
 const schema = new Schema ({
-    client: {
+    owner: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    table: {
+    zones: {
         type: Schema.Types.ObjectId,
-        ref: 'Table',
+        ref: 'Zone',
         required: true
     },
     status: {
@@ -20,6 +21,7 @@ const schema = new Schema ({
             type: String,
             enum: status,
             required: true,
+            default: "Pending"
         }]
     },
     duration: {
@@ -27,13 +29,26 @@ const schema = new Schema ({
         enum: duration,
         required: "Duration is required",
         required: true,
+        default: "1:30"
     },
-    timestart: {
+    dineStart: {
         type: Date,
         required: true,
     },
     persons: { 
         type: Number,
+        required: true
+    },
+    zones: {
+        type: {
+            type: String,
+            required: true,
+            enum: zones
+        }
+    },
+    prefixNumber: {
+        type: String,
+        enum: prefixNumbers.map((prefix) => prefix.dial_code),
         required: true
     },        
     phoneNumber: {

@@ -1,17 +1,16 @@
 const mongoose = require("mongoose");
-const { Restaurant, User, Follow, Review } = require("../models");
-const types = require('../data/types.restaurants.json')
-const services = require('../data/services.restaurants.json')
+const {Restaurant} = require("../models");
+
 
 module.exports.list = (req, res, next) => {
     Restaurant.find()
-    .populate("user")
+    .populate("owner")
     .populate({
         path: "review",
         populate: {
-          path: "user",
+            path: "owner",
         },
-      })
+    })
     .populate("follow")
     .populate("menus")
     .then((restaurant) => {
@@ -25,11 +24,11 @@ module.exports.list = (req, res, next) => {
 
 module.exports.create = (req, res, next) => {
 const restaurant = req.body;
-delete restaurant.user;
+delete restaurant.owner;
 delete restaurant.menus;
 delete restaurant.views;
 
-restaurant.user = req.user.id;
+restaurant.owner = req.user.id;
 
 Restaurant.create(restaurant)
     .then((restaurant) => res.status(201).json(restaurant))
@@ -39,11 +38,11 @@ Restaurant.create(restaurant)
 
 module.exports.detail = (req, res, next) => {
     Restaurant.findById(req.params.id)
-    .populate("user")
+    .populate("owner")
     .populate({
         path: "review",
         populate: {
-          path: "user",
+          path: "owner",
         },
       })
     .populate("follow")
@@ -61,7 +60,7 @@ module.exports.detail = (req, res, next) => {
 module.exports.update = (req, res, next) => {
     const data = req.body;
     delete data.views;
-    delete data.user;
+    delete data.owner;
     delete data.menus;
 
     const restaurant = Object.assign(req.restaurant, data);

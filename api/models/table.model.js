@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const size = require('../data/size.table.json')
+const zones = require('../data/zones.restaurants.json')
 
 const schema = new Schema(
   {
@@ -13,23 +14,17 @@ const schema = new Schema(
       type: String,
       required: true
     },
-    zones: {
-      type: [{
-          type: String,
-          required: true,
-      }]
-  },
-  timeslots: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Timeslot',
-  }],
-  bookings: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Booking',
-  }],
-  restaurant: {
-    type: Schema.Types.ObjectId,
-    ref: 'Restaurant',
+    owner: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }],
+    bookings: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Booking',
+    }],
+    zone: {
+      type: Schema.Types.ObjectId,
+      ref: 'Zone',
   },
   },
   {

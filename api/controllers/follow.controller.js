@@ -26,7 +26,7 @@ module.exports.userFollowBool = (req, res, next) => {
     );
 
 const detail = {
-    user: req.user.id,
+    owner: req.user.id,
     restaurant: req.params.restaurantId,
 };
 
@@ -55,7 +55,7 @@ module.exports.follow = (req, res, next) => {
         );
 
     const detail = {
-        user: req.user.id,
+        owner: req.user.id,
         restaurant: req.params.restaurantId,
     };
 

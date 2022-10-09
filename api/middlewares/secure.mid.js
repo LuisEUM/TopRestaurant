@@ -1,5 +1,6 @@
 const createError = require('http-errors');
-const {Restaurant, Review, Product} = require('../models');
+const { tables } = require('../controllers');
+const {Restaurant, Review, Product, Zone, Table} = require('../models');
 const Menu = require('../models/menu.model');
 
 module.exports.isAuthenticated = (req, res, next) => {
@@ -10,37 +11,32 @@ module.exports.isAuthenticated = (req, res, next) => {
   }
 }
 
+const checkUser = (value, name, req, next) =>{
+  if (value?.owner == req.user?.id) {
+    Object.assign(req, { [name]: value });
+    next();
+  } else if (value) {
+    next(createError(403, "access denied"));
+  } else {
+    next(createError(404, `${value} not found`));
+  }
+}
+
 module.exports.isRestaurantOwnedByUser = (req, res, next) => {
   const { id } = req.params;
   Restaurant.findById(id)
     .then((restaurant) => {
-      if (restaurant?.user == req.user?.id) {
-        req.restaurant = restaurant;
-        next();
-      } else if (restaurant) {
-        next(createError(403, "access denied"));
-      } else {
-        next(createError(404, "restaurant not found"));
-      }
+      checkUser(restaurant, 'restaurant', req, next)
     })
     .catch(next);
 };
 
-module.exports.isreviewOwnedByUser = (req, res, next) => {
+module.exports.isReviewOwnedByUser = (req, res, next) => {
   const { reviewId } = req.params;
 
   Review.findById(reviewId)
     .then((review) => {
-      if (review) {
-        if (review.user == req.user.id) {
-          req.review = review;
-          next();
-        } else {
-          next(createError(403, "access denied"));
-        }
-      } else {
-        next(createError(404, "Review not found"));
-      }
+        checkUser(review, 'review', req, next)
     })
     .catch(next);
 };
@@ -50,16 +46,7 @@ module.exports.ismenuOwnedByUser = (req, res, next) => {
 
   Menu.findById(id)
     .then((menu) => {
-      if (menu) {
-        if (menu.menuOwner == req.user.id) {
-          req.menu = menu;
-          next();
-        } else {
-          next(createError(403, "access denied"));
-        }
-      } else {
-        next(createError(404, "Menu not found"));
-      }
+      checkUser(menu, 'menu', req, next)
     })
     .catch(next);
 };
@@ -69,16 +56,28 @@ module.exports.isproductOwnedByUser = (req, res, next) => {
 
   Product.findById(id)
     .then((product) => {
-      if (product) {
-        if (product.productOwner == req.user.id) {
-          req.product = product;
-          next();
-        } else {
-          next(createError(403, "access denied"));
-        }
-      } else {
-        next(createError(404, "Menu not found"));
-      }
+      checkUser(product, 'product', req, next)
+    })
+    .catch(next);
+};
+
+
+module.exports.isZoneOwnedByUser = (req, res, next) => {
+  const { id } = req.params;
+
+  Zone.findById(id)
+    .then((zone) => {
+      checkUser(zone, 'zone', req, next)
+    })
+    .catch(next);
+};
+
+module.exports.isTableOwnedByUser = (req, res, next) => {
+  const { id } = req.params;
+
+  Table.findById(id)
+    .then((table) => {
+      checkUser(table, 'table', req, next)
     })
     .catch(next);
 };

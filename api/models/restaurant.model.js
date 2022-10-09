@@ -7,26 +7,24 @@ const zones = require('../data/zones.restaurants.json')
 const isURL = require('../utils/validations.js');
 
 const restaurantSchema = new Schema ({
-    user: {
+    owner: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    services: {
+    menus: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Menu',
+    }],
+    zones: {
         type: [{
             type: Schema.Types.ObjectId,
-            ref: 'Table',
+            ref: 'Zone',
         }]
     },
     name: {
         type: String,
         required: "Title is required",
-        maxLength: [120, "Name needs at max 60 chars"],
-        required: true,
-    },
-    tables: {
-        type: String,
-        required: "Titles is required",
         maxLength: [120, "Name needs at max 60 chars"],
         required: true,
     },
@@ -53,22 +51,6 @@ const restaurantSchema = new Schema ({
             message: `Invalid URL`,
             },
     },
-    /*schedule: [{
-        "schedule_begin": {
-            type: Date,
-            required: true,
-        },
-        "schedule_end":{
-            type: Date,
-            required: true,
-        },
-        "schedule_days_runs": {
-            type: Number,
-            min: 0,
-            max: 6,
-            required: true,
-        },
-    }],*/
     phoneNumber: {
         type: Number
     },
@@ -85,10 +67,6 @@ const restaurantSchema = new Schema ({
         maxLength: [300, "Description needs at max 300 chars"],
         required: true
     },
-    menus: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Menu',
-    }],
     services: {
         type: [{
             type: String,
@@ -100,13 +78,7 @@ const restaurantSchema = new Schema ({
         type: [{
             type: String,
         }]
-    },
-    zones : {
-        type: [{
-            type: String,
-            enum: zones,
-        }]
-    },
+    }
 },
     {
         timestamps: true,
@@ -121,14 +93,14 @@ const restaurantSchema = new Schema ({
         },
     })
 
-restaurantSchema.virtual("Follow", {
+restaurantSchema.virtual("follow", {
     ref: "Follow",
     localField: "_id",
     foreignField: "restaurant",
     count: true,
 });
 
-restaurantSchema.virtual("Review", {
+restaurantSchema.virtual("review", {
     ref: "Review",
     localField: "_id",
     foreignField: "restaurant",

@@ -7,14 +7,14 @@ const {review} = require('../controllers');
 router.get(
     "/",
     secure.isAuthenticated,
-    secure.isreviewOwnedByUser,
+    secure.isReviewOwnedByUser,
     review.userReviewList
 );
 
 router.get(
     "/:restaurantId",
     secure.isAuthenticated,
-    secure.isreviewOwnedByUser,
+    secure.isReviewOwnedByUser,
     review.userReviewList
 );
 
@@ -23,14 +23,14 @@ router.post("/:restaurantId", secure.isAuthenticated, review.create);
 router.patch(
     "/:reviewId",
     secure.isAuthenticated,
-    secure.isreviewOwnedByUser,
+    secure.isReviewOwnedByUser,
     review.update
     );
     
 router.delete(
     "/:reviewId",
     secure.isAuthenticated,
-    secure.isreviewOwnedByUser,
+    secure.isReviewOwnedByUser,
     review.delete
 );
 

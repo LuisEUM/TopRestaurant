@@ -22,7 +22,7 @@ module.exports.create = (req, res, next) => {
   const menu = {
     ...req.body,
     restaurant: req.params.restaurantId,
-    menuOwner: req.user.id
+    owner: req.user.id
   };
 
   Menu.create(menu)
@@ -40,7 +40,7 @@ module.exports.create = (req, res, next) => {
 
 module.exports.update = (req, res, next) => {
     const data = req.body;
-    delete data.menuOwner;
+    delete data.owner;
     delete data.restaurant;
     delete data.products;
 

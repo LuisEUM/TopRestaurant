@@ -10,6 +10,7 @@ module.exports = {
   bookings: require('./bookings.controller.js'),
   tables: require('./tables.controller'),
   timeslots: require('./timeslots.controller.js'),
+  zones: require('./zones.controller.js'),
 
 };
 
