@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const status = require('../data/status.booking.json')
 const duration = require('../data/duration.booking.json')
 const prefixNumbers = require('../data/prefix.numbers.json')
-const zones = require('../data/zones.restaurants.json')
 
 const schema = new Schema ({
     owner: {
@@ -17,14 +16,14 @@ const schema = new Schema ({
         required: true
     },
     status: {
-        type: [{
+        type: {
             type: String,
             enum: status,
             required: true,
             default: "Pending"
-        }]
+        }
     },
-    duration: {
+    timeLimit: {
         type: String,
         enum: duration,
         required: "Duration is required",
@@ -38,13 +37,6 @@ const schema = new Schema ({
     persons: { 
         type: Number,
         required: true
-    },
-    zones: {
-        type: {
-            type: String,
-            required: true,
-            enum: zones
-        }
     },
     prefixNumber: {
         type: String,

@@ -11,6 +11,7 @@ module.exports = {
   tables: require('./tables.controller'),
   timeslots: require('./timeslots.controller.js'),
   zones: require('./zones.controller.js'),
+  schedules: require('./schedules.controller.js'),
 
 };
 

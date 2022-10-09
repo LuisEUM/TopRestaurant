@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const types = require('../data/types.restaurants.json')
 const services = require('../data/services.restaurants.json')
-const zones = require('../data/zones.restaurants.json')
 
 const isURL = require('../utils/validations.js');
 
@@ -76,7 +75,8 @@ const restaurantSchema = new Schema ({
     },
     schedules : {
         type: [{
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Schedule',
         }]
     }
 },

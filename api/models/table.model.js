@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const size = require('../data/size.table.json')
-const zones = require('../data/zones.restaurants.json')
 
 const schema = new Schema(
   {

@@ -5,6 +5,12 @@ const weekDays = require('../data/weekDays.slot.json')
 
 const schema = new Schema(
   {
+  dayOfWeek: {
+      type: [{
+          type: String,
+          enum: weekDays,
+      }]
+    },
   openHours: {
     type: [{
         type: String,
@@ -17,12 +23,16 @@ const schema = new Schema(
         enum: time,
     }]
   },
-    dayOfWeek: {
-      type: [{
-          type: String,
-          enum: weekDays,
-      }]
-    }
+    restaurant: {
+      type: Schema.Types.ObjectId,
+      ref: 'Restaurant',
+      required: true
+    },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
   },
   {
     timestamps: true,
@@ -37,5 +47,5 @@ const schema = new Schema(
   }
 );
 
-const Timeslot = mongoose.model("Timeslot", schema);
-module.exports = Timeslot;
+const Schedule = mongoose.model("Schedule", schema);
+module.exports = Schedule;

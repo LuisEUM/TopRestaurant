@@ -1,6 +1,6 @@
 const createError = require('http-errors');
 const { tables } = require('../controllers');
-const {Restaurant, Review, Product, Zone, Table} = require('../models');
+const {Restaurant, Review, Product, Zone, Table, Schedule} = require('../models');
 const Menu = require('../models/menu.model');
 
 module.exports.isAuthenticated = (req, res, next) => {
@@ -78,6 +78,16 @@ module.exports.isTableOwnedByUser = (req, res, next) => {
   Table.findById(id)
     .then((table) => {
       checkUser(table, 'table', req, next)
+    })
+    .catch(next);
+};
+
+module.exports.isScheduleOwnedByUser = (req, res, next) => {
+  const { id } = req.params;
+
+  Schedule.findById(id)
+    .then((schedule) => {
+      checkUser(schedule, 'schedule', req, next)
     })
     .catch(next);
 };
