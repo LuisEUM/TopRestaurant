@@ -11,7 +11,8 @@ module.exports = {
     Booking: require('./booking.model'),
     Timeslot: require('./timeslot.model'),
     Zone: require('./zone.model'),
-    Schedule: require('./schedule.model')
+    Schedule: require('./schedule.model'),
+    RestaurantSetting: require('./restaurantSetting.model'),
   }
 
   

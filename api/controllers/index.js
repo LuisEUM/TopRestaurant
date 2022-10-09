@@ -12,6 +12,6 @@ module.exports = {
   timeslots: require('./timeslots.controller.js'),
   zones: require('./zones.controller.js'),
   schedules: require('./schedules.controller.js'),
-
+  restaurantSettings: require('./restaurantSettings.controller.js')
 };
 

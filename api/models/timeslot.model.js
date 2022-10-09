@@ -31,10 +31,14 @@ const schema = new Schema(
       required: true,
       min: 2012,
     },
-  table: [{
+  zone: {
     type: Schema.Types.ObjectId,
-    ref: 'Table',
-  }],
+    ref: 'Zone',
+  },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
   },
   {
     timestamps: true,

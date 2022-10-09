@@ -1,5 +1,5 @@
 const express = require("express");
-const {Auth, Restaurants, User, Review, Follow, Menu, Product, Like, Bookings, Timeslot, Tables, Zones, Schedules } = require('../routes');
+const {Auth, Restaurants, User, Review, Follow, Menu, Product, Like, Bookings, Timeslot, Tables, Zones, Schedules, RestaurantSettings } = require('../routes');
 const router = express.Router();
 
 router.use('/', Auth);
@@ -15,6 +15,7 @@ router.use('/tables', Tables);
 router.use('/timeslots', Timeslot);
 router.use('/zones', Zones);
 router.use('/schedules', Schedules);
+router.use('/restaurant_settings', RestaurantSettings);
 
 
 module.exports = router;

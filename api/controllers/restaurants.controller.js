@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const {Restaurant} = require("../models");
+const {Restaurant, RestaurantSetting} = require("../models");
+const setting = require("./restaurantSettings.controller");
 
 
 module.exports.list = (req, res, next) => {
@@ -29,10 +30,13 @@ delete restaurant.menus;
 delete restaurant.views;
 
 restaurant.owner = req.user.id;
-
+console.log(restaurant)
 Restaurant.create(restaurant)
-    .then((restaurant) => res.status(201).json(restaurant))
-    .catch(next);
+    .then((restaurant) => {
+        setting.create(req, res, next, restaurant)
+    })
+    .catch(next);   
+    
 }
 
 
