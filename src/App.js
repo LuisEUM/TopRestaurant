@@ -1,24 +1,60 @@
-import logo from './logo.svg';
+import { NavBar } from "./components";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { DiscoverScreen, CreateRestaurantScreen, LoginScreen, FavoritesScreen } from "./screens";
+import { useContext } from "react";
+import { AuthContext } from "./contexts/AuthContext";
+import DetailScreen from "./screens/detail/DetailScreen";
 
+function AuthGuard({ children }) {
+  const { user } = useContext(AuthContext);
 
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+
+  return children;
+}
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar />
+
+        <Routes>
+          <Route path="/login" element={<LoginScreen />} />
+          <Route
+            path="/"
+            element={
+              <AuthGuard>
+                <DiscoverScreen />
+              </AuthGuard>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <AuthGuard>
+                <FavoritesScreen/>
+              </AuthGuard>
+            }
+          />
+          <Route
+            path="/create-restaurant"
+            element={
+              <AuthGuard>
+                <CreateRestaurantScreen />
+              </AuthGuard>
+            }
+          />
+          <Route
+            path="/:id"
+            element={
+              <AuthGuard>
+                <DetailScreen />
+              </AuthGuard>
+            }
+          />
+        </Routes>
+    </>
   );
 }
 
