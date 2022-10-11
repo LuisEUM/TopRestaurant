@@ -32,7 +32,22 @@ const userSchema = new Schema(
       type: String,
       required: "Password is required",
       match: [PW_PATTERN, "Password needs at least 8 chars"],
-    }
+    },
+    image: {
+      type: String,
+      default: "../data/svg/BM_Profile_icon.svg",
+      validate: {
+          validator: function (image) {
+          try {
+              new URL(image);
+              return true;
+              } catch (error) {
+              return false;
+              }
+          },
+          message: (image) => `Invalid URL`,
+          },
+      },
   },
   {
     timestamps: true,
