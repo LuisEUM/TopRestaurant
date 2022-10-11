@@ -5,7 +5,7 @@ import FavoriteService from './FavoriteService'
 function FavoritesScreen() {
   return (
     <>
-      <TitleBar to="/login" title="Favorites"/>
+      <TitleBar to="/login" title="Favorites" />
       <FavoriteService/>
     </>
   )

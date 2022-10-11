@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { getProfile } from "../services/top-restaurant-service";
+import React, { useContext } from 'react'
 
 export const AuthContext = createContext();
 

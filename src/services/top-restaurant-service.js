@@ -24,6 +24,8 @@ export function getProfile() {
   return http.get("/profile");
 }
 
+
+
 export function getRestaurants() {
   return http.get("/restaurants");
 }
@@ -36,6 +38,7 @@ export function createRestaurant(restaurant) {
   return http.post("/restaurants", restaurant);
 }
 
+
 export function likeRestaurant(id) {
   return http.post(`/restaurants/${id}/like`);
 }
@@ -46,4 +49,9 @@ export function commentRestaurant(id, text) {
 
 export function authenticate(data) {
   return http.post("/authenticate", data);
+}
+
+
+export function postRegister(data) {
+  return http.post("/register", data);
 }

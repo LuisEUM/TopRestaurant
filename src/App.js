@@ -1,9 +1,10 @@
 import { NavBar } from "./components";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { DiscoverScreen, CreateRestaurantScreen, LoginScreen, FavoritesScreen } from "./screens";
+import { DiscoverScreen, CreateRestaurantScreen, LoginScreen, FavoritesScreen, RegisterScreen, AccountScreen } from "./screens";
 import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 import DetailScreen from "./screens/detail/DetailScreen";
+import "./app.css"
 
 function AuthGuard({ children }) {
   const { user } = useContext(AuthContext);
@@ -21,6 +22,8 @@ function App() {
 
         <Routes>
           <Route path="/login" element={<LoginScreen />} />
+          <Route path="/register" element={<RegisterScreen/>} />
+
           <Route
             path="/"
             element={
@@ -29,6 +32,7 @@ function App() {
               </AuthGuard>
             }
           />
+
           <Route
             path="/favorites"
             element={
@@ -37,6 +41,16 @@ function App() {
               </AuthGuard>
             }
           />
+
+          <Route
+            path="/account"
+            element={
+              <AuthGuard>
+                <AccountScreen/>
+              </AuthGuard>
+            }
+          />
+
           <Route
             path="/create-restaurant"
             element={

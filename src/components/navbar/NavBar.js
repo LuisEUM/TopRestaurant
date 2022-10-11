@@ -1,13 +1,7 @@
-import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../contexts/AuthContext";
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
-  const { user } = useContext(AuthContext);
-
-  if (!user) {
-    return null;
-  }
 
   return (
     <nav className="navbar navbar-expand-lg bg-light main-nav fixed-bottom shadow-lg">
@@ -18,7 +12,7 @@ function NavBar() {
                 isActive ? "nav-link active col text-center" : "nav-link nav-item col text-center"
                 }
               >
-                <i className="fa fa-compass" />
+                <i className="fa fa-compass fa-fw" />
               </NavLink>
               <NavLink
                 to="/create-restaurant"
@@ -26,7 +20,7 @@ function NavBar() {
                 isActive ? "nav-link active col text-center" : "nav-link nav-item col text-center"
                 }
               >
-                <i className="fa fa-search" />
+                <i className="fa fa-search fa-fw" />
               </NavLink>
               <NavLink
                 to="/create-restaurant"
@@ -34,15 +28,15 @@ function NavBar() {
                 isActive ? "nav-link active col text-center" : "nav-link nav-item col text-center"
                 }
               >
-                <i className="fa fa-heart" />
+                <i className="fa fa-calendar-o fa-fwfa-fw" />
               </NavLink>
               <NavLink
-                to="/create-restaurant"
+                to="/account"
                 className={({ isActive }) =>
                 isActive ? "nav-link active col text-center" : "nav-link nav-item col text-center"
                 }
               >
-                <i className="fa fa-user" />
+                <i className="fa fa-user-o fa-fw" />
               </NavLink>
         </div>
     </nav>
