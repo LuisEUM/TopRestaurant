@@ -1,27 +1,21 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const time = require('../data/time.slot.json')
 
 const schema = new Schema(
   {
-    name: {
-      type: String,
-      required: true
-    },
-  maxCapacity: {
-    type: Number,
-    required: true
+  openHours: {
+    type: String,
+    enum: time,
   },
-  timeslots: [{
+  closeHours: {
+    type: String,
+    enum: time,
+
+  },
+  ScheduleOwn: {
     type: Schema.Types.ObjectId,
-    ref: 'Timeslot',
-  }],
-  tables: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Table',
-  }],
-  restaurant: {
-    type: Schema.Types.ObjectId,
-    ref: 'Restaurant',
+    ref: 'Schedule' ,
     required: true
   },
   owner: {
@@ -43,5 +37,5 @@ const schema = new Schema(
   }
 );
 
-const Zone = mongoose.model("Zone", schema);
-module.exports = Zone;
+const ScheduleHours = mongoose.model("ScheduleHours", schema);
+module.exports = ScheduleHours;

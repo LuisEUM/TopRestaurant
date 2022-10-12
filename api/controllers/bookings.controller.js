@@ -1,6 +1,5 @@
 const createError = require("http-errors");
 const {Booking} = require("../models");
-const mongoose = require("mongoose");
 const moment = require('moment-timezone');
 //moment.tz.names() this return an object with all the list of zone name
 
@@ -26,6 +25,8 @@ module.exports.create = (req, res, next) => {
 
   const bookingMadridNow = moment.tz(Date.now(), "Europe/Madrid"); // Esto es provisional es solo crear
   delete booking.timestart; // Esto es provisional es solo crear
+
+  
   booking.timestart = bookingMadridNow // Esto es provisional es solo crear
 
   Booking.create(booking)

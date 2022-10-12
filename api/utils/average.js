@@ -1,5 +1,4 @@
 const avergare = (reviews) =>{
-    console.log(reviews)
     reviews.reduce((avg, value, _, {
         length
       }) => {

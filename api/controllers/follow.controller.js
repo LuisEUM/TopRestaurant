@@ -1,6 +1,5 @@
 const createError = require("http-errors");
 const Follow = require("../models/follow.model");
-const mongoose = require("mongoose");
 
 module.exports.userFollowList = (req, res, next) => {
     const user = req.user.id;
@@ -18,10 +17,10 @@ module.exports.userFollowList = (req, res, next) => {
 module.exports.userFollowBool = (req, res, next) => {
 
     if (req.params.restaurantId === undefined)
-    next(
-        createError(400, {
-        message: "User validation failed",
-        errors: { restaurant: { message: "invalid restaurant id" } },
+        next(
+            createError(400, {
+            message: "User validation failed",
+            errors: { restaurant: { message: "invalid restaurant id" } },
         })
     );
 

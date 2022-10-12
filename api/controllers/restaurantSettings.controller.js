@@ -27,7 +27,6 @@ module.exports.create = (req, res, next, restaurant) => {
     .then((setting) => {  
         restaurant.settings.push(setting)
         restaurant.save();
-        console.log("ESTE SERIA EL EXITO", restaurant)
         res.status(201).json(restaurant)
     })
     .catch((error) =>  res.status(400).json(error));
@@ -35,7 +34,6 @@ module.exports.create = (req, res, next, restaurant) => {
 
 
 module.exports.update = (req, res, next) => {
-  console.log(req)
 
   const data = req.body;
   delete data.restaurant;

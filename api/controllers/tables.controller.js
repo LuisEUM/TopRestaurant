@@ -1,6 +1,5 @@
 const createError = require("http-errors");
 const {Table, Zone} = require("../models");
-const mongoose = require("mongoose");
 
 module.exports.detail = (req, res, next) => {
   Table.find()

@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const { Product, Menu } = require("../models");
 
 module.exports.list = (req, res, next) => {

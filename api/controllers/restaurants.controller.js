@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-const {Restaurant, RestaurantSetting} = require("../models");
+const {Restaurant} = require("../models");
 const setting = require("./restaurantSettings.controller");
 
 
