@@ -1,16 +1,15 @@
 import { createContext, useState, useEffect } from "react";
 import { getProfile } from "../services/top-restaurant-service";
-import React, { useContext } from 'react'
 
 export const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
-  const [user, setUser] = useState([undefined]); // undefined means loading
+  const [user, setUser] = useState(undefined); // undefined means loading
 
   useEffect(() => {
     getProfile()
       .then((user) => setUser(user))
-      .catch((user) => setUser(null));
+      .catch((error) => setUser(null));
   }, []);
 
   const value = {

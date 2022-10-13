@@ -22,7 +22,6 @@ function InfoAccount() {
       <p className='col-10 px-2 text-center  m-0 fs-6 d-flex  justify-content-center align-items-center text-white'><strong className='fw-bold'>E-mail: &nbsp; </strong>{user.email} </p>
     </div>
     </div>
-
   )
 }
 

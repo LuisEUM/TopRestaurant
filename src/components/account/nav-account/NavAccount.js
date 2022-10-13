@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useContext }from "react";
 import { NavLink } from "react-router-dom";
+import * as restaurantsService from '../../../services/top-restaurant-service';
+import { AuthContext } from "../../../contexts/AuthContext";
+
 
 function NavAccount() {
+const { setUser } = useContext(AuthContext);
+  
+const logout = () => {
+  restaurantsService.logout()
+      .then(() => {
+        console.log('hola')
+        setUser(null)
+      } )
+      .catch((error) => setUser(null));
+
+}
+
+
+
   return (
     <div className="container">
       <div className="d-flex row justify-content-center pt-5 ">
@@ -77,7 +94,7 @@ function NavAccount() {
 
         <div className="d-flex col-10 py-3 border-bottom">
           <NavLink
-            to="/logout"
+            onClick={logout}
             className={({ isActive }) =>
               isActive
               ? " justify-content-center  active text-left  link-secondary  text-decoration-none"
