@@ -1,5 +1,5 @@
 const createError = require("http-errors");
-const {Like} = require("../models");
+const {Like, Product} = require("../models");
 
 module.exports.userLikeList = (req, res, next) => {
     const user = req.user.id;
@@ -16,13 +16,28 @@ module.exports.userLikeList = (req, res, next) => {
 
 module.exports.userLikeBool = (req, res, next) => {
 
+    const errorProduct = (next) => {
+        next(
+            createError(400, {
+                message: "User validation failed",
+                errors: { product: { message: "invalid product id" } },
+            })
+        )
+    }
+
     if (req.params.productId === undefined)
-    next(
-        createError(400, {
-        message: "User validation failed",
-        errors: { restaurant: { message: "invalid restaurant id" } },
+        errorProduct(next)
+
+
+    Product.findById(req.params.productId )
+        .then(product => {
+            if(product?.owner !== req.user.id)
+                errorProduct(next)
         })
-    );
+        .catch(
+            errorProduct(next)
+        )
+
 
     const detail = {
         owner: req.user.id,

@@ -1,4 +1,5 @@
 const createError = require("http-errors");
+const { Restaurant } = require("../models");
 const Follow = require("../models/follow.model");
 
 module.exports.userFollowList = (req, res, next) => {
@@ -45,13 +46,27 @@ const detail = {
 
 module.exports.follow = (req, res, next) => {
 
-    if (req.params.restaurantId === undefined)
+    const errorRestaurant = (next) => {
         next(
             createError(400, {
-            message: "User validation failed",
-            errors: { restaurant: { message: "invalid restaurant id" } },
+                message: "User validation failed",
+                errors: { product: { message: "invalid product id" } },
             })
-        );
+        )
+    }
+
+    if (req.params.restaurantId === undefined)
+        errorRestaurant(next)
+
+
+    Restaurant.findById(req.params.restaurantId )
+        .then(restaurant => {
+            if(restaurant?.owner !== req.user.id)
+                errorRestaurant(next)
+        })
+        .catch(
+            errorRestaurant(next)
+        )
 
     const detail = {
         owner: req.user.id,

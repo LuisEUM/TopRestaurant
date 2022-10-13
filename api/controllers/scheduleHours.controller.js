@@ -164,7 +164,7 @@ module.exports.delete = (req, res, next) => {
       restaurant.save();
     })
     .then(() => {
-      Menu.deleteOne({ _id: req.scheduleHour.id})
+      ScheduleHours.deleteOne({ _id: req.scheduleHour.id})
       .then(() => res.status(204).send())
       .catch(next);
     })

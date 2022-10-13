@@ -5,14 +5,8 @@ const setting = require("./restaurantSettings.controller");
 module.exports.list = (req, res, next) => {
     Restaurant.find()
     .populate("owner")
-    .populate({
-        path: "review",
-        populate: {
-            path: "owner",
-        },
-    })
+    .populate("review")
     .populate("follow")
-    .populate("menus")
     .then((restaurant) => {
             
         return res.json(restaurant)

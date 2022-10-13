@@ -25,7 +25,8 @@ module.exports.register = (req, res, next) => {
 };
 
 module.exports.update = (req, res, next) => {
-  
+
+
     const user = Object.assign(req.user, req.body);
     user
       .save()
@@ -35,7 +36,6 @@ module.exports.update = (req, res, next) => {
         next(
           createError(400, {
             message: "User creation failed",
-            errors: `${Object.keys(e.keyValue)}: ${Object.values(e.keyValue)} is allready in use`,
           })
         )
       );
