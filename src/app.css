@@ -51,12 +51,13 @@ a, input, button{
 }
 
 
-.circle-image-profile{
+.circle-image-profile {
   width: 100%;
   object-fit: cover;
   border: 0px solid #2B2B2B;
   clip-path: circle();
 }
+
 
 
 .tex-white{
@@ -88,3 +89,5 @@ a, input, button{
 .no_color_link{
   color: #505A5B o !important
 }
+
+

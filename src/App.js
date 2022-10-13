@@ -1,6 +1,6 @@
 import { NavBar } from "./components";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { DiscoverScreen, CreateRestaurantScreen, LoginScreen, FavoritesScreen, RegisterScreen, AccountScreen, ProfileScreen } from "./screens";
+import { DiscoverScreen, CreateRestaurantScreen, LoginScreen, FavoritesScreen, RegisterScreen, AccountScreen, ProfileScreen, SearchScreen } from "./screens";
 import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 import DetailScreen from "./screens/detail/DetailScreen";
@@ -42,6 +42,16 @@ function App() {
               </AuthGuard>
             }
           />
+
+          <Route
+            path="/search"
+            element={
+              <AuthGuard>
+                <SearchScreen/>
+              </AuthGuard>
+            }
+          />
+
 
           <Route
             path="/favorites"

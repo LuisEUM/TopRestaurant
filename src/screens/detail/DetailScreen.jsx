@@ -4,7 +4,7 @@ import { Section } from "../../components";
 import {
   commentRestaurant,
   getRestaurant,
-  likeRestaurant,
+  followRestaurant,
 } from "../../services/top-restaurant-service";
 
 function DetailScreen() {
@@ -16,7 +16,7 @@ function DetailScreen() {
   }, [id]);
 
   const handleLike = () => {
-    likeRestaurant(id).then((data) => {
+    followRestaurant(id).then((data) => {
       setRestaurant({
         ...restaurant,
         likes: data.likes ? restaurant.likes + 1 : restaurant.likes - 1,

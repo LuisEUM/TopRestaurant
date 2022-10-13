@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import * as restaurantsService from '../../../services/top-restaurant-service';
 import Select from 'react-select';
-import categories from '../../../data/categories.js';
+import categories from '../../../data/categories.restaurant.js';
 import { isURL } from '../../../utils/validations.js';
 
 function RestaurantForm() {

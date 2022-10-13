@@ -15,7 +15,7 @@ function NavBar() {
                 <i className="fa fa-compass fa-fw" />
               </NavLink>
               <NavLink
-                to="/create-restaurant"
+                to="/search"
                 className={({ isActive }) =>
                 isActive ? "nav-link active col text-center" : "nav-link nav-item col text-center"
                 }

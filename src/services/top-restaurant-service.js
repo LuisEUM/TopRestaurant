@@ -47,8 +47,8 @@ export function createRestaurant(restaurant) {
 }
 
 
-export function likeRestaurant(id) {
-  return http.post(`/restaurants/${id}/like`);
+export function followRestaurant(id) {
+  return http.post(`/follow/${id}`);
 }
 
 export function commentRestaurant(id, text) {
