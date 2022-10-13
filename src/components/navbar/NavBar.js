@@ -7,7 +7,7 @@ function NavBar() {
     <nav className="navbar navbar-expand-lg bg-light main-nav fixed-bottom shadow-lg">
       <div className="d-flex flex-row justify-content-around w-100">
               <NavLink
-                to="/create-restaurant"
+                to="/"
                 className={({ isActive }) =>
                 isActive ? "nav-link active col text-center" : "nav-link nav-item col text-center"
                 }

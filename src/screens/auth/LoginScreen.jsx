@@ -2,18 +2,18 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import TitleBar from "../../components/ui/title-bar/TitleBar";
 import { AuthContext } from "../../contexts/AuthContext";
 import { authenticate } from "../../services/top-restaurant-service";
 
 function LoginScreen() {
   const navigation = useNavigate();
   const value = useContext(AuthContext);
-
+ 
   const {
     register,
     handleSubmit,
     setError,
-    control,
     formState: { errors, isValid },
   } = useForm({ mode: "onTouched" });
 
@@ -35,7 +35,7 @@ function LoginScreen() {
   };
 
   return (
-    <div >
+    <div>
       <div className="d-flex row row-cols-1 g-0 text-center justify-content-center align-items-center align-content-center full-height">
         <div className='col-4 p-0 me-2 d-flex justify-content-center align-items-end flex-column'>
           <img src="/assets/icons/top_top_mobile.svg" alt='Top Top Square Logo' className='circle-image' />

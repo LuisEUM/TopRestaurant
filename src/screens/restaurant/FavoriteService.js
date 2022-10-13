@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FavoriteService() {
+function  FavoriteService() {
   return (
     <div>FavoriteService</div>
   )

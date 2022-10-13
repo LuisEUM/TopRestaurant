@@ -28,6 +28,10 @@ export function logout() {
   return http.delete("/logout");
 }
 
+export function updateProfile(data) {
+  return http.patch("/update", data);
+}
+
 
 
 export function getRestaurants() {

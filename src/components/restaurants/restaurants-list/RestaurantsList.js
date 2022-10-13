@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as restaurantservice from '../../../services/top-restaurant-service';
 import RestaurantItem from '../restaurant-item/RestaurantItem';
 
-function RestaurantsList  () {
+function  RestaurantsList  () {
   const [restaurants, setRestaurants] = useState([]);
   
   useEffect(() => {
@@ -12,9 +12,9 @@ function RestaurantsList  () {
   }, [])
 
   return (
-    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+    <div className="row row-cols-1 justify-content-center row-cols-sm-2 row-cols-md-3">
       {restaurants.map((restaurant) => (
-        <div className="col" key={restaurant.id}>
+        <div className="col mb-4" key={restaurant.id}>
           <RestaurantItem {...restaurant} />
         </div>
       ))}

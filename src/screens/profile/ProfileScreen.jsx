@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import TitleBar from "../../components/ui/title-bar/TitleBar";
 import { AuthContext } from "../../contexts/AuthContext";
-import { postRegister } from "../../services/top-restaurant-service";
+import { updateProfile } from "../../services/top-restaurant-service";
 
 function LoginScreen() {
   const navigation = useNavigate();
@@ -17,8 +17,9 @@ function LoginScreen() {
   } = useForm({ mode: "onTouched" });
 
   const handleLogin = (data) => {
-    postRegister(data)
+    updateProfile(data)
       .then((data) => {
+        console.log(data)
         value.setUser(data);
         navigation("/");
       })
@@ -35,28 +36,22 @@ function LoginScreen() {
 
   return (
     <>
-    <TitleBar to="/login" title="Register" />
+    <TitleBar to="/account" title="Profile" />
 
     <div >
       <div className="d-flex row row-cols-1 g-0 text-center justify-content-center align-items-center align-content-center full-height">
-        <div className='col-4 p-0 me-2 d-flex justify-content-center align-items-end flex-column'>
-          <img src="/assets/icons/top_top_mobile.svg" alt='Top Top Square Logo' className='circle-image' />
+        <div className='col-4 p-0 me-2 d-flex justify-content-center align-items-end flex-column mb-5'>
+          <img src={value.user.image} alt='Top Top Square Logo' className='circle-image shadow' />
         </div> 
-        <h1 className="text-primary col-10 fw-bold">
-          Sign Up!
-        </h1>
-        <p className="col-10 fw-bold"> 
-          Create account and choose favorite menu
-        </p>
+
         <form onSubmit={handleSubmit(handleLogin)} className='col-10'>
-          
           <div className="input-group mb-3 " >
             <input
               type="text"
+              defaultValue={value.user.name}
               className={`form-control rounded-0 border-top-0 border-start-0 border-end-0 ${errors.name ? "is-invalid" : ""}`}
               placeholder="Full name..."
               {...register("name", {
-                required: "Full name is required",
               })}
             />
             {errors.name && (
@@ -67,10 +62,10 @@ function LoginScreen() {
           <div className="input-group mb-3 " >
             <input
               type="text"
+              defaultValue={value.user.username}
               className={`form-control rounded-0 border-top-0 border-start-0 border-end-0 ${errors.username ? "is-invalid" : ""}`}
               placeholder="Username..."
               {...register("username", {
-                required: "Username is required",
               })}
             />
             {errors.username && (
@@ -78,14 +73,27 @@ function LoginScreen() {
             )}
           </div>
 
+          <div className="input-group mb-3 " >
+            <input
+              type="text"
+              className={`form-control rounded-0 border-top-0 border-start-0 border-end-0 ${errors.image ? "is-invalid" : ""}`}
+              placeholder="Select you profile image..."
+              {...register("image", {
+              })}
+            />
+            {errors.image && (
+              <div className="invalid-feedback">{errors.image.message}</div>
+            )}
+          </div>
 
+          
           <div className="input-group mb-3 " >
             <input
               type="email"
+              defaultValue={value.user.email}
               className={`form-control rounded-0 border-top-0 border-start-0 border-end-0 ${errors.email ? "is-invalid" : ""}`}
               placeholder="Email..."
               {...register("email", {
-                required: "Email is required",
               })}
             />
             {errors.email && (
@@ -98,9 +106,8 @@ function LoginScreen() {
             <input
               type="password"
               className={`form-control rounded-0 border-top-0 border-start-0 border-end-0 ${errors.password ? "is-invalid" : ""}`}
-              placeholder="Password..."
+              placeholder="New Password..."
               {...register("password", {
-                required: "Password is required",
               })}
             />
             {errors.password && (
@@ -108,9 +115,9 @@ function LoginScreen() {
             )}
           </div>
 
-          <div className="d-grid mt-2">
+          <div className="d-grid mt-5 text-center justify-content-center align-items-center align-content-center ">
             <button className="btn btn-primary" type="submit" disabled={!isValid}>
-              Register
+              Save changes
             </button>
           </div>
         </form>
