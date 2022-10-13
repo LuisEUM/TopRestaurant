@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const categories = require('../data/categories.restaurants.json')
 const services = require('../data/services.restaurants.json')
+const prefixNumber = require('../data/prefix.numbers.json')
 
 const isURL = require('../utils/validations.js');
 
@@ -49,6 +50,10 @@ const restaurantSchema = new Schema ({
             validator: isURL,
             message: `Invalid URL`,
             },
+    },
+    prefix: {
+            type: String,
+            enum: prefixNumber.map((prefix)=> prefix.dial_code),
     },
     phoneNumber: {
         type: Number
