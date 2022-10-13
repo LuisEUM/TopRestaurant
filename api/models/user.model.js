@@ -35,7 +35,6 @@ const userSchema = new Schema(
     },
     image: {
       type: String,
-      default: "../data/svg/BM_Profile_icon.svg",
       validate: {
           validator: function (image) {
           try {
