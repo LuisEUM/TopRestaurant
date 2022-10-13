@@ -1,6 +1,5 @@
 const createError = require("http-errors");
 const {User} = require("../models");
-const mongoose = require("mongoose");
 const EMAIL_PATTERN = require('../utils/patterns');
 
 module.exports.profile = (req, res, next) => {

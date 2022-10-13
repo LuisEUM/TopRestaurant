@@ -12,6 +12,7 @@ module.exports = {
   Bookings: require('./bookings.routes'),
   Zones: require('./zones.routes'),
   Schedules: require('./schedules.routes'),
+  SchedulesHours: require('./scheduleHours.routes'),
   RestaurantSettings: require('./restaurantSettings.routes.js'),
 
 }

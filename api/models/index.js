@@ -13,6 +13,7 @@ module.exports = {
     Zone: require('./zone.model'),
     Schedule: require('./schedule.model'),
     RestaurantSetting: require('./restaurantSetting.model'),
+    ScheduleHours: require('./scheduleHours.model')
   }
 
   

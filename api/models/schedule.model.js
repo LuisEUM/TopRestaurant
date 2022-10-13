@@ -6,23 +6,15 @@ const weekDays = require('../data/weekDays.slot.json')
 const schema = new Schema(
   {
   dayOfWeek: {
-      type: [{
-          type: String,
-          enum: weekDays,
-      }]
+    type: [{
+        type: String,
+        enum: weekDays,
+    }]
     },
-  openHours: {
-    type: [{
-        type: String,
-        enum: time,
-    }]
-  },
-  closeHours: {
-    type: [{
-        type: String,
-        enum: time,
-    }]
-  },
+    hours: [{
+      type: Schema.Types.ObjectId,
+      ref: 'ScheduleHours',
+    }],
     restaurant: {
       type: Schema.Types.ObjectId,
       ref: 'Restaurant',

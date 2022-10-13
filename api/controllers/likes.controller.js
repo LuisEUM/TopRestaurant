@@ -1,6 +1,5 @@
 const createError = require("http-errors");
 const {Like} = require("../models");
-const mongoose = require("mongoose");
 
 module.exports.userLikeList = (req, res, next) => {
     const user = req.user.id;

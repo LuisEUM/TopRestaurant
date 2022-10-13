@@ -31,10 +31,6 @@ const schema = new Schema(
       required: true,
       min: 2012,
     },
-  zone: {
-    type: Schema.Types.ObjectId,
-    ref: 'Zone',
-  },
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User',

@@ -1,6 +1,5 @@
 const createError = require("http-errors");
 const {Zone, Restaurant} = require("../models");
-const mongoose = require("mongoose");
 
 module.exports.detail = (req, res, next) => {
   Zone.find()
