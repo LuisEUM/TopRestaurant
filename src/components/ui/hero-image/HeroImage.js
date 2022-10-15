@@ -10,7 +10,7 @@ function HeroImage({logo, follow, setRestaurant, restaurant}) {
   const handleFollow = () => {
     followRestaurant(id).then((data) => {
       console.log(data)
-      const follow = data.follow == 1 ? `btn btn-danger follow-heart rounded-circle col-2 ` : `btn btn-warning follow-heart rounded-circle  col-2`
+      const follow = data.follow === 1 ? `btn btn-danger follow-heart rounded-circle col-2 ` : `btn btn-warning follow-heart rounded-circle  col-2`
       setLiked(follow)
       setRestaurant({
         ...restaurant,

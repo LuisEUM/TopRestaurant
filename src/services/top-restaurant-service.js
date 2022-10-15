@@ -10,7 +10,7 @@ http.interceptors.response.use(
     return response.data;
   },
   function (error) {
-    if (error?.response?.status === 401) {
+    if (error?.response?.status === 401 || window.location.pathname !== "/login") {
       console.error("unauthenticated, redirect to login");
       localStorage.clear();
       window.location.replace("/login");
@@ -29,6 +29,14 @@ export function logout() {
 }
 
 export function updateProfile(data) {
+  data.image = data.image[0]
+  const newData = new FormData()
+
+  Object.keys(newData).forEach(key => {
+    newData.append(key, data[key])
+  })
+
+  
   return http.patch("/update", data);
 }
 

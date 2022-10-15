@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   followRestaurant,
@@ -14,7 +14,7 @@ const [liked, setLiked] = useState("btn btn-danger follow-heart rounded-circle c
   const handleFollow = () => {
     followRestaurant(id).then((data) => {
       console.log(data)
-      const follow = data.follow == 1 ? `btn btn-danger follow-heart rounded-circle col-2 ` : `btn btn-warning follow-heart rounded-circle  col-2`
+      const follow = data.follow === 1 ? `btn btn-danger follow-heart rounded-circle col-2 ` : `btn btn-warning follow-heart rounded-circle  col-2`
       setLiked(follow)
       setRestaurant({
         ...restaurant,
@@ -51,7 +51,7 @@ const [liked, setLiked] = useState("btn btn-danger follow-heart rounded-circle c
 
     <div className="d-flex my-1  border-bottom justify-content-start align-items-baseline">
     <i className="fa fa-tags fa-fw text-secondary" aria-hidden="true">&nbsp; </i>
-        {categories.map((category) => {
+        {categories && categories.map((category) => {
           return(
             <p>&nbsp; {category} &nbsp; </p>
           )

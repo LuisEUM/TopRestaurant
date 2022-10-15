@@ -1,4 +1,4 @@
-import restaurants from "../../../data/categories.restaurant";
+// import restaurants from "../../../data/categories.restaurant";
 import React, { useState } from "react";
 import RestaurantItem from "../restaurant-item/RestaurantItem";
 import { Link } from "react-router-dom";
@@ -46,7 +46,7 @@ function RestaurantFilter({ restaurants, setRestaurants}) {
             role="button"
             key={restaurant.id}
             className={`btn  border-light mme-1 mb-1 text-secondary ${
-              search == restaurant.name ? "btn-secondary text-light" : "btn-light text-secondary"
+              search === restaurant.name ? "btn-secondary text-light" : "btn-light text-secondary"
             }`}
             name={restaurant.name}
             onClick={handleClick}

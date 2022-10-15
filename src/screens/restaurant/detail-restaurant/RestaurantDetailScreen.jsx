@@ -12,7 +12,6 @@ function RestaurantDetailScreen() {
     getRestaurant(id).then((restaurant) => setRestaurant(restaurant));
   }, [id]);
 
-  console.log(restaurant);
 
   if (!restaurant) {
     return (
@@ -25,6 +24,7 @@ function RestaurantDetailScreen() {
     );
   }
 
+  console.log( )
   return (
     <>
       <TitleBar to="/" title={restaurant.name} />
@@ -59,6 +59,25 @@ function RestaurantDetailScreen() {
 
         <div className="col-10">
           <Section title="Schedules" />
+          {restaurant.schedules && restaurant.schedules.map((days)=>{
+              return (
+                <>
+                <p key={days.id} >{days.dayOfWeek}</p>
+                {days.hours && days.hours.map((hour)=>{
+                    return (
+                      <>
+                        <p key={hour.id}>{hour.openHours}</p>
+                        <p key={hour.id}>{hour.openHours}</p>
+                      </>
+
+
+                    )
+                  })}
+                <p> {days.hours[0].openHours}</p>
+                  
+                </>
+              )
+          })}
         </div>
 
         <div className="col-10">

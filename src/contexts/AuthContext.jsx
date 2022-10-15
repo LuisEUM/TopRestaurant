@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import { getProfile } from "../services/top-restaurant-service";
 
 export const AuthContext = createContext();
@@ -19,6 +20,10 @@ function AuthContextProvider({ children }) {
 
   if (user === undefined) {
     return <></>;
+  }
+
+  if (user === null) {
+    return <Navigate to={"/login"}></Navigate>;
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
