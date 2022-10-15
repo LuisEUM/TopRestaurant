@@ -9,7 +9,6 @@ module.exports.detail = (req, res, next) => {
   Timeslot.findById(req.params.id)
   .then((timeslot) => {
     if(timeslot !== undefined){
-      console.log(timeslot.hours)
       res.json({timeslot: timeslot,hours: number2hours(timeslot.hours)})
     } 
   })

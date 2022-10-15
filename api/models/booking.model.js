@@ -10,9 +10,9 @@ const schema = new Schema ({
         ref: 'User',
         required: true
     },
-    zones: {
+    table: {
         type: Schema.Types.ObjectId,
-        ref: 'Zone',
+        ref: 'Table',
         required: true
     },
     status: {

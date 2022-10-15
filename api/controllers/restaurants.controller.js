@@ -16,7 +16,7 @@ module.exports.list = (req, res, next) => {
     .populate("views")
     .then((restaurant) => {
         
-        return res.json(restaurant.map(() => ({restaurant, like: "hola"})))
+        return res.json(restaurant)
         
     })
     .catch((error) => next(error));
