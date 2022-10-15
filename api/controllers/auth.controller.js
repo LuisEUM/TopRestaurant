@@ -27,6 +27,8 @@ module.exports.register = (req, res, next) => {
 module.exports.update = (req, res, next) => {
 
     const user = Object.assign(req.user, req.body);
+    
+    req.body.image = req.file.path
 
     user
       .save()

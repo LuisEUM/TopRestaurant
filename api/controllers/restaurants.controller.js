@@ -14,11 +14,7 @@ module.exports.list = (req, res, next) => {
     .populate("follow")
     .populate("menus")
     .populate("views")
-    .then((restaurant) => {
-        
-        return res.json(restaurant)
-        
-    })
+    .then((restaurant) => res.json(restaurant))
     .catch((error) => next(error));
 }
 
@@ -30,7 +26,6 @@ delete restaurant.menus;
 delete restaurant.views;
 
 restaurant.owner = req.user.id;
-console.log(restaurant)
 Restaurant.create(restaurant)
     .then((restaurant) => {
         setting.create(req, res, next, restaurant)
@@ -41,10 +36,7 @@ Restaurant.create(restaurant)
 
 
 module.exports.detail = (req, res, next) => {
-    
-    console.log(req.restaurant)
     res.json(req.restaurant);
-
 };
 
 module.exports.update = (req, res, next) => {

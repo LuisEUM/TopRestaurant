@@ -13,7 +13,7 @@ module.exports.view = (req, res, next) => {
     if (detail.restaurant === undefined)
         next(createError(401))
 
-    Restaurant.findOne(detail)
+    Restaurant.findById(id)
         .populate("owner")
         .populate({
             path: "review",
@@ -24,16 +24,20 @@ module.exports.view = (req, res, next) => {
         .populate("follow")
         .populate("menus")
         .populate("views")
+        .populate({
+            path: "schedules",
+            populate: {
+                path: "hours",
+            },
+        })
         .then((restaurant) => {
         console.log(restaurant)
         if (restaurant) {
 
             Views.create(detail);
-
             Views.count(detail)
-
             req.restaurant = restaurant
-
+                    
             next();
             
         } else {
@@ -42,4 +46,4 @@ module.exports.view = (req, res, next) => {
         })
         .catch(next);
 
-};
+}; 
