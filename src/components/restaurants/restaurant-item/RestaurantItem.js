@@ -25,7 +25,7 @@ const [liked, setLiked] = useState("btn btn-danger follow-heart rounded-circle c
 
   return (
     <div className=" m-0">
-    <Link to={`/${id}`} className="text-decoration-none ">
+    <Link to={`/restaurants/${id}`} className="text-decoration-none ">
     <div className='col-12 p-2 me-2 d-flex flex-column restaurant-card rounded-4 ' style={{backgroundImage:`url(${backgroundHero })`}}>
     
       <img src={logo} alt='Top Top Square Logo' className='col-3 circle-image-logo shadow' />
@@ -49,7 +49,7 @@ const [liked, setLiked] = useState("btn btn-danger follow-heart rounded-circle c
     <i className="fa fa-map-marker fa-fw text-secondary" aria-hidden="true">&nbsp;</i> <p className="m-0">&nbsp; {address}</p>
     </div>
 
-    <div className="d-flex my-1  border-bottomjustify-content-start align-items-baseline">
+    <div className="d-flex my-1  border-bottom justify-content-start align-items-baseline">
     <i className="fa fa-tags fa-fw text-secondary" aria-hidden="true">&nbsp; </i>
         {categories.map((category) => {
           return(

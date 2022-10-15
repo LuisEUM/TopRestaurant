@@ -8,13 +8,13 @@ function RestaurantListScreen() {
     <AddressBar to="/" address="Av. Cortes Valencianas 50."/>
       <div className='d-flex flex-row justify-content-center'>
         <Section className={'col-10'} title="Hot Rigth Now!" >
-          <RestaurantsList />
+          <RestaurantsList/>
         </Section>
       </div>
       <hr className='mb-5'/>
       <div className='d-flex flex-row justify-content-center'>
         <Section className={'col-10'} title="Really close to you ;)" >
-          <RestaurantsList />
+          <RestaurantsList/>
         </Section>
       </div> 
     </div>

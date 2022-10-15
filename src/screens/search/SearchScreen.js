@@ -17,7 +17,7 @@ function SearchScreen() {
   }, []);
 
   return (
-    <div className='d-flex flex-row justify-content-center mt-5 py-5'>
+    <div className='d-flex flex-row justify-content-center align-items-baseline  mt-5 py-5 '>
     <Section className={'col-10'} title="Categories:" >
       <AddressBar to="/" address="Av. Cortes Valencianas 50."/>
         <SearchBar  restaurants={restaurants} setRestaurants={setRestaurants}/>

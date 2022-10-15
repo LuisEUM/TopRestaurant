@@ -7,5 +7,5 @@ export { default as AccountScreen } from "./user/account/AccountScreen";
 export { default as ProfileScreen } from "./user/edit-profile/ProfileScreen";
 export { default as SearchScreen  } from "./search/SearchScreen";
 export { default as RestaurantDetailScreen  } from "./restaurant/detail-restaurant/RestaurantDetailScreen";
-
+export { default as RestaurantLocation } from "./restaurant/location-restaurant/RestaurantLocation";
 

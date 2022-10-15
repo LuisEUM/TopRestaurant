@@ -1,5 +1,6 @@
 .address-bar{
   height: 60px;
+  margin-bottom: -60px;
 }
 
 .address-shadow{

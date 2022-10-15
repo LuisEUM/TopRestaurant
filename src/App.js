@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { CreateRestaurantScreen, LoginScreen, FavoritesScreen, RegisterScreen, AccountScreen, ProfileScreen, SearchScreen, RestaurantListScreen } from "./screens";
 import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
-import DetailScreen from "./screens/restaurant/detail-restaurant/RestaurantDetailScreen";
+import RestaurantDetailScreen from "./screens/restaurant/detail-restaurant/RestaurantDetailScreen";
 import "./app.css"
 
 function AuthGuard({ children }) {
@@ -83,7 +83,7 @@ function App() {
             path="/restaurants/:id"
             element={
               <AuthGuard>
-                <DetailScreen />
+                <RestaurantDetailScreen />
               </AuthGuard>
             }
           />

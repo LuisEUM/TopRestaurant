@@ -17,6 +17,9 @@ a, input, button{
   min-height: 100vh;
 }
 
+.padding-top-nav{
+  padding-top: 60px;
+}
 
 .btn-primary{
   color: white;
