@@ -1,40 +1,36 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const monthsLong = require('../data/monthsLong.slot.json')
-const monthsShort = require('../data/monthsShort.slot.json')
-const time = require('../data/time.slot.json')
 
 const schema = new Schema(
   {
-    hour: {
-      type: [{
-          type: String,
-          enum: time,
-          required: true,
-      }]
+    hours: {
+      type: [Number],
+
+      min: 0,
+      max: 47
     },
     date: {
-      type: Number,
-      required: true,
+      type: [Number],
+
       min: 1,
       max: 31
     },
     month: {
-      type: [{
-          type: String,
-          enum: monthsLong || monthsShort,
-          required: true,
-      }],
+      type: [Number],
+
+      min: 1,
+      max: 12
     },
-    year: {
-      type: Number,
+    restaurant: {
+      ref: "Restaurant",
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
-      min: 2012,
     },
-  owner: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
   {
     timestamps: true,

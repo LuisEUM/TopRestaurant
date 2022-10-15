@@ -84,6 +84,10 @@ const restaurantSchema = new Schema ({
             ref: 'Schedule',
         }]
     },
+    timeslots: {
+        type: Schema.Types.ObjectId,
+        ref: 'Timeslot',
+    },
     settings : {
         type: [{
             type: Schema.Types.ObjectId,
@@ -117,6 +121,13 @@ restaurantSchema.virtual("review", {
     foreignField: "restaurant",
 });
     
+restaurantSchema.virtual("views", {
+    ref: "Views",
+    localField: "_id",
+    foreignField: "restaurant",
+    count: true,
+});
+
 restaurantSchema.pre("validate", function (next) {
     this.logo = this.logo || undefined;
     this.description = this.description || undefined;

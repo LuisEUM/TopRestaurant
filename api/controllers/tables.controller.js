@@ -19,32 +19,31 @@ module.exports.create = (req, res, next) => {
   delete table.bookings;
   delete table.zone;
 
-  table.zone = req.params.zoneId
+  table.zone = req.zone.id
   table.owner = req.user.id
 
 
   Table.create(table)
     .then((table) => {
 
-      Zone.findById(table.zone)
-      .populate("tables")
-      .then((zone) => { 
-        console.log(zone.tables)
+      req.zone
+        .populate("tables")
+        .then((zone) => { 
 
-        let totalChairs = zone.tables.reduce((sum, table)=>{
-          return sum += Number(table.size)
-        }, 0)
-        console.log(totalChairs, "total chairs")
+          let totalChairs = zone.tables.reduce((sum, table)=>{
+            return sum += Number(table.size)
+          }, 0)
+          console.log(totalChairs, "total chairs")
 
-        if(totalChairs + Number(table.size) <= zone.maxCapacity){
-          zone.tables.push(table._id)
-          zone.save();
-          res.status(201).json(table)
-        } else (
-          next(createError(400, "Too much tables for this zone."))
-        )
-      })
-      .catch((error) =>  res.status(400).json(error));
+          if(totalChairs + Number(table.size) <= zone.maxCapacity){
+            zone.tables.push(table._id)
+            zone.save();
+            res.status(201).json(table)
+          } else (
+            next(createError(400, "Too much tables for this zone."))
+          )
+        })
+        .catch((error) =>  res.status(400).json(error));
     })
     .catch((error) =>  res.status(400).json(error));
 };

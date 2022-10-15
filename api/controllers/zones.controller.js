@@ -27,7 +27,6 @@ module.exports.create = (req, res, next) => {
 
   Zone.create(zone)
     .then((zone) => {
-      console.log(req.user.id, zone)
 
       Restaurant.findById(zone.restaurant)
       .then((restaurant) => { 

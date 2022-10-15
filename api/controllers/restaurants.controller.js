@@ -5,11 +5,18 @@ const setting = require("./restaurantSettings.controller");
 module.exports.list = (req, res, next) => {
     Restaurant.find()
     .populate("owner")
-    .populate("review")
+    .populate({
+        path: "review",
+        populate: {
+            path: "owner",
+        },
+    })
     .populate("follow")
+    .populate("menus")
+    .populate("views")
     .then((restaurant) => {
-            
-        return res.json(restaurant)
+        
+        return res.json(restaurant.map(() => ({restaurant, like: "hola"})))
         
     })
     .catch((error) => next(error));
@@ -34,24 +41,10 @@ Restaurant.create(restaurant)
 
 
 module.exports.detail = (req, res, next) => {
-    Restaurant.findById(req.params.id)
-    .populate("owner")
-    .populate({
-        path: "review",
-        populate: {
-          path: "owner",
-        },
-      })
-    .populate("follow")
-    .populate("menus")
-    .then((restaurant) => {
-        if (restaurant) {
-            res.json(restaurant);
-        } else {
-            next(createError(404, "Restaurant not found"));
-        }
-    })
-    .catch((error) => next(error));
+    
+    console.log(req.restaurant)
+    res.json(req.restaurant);
+
 };
 
 module.exports.update = (req, res, next) => {

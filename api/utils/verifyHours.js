@@ -8,8 +8,6 @@ const verifyHours = (hours) => {
 
     hours.sort((a, b) => a[0].localeCompare(b[0]) || a[1].localeCompare(b[1]));
 
-    console.log(hours, "ARRAY de horas")
-
     return hours.every((hour,index, hours) => {
         if( hour[0]<hour[1]){
           if(!(index === 0)){

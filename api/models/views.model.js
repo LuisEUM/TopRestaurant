@@ -27,5 +27,5 @@ const schema = new Schema(
   }
 );
 
-const Views = mongoose.model("view", schema);
+const Views = mongoose.model("Views", schema);
 module.exports = Views;

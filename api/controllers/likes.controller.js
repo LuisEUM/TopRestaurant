@@ -1,6 +1,15 @@
 const createError = require("http-errors");
 const {Like, Product} = require("../models");
 
+const errorProduct = (next) => {
+    next(
+        createError(400, {
+            message: "User validation failed",
+            errors: { product: { message: "invalid product id" } },
+        })
+    )
+}
+
 module.exports.userLikeList = (req, res, next) => {
     const user = req.user.id;
   
@@ -16,27 +25,8 @@ module.exports.userLikeList = (req, res, next) => {
 
 module.exports.userLikeBool = (req, res, next) => {
 
-    const errorProduct = (next) => {
-        next(
-            createError(400, {
-                message: "User validation failed",
-                errors: { product: { message: "invalid product id" } },
-            })
-        )
-    }
-
     if (req.params.productId === undefined)
         errorProduct(next)
-
-
-    Product.findById(req.params.productId )
-        .then(product => {
-            if(product?.owner !== req.user.id)
-                errorProduct(next)
-        })
-        .catch(
-            errorProduct(next)
-        )
 
 
     const detail = {
@@ -60,26 +50,37 @@ module.exports.userLikeBool = (req, res, next) => {
 
 module.exports.like = (req, res, next) => {
 
-    if (req.params.productId === undefined)
+    const errorProduct = (next) => {
         next(
             createError(400, {
-            message: "User validation failed",
-            errors: { restaurant: { message: "invalid restaurant id" } },
+                message: "User validation failed",
+                errors: { product: { message: "invalid product id" } },
             })
-        );
+        )
+    }
 
     const detail = {
         owner: req.user.id,
-        product: req.params.productId,
+        product: req.params.restaurantId,
     };
+
+    if (detail.product === undefined)
+        errorProduct(next)
+
+    Product.countDocuments({_id: detail.product}, function (err, count){
+        console.log(!(count>0)) 
+        if(!(count>0)){
+            errorProduct(next)
+        }
+    }); 
 
     Like.findOne(detail)
         .then((like) => {
-            if (like) {
-                return Like.deleteOne(detail);
-            } else {
-                return Like.create(detail);
-            }
+        if (like) {
+            return Like.deleteOne(detail);
+        } else {
+            return Like.create(detail);
+        }
         })
         .then(() => Like.count(detail))
         .then((like) => res.json({ like }))

@@ -3,15 +3,9 @@ const router = express.Router();
 const secure = require("../middlewares/secure.mid.js");
 const {timeslots} = require('../controllers');
 
-// router.post("/", secure.isAuthenticated, restaurants.create);
-router.get("/", secure.isAuthenticated, timeslots.list);
-// router.get("/:id", secure.isAuthenticated, restaurants.detail);
-// router.patch("/:id", secure.isAuthenticated, secure.isRestaurantOwnedByUser, restaurants.update);
-// router.delete(
-//     "/:id",
-//     secure.isAuthenticated,
-//     secure.isRestaurantOwnedByUser,
-//     restaurants.delete
-//   );
+router.post("/:id", secure.isAuthenticated, secure.isRestaurantOwnedByUser , timeslots.create);
+router.get("/:id", secure.isAuthenticated, timeslots.detail);
+router.patch("/:id", secure.isAuthenticated, secure.isTimeSlotOwnedByUser, timeslots.update);
+
 
 module.exports = router;

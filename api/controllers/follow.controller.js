@@ -20,10 +20,10 @@ module.exports.userFollowBool = (req, res, next) => {
     if (req.params.restaurantId === undefined)
         next(
             createError(400, {
-            message: "User validation failed",
-            errors: { restaurant: { message: "invalid restaurant id" } },
-        })
-    );
+                message: "User validation failed",
+                errors: { restaurant: { message: "invalid restaurant id" } },
+            })
+        );
 
 const detail = {
     owner: req.user.id,
@@ -46,33 +46,29 @@ const detail = {
 
 module.exports.follow = (req, res, next) => {
 
-    const errorRestaurant = (next) => {
+    const errorProduct = (next) => {
         next(
             createError(400, {
                 message: "User validation failed",
-                errors: { product: { message: "invalid product id" } },
+                errors: { product: { message: "invalid restaurant id" } },
             })
         )
     }
-
-    if (req.params.restaurantId === undefined)
-        errorRestaurant(next)
-
-
-    Restaurant.findById(req.params.restaurantId )
-        .then(restaurant => {
-            if(restaurant?.owner !== req.user.id)
-                errorRestaurant(next)
-        })
-        .catch(
-            errorRestaurant(next)
-        )
 
     const detail = {
         owner: req.user.id,
         restaurant: req.params.restaurantId,
     };
 
+    if (detail.restaurant === undefined)
+        errorProduct(next)
+
+    Restaurant.countDocuments({_id: req.params.restaurantId}, function (err, count){
+        console.log(!(count>0)) 
+        if(!(count>0)){
+            errorProduct(next)
+        }
+    }); 
 
     Follow.findOne(detail)
         .then((follow) => {

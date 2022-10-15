@@ -44,19 +44,16 @@ module.exports.create = (req, res, next) => {
   delete schedule.restaurant;
   delete schedule.owner;
 
-  schedule.restaurant = req.params.restaurantId
+  schedule.restaurant = req.restaurant.id
   schedule.owner = req.user.id
 
    Schedule.create(schedule)
      .then((schedule) => {
 
-       Restaurant.findById(schedule.restaurant)
-       .then((restaurant) => {  
-         restaurant.schedules.push(schedule._id)
-         restaurant.save();
-       })
-       .then(() => insertHours( req, res, next, schedule, hours))
-       .catch((error) =>  res.status(400).json(error));
+      req.restaurant.schedules.push(schedule._id)
+      req.restaurant.save();
+      insertHours( req, res, next, schedule, hours)
+
      })
      .catch((error) =>  res.status(400).json(error));
     

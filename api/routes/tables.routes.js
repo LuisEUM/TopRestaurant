@@ -3,7 +3,7 @@ const router = express.Router();
 const secure = require("../middlewares/secure.mid.js");
 const {tables} = require('../controllers');
 
-router.post("/:zoneId", secure.isAuthenticated, tables.create);
+router.post("/:id", secure.isAuthenticated,secure.isZoneOwnedByUser, tables.create);
 router.get("/:zoneId", secure.isAuthenticated, tables.detail);
 router.patch("/:id", secure.isAuthenticated, secure.isTableOwnedByUser, tables.update);
 router.delete(

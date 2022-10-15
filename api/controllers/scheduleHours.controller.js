@@ -18,8 +18,6 @@ module.exports.createMany = ( req, res, next, schedule, hours ) => {
 
     const scheduleHoursArr = []
 
-    console.log("asdfasdf")
-
     hours.forEach((hour) => {
       const scheduleHours = {};
 
@@ -50,7 +48,7 @@ module.exports.create = ( req, res, next) => {
 
   const scheduleHours = {
     ...req.body,
-    ScheduleOwn: req.params.scheduleId,
+    ScheduleOwn: req.schedule.id,
     owner: req.user.id
   };
 
@@ -58,45 +56,45 @@ module.exports.create = ( req, res, next) => {
 
   const hour = [req.body.openHours, req.body.closeHours]
 
-  Schedule.findById(req.params.scheduleId)
-  .populate("hours")
-  .then((schedule) => {
-      
-      let Arrhours = []
+  req.schedule
+    .populate("hours")
+    .then((schedule) => {
+        
+        let Arrhours = []
 
-      //add hours
-      if(schedule.hours !== undefined){
-        schedule.hours.forEach((Shour) => {
-          Arrhours.push([Shour.openHours,Shour.closeHours])
-        })
-      }
-      Arrhours.push(hour)
-
-      const verify = verifyHours(Arrhours)
-      //insert new hour if is
-
-      if(verify){
-
-        ScheduleHours.create(scheduleHours)
-        .then((scheduleHour) => {
-          schedule.hours.push(scheduleHour.id)
-          schedule.save()
-        })
-        .then(() =>  {
-          res.status(201).json(schedule)
-        })
-      .catch((error) =>  res.status(400).json(error));
-      }
-      else{
-        next(
-            createError(400, {
-            message: "invalid hours ",
-            errors: { hours: { message: "invalid hours" } },
+        //add hours
+        if(schedule.hours !== undefined){
+          schedule.hours.forEach((Shour) => {
+            Arrhours.push([Shour.openHours,Shour.closeHours])
           })
-        )
-      }
-  })
-  .catch((error) =>  res.status(400).json(error));
+        }
+        Arrhours.push(hour)
+
+        const verify = verifyHours(Arrhours)
+        //insert new hour if is
+
+        if(verify){
+
+          ScheduleHours.create(scheduleHours)
+          .then((scheduleHour) => {
+            schedule.hours.push(scheduleHour.id)
+            schedule.save()
+          })
+          .then(() =>  {
+            res.status(201).json(schedule)
+          })
+        .catch((error) =>  res.status(400).json(error));
+        }
+        else{
+          next(
+              createError(400, {
+              message: "invalid hours ",
+              errors: { hours: { message: "invalid hours" } },
+            })
+          )
+        }
+    })
+    .catch((error) =>  res.status(400).json(error));
 
 };
 
@@ -126,8 +124,7 @@ module.exports.update = (req, res, next) => {
     }
     Arrhours.push(hour)
     const verify = verifyHours(Arrhours)
-    console.log(Arrhours, "ARRAY de horas")
-    console.log(verify, "VERIFYYY")
+
     if(verify){
       scheduleHour
       .save()

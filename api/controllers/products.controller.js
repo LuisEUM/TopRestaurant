@@ -19,22 +19,16 @@ module.exports.create = (req, res, next) => {
   
   const product = {
     ...req.body,
-    menu: req.params.menuId,
+    menu: req.menu.id,
     owner: req.user.id
   };
 
-  console.log(product)
-
   Product.create(product)
     .then((product) => {
-      Menu.findById(req.params.menuId)
-      .then((menu) => {
-        menu.products.push(product.id)
-        menu.save();
-        console.log(menu)
+
+        req.menu.products.push(product.id)
+        req.menu.save();
         res.status(201).json(product)
-      })
-      .catch((error) =>  res.status(400).json(error));
     })
     .catch((error) =>  res.status(400).json(error));
 };

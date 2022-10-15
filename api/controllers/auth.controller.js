@@ -27,7 +27,7 @@ module.exports.register = (req, res, next) => {
 module.exports.update = (req, res, next) => {
 
     const user = Object.assign(req.user, req.body);
-    
+
     user
       .save()
       .then((user) => res.status(200).json(user))

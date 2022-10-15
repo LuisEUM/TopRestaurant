@@ -11,10 +11,6 @@ const schema = new Schema(
     type: Number,
     required: true
   },
-  timeslots: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Timeslot',
-  }],
   tables: [{
     type: Schema.Types.ObjectId,
     ref: 'Table',
@@ -29,6 +25,20 @@ const schema = new Schema(
     ref: 'User',
     required: true
   },
+  image: {
+    type: String,
+    validate: {
+        validator: function (image) {
+        try {
+            new URL(image);
+            return true;
+            } catch (error) {
+            return false;
+            }
+        },
+        message: () => `Invalid URL`,
+        },
+    },
   },
   {
     timestamps: true,
