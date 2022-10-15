@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import TitleBar from "../../components/ui/title-bar/TitleBar";
-import { AuthContext } from "../../contexts/AuthContext";
-import { updateProfile } from "../../services/top-restaurant-service";
+import TitleBar from "../../../components/ui/title-bar/TitleBar";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { updateProfile } from "../../../services/top-restaurant-service";
 
 function LoginScreen() {
   const navigation = useNavigate();

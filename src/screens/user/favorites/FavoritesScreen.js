@@ -1,5 +1,5 @@
 import React from 'react'
-import TitleBar from '../../components/ui/title-bar/TitleBar'
+import TitleBar from '../../../components/ui/title-bar/TitleBar'
 import FavoriteService from './FavoriteService'
 
 function FavoritesScreen() {

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Section, RestaurantsList } from '../../components'
-import AddressBar from '../../components/ui/address-bar/AddressBar'
+import { Section, RestaurantsList } from '../../../components'
+import AddressBar from '../../../components/ui/address-bar/AddressBar'
 
-function DiscoverScreen() {
+function RestaurantListScreen() {
   return (
     <div className='mt-5 py-5'>
     <AddressBar to="/" address="Av. Cortes Valencianas 50."/>
@@ -21,4 +21,4 @@ function DiscoverScreen() {
   )
 }
 
-export default DiscoverScreen
+export default RestaurantListScreen

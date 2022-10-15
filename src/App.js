@@ -1,9 +1,9 @@
 import { NavBar } from "./components";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { DiscoverScreen, CreateRestaurantScreen, LoginScreen, FavoritesScreen, RegisterScreen, AccountScreen, ProfileScreen, SearchScreen } from "./screens";
+import { CreateRestaurantScreen, LoginScreen, FavoritesScreen, RegisterScreen, AccountScreen, ProfileScreen, SearchScreen, RestaurantListScreen } from "./screens";
 import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
-import DetailScreen from "./screens/detail/DetailScreen";
+import DetailScreen from "./screens/restaurant/detail-restaurant/RestaurantDetailScreen";
 import "./app.css"
 
 function AuthGuard({ children }) {
@@ -28,7 +28,7 @@ function App() {
             path="/"
             element={
               <AuthGuard>
-                <DiscoverScreen />
+                <RestaurantListScreen />
               </AuthGuard>
             }
           />
@@ -80,7 +80,7 @@ function App() {
             }
           />
           <Route
-            path="/:id"
+            path="/restaurants/:id"
             element={
               <AuthGuard>
                 <DetailScreen />

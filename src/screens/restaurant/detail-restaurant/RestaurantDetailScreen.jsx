@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Section } from "../../components";
+import { Section } from "../../../components";
 import {
   commentRestaurant,
   getRestaurant,
   followRestaurant,
-} from "../../services/top-restaurant-service";
+} from "../../../services/top-restaurant-service";
 
-function DetailScreen() {
+function RestaurantDetailScreen() {
   const [restaurant, setRestaurant] = useState(null);
   const { id } = useParams();
 
@@ -88,4 +88,4 @@ function DetailScreen() {
   );
 }
 
-export default DetailScreen;
+export default RestaurantDetailScreen;

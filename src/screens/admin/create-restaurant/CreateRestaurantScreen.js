@@ -1,5 +1,5 @@
 import React from 'react'
-import { Section, RestaurantForm } from '../../components'
+import { Section, RestaurantForm } from '../../../components'
 
 function CreateRestaurantScreen() {
   return (
