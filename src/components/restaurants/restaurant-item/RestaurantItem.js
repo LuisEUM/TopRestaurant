@@ -21,13 +21,17 @@ const avergare = (review) =>{
   return (
     <div className=" m-0">
     <div className="position-relative">
-      <Link to={`/restaurants/${id}`} className='col-12 p-2 d-flex flex-column restaurant-card rounded-4 position-relative p-2' style={{zIndex:0, backgroundImage:`url(${backgroundHero}) `}}>
-      </Link>
+      <div className='col-12 p-2 d-flex flex-column restaurant-card rounded-4 position-relative p-2' style={{backgroundImage:`url(${backgroundHero}) `}}>
+      </div>
 
-      <div  className='col-12 p-2 d-flex flex-column rounded-4 restaurant-card-2 p-2 position-absolute '>
-        <div className="position-relative ">
-            <Heart className="position-absolute end-0 d-flex col-10" id={id} style={{zIndex:100}}/>
-            <img src={logo} alt='Top Top Square Logo' className=' col-3 circle-image-logo shadow position-absolute top-0' />
+      <div  className='col-12  d-flex flex-column rounded-4 restaurant-card-2  position-absolute  ' style={{zIndex:2}}>
+        <div className="position-relative pt-3" style={{zIndex:3}}>
+        
+        <Link to={`/restaurants/${id}`} className='col-12  d-flex flex-column restaurant-card rounded-4 position-relative ' >
+        </Link>
+
+        <Heart className="me-3 negative-margin" id={id} style={{zIndex:4}}/>
+            <img src={logo} alt='Top Top Square Logo' style={{zIndex:1}} className='ms-3 mt-3  col-3 circle-image-logo shadow position-absolute top-0' />
         </div>
             
       </div>

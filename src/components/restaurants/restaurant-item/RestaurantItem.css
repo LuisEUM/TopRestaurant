@@ -22,7 +22,9 @@
   margin-top: -250px;
 }
 
-
+.negative-margin{
+  margin-top: -250px;
+}
 
 .circle-image-logo{
   min-width: 80px;

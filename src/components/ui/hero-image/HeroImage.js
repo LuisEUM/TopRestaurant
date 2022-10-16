@@ -10,7 +10,7 @@ function HeroImage({logo, follow, setRestaurant, restaurant}) {
   return (
     <div className='col-12 p-2  d-flex flex-column restaurant-card' style={{backgroundImage:`url(${restaurant.backgroundHero })`}}>
     <img src={logo} alt='Top Top Square Logo' className='col-3 circle-image-hero-logo shadow' />
-    <Heart id={id}/>
+    <Heart id={id} className={"me-2"}/>
 
   </div> 
   )
