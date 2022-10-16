@@ -25,7 +25,7 @@ const schema = new Schema(
     ref: 'User',
     required: true
   },
-  image: {
+  images: [{
     type: String,
     validate: {
         validator: function (image) {
@@ -38,7 +38,7 @@ const schema = new Schema(
         },
         message: () => `Invalid URL`,
         },
-    },
+    }],
   },
   {
     timestamps: true,
