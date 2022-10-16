@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const status = require('../data/status.booking.json')
-const duration = require('../data/duration.booking.json')
 const prefixNumbers = require('../data/prefix.numbers.json')
 
 const schema = new Schema ({
@@ -23,17 +22,16 @@ const schema = new Schema ({
             default: "Pending"
         }
     },
-    timeLimit: {
-        type: String,
-        enum: duration,
-        required: "Duration is required",
-        required: true,
-        default: "1:30"
-    },
-    dineStart: {
-        type: Date,
+    startDate: {
+        type: Number,
         required: true,
     },
+    hours: {
+        type: [Number],
+        required: true,
+        min: 0,
+        max: 47
+      },
     persons: { 
         type: Number,
         required: true

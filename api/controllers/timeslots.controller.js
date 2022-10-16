@@ -36,6 +36,8 @@ module.exports.create = ( req, res, next) => {
 
   Timeslot.create(timeslot)
       .then((newTimeslot) => {
+        req.restaurant.timeslots = newTimeslot.id
+        req.restaurant.save()
         res.json( newTimeslot )
       })
       .catch(next);   

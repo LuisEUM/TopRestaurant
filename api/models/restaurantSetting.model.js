@@ -14,6 +14,12 @@ const schema = new Schema(
       min: 1,
       default: 120
   },
+  bookingDuration: {
+    type: Number,
+    min: 1,
+    max: 8,
+    default: 3
+  },
     restaurant: {
       type: Schema.Types.ObjectId,
       ref: 'Restaurant',
