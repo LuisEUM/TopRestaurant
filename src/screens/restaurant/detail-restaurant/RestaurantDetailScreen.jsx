@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { HeroImage, Section, TitleBar } from "../../../components";
+import { GalleryRestaurant, HeroImage, ScheduleTab, Section, TitleBar } from "../../../components";
 import { getRestaurant } from "../../../services/top-restaurant-service";
 import RestaurantLocation from "../location-restaurant/RestaurantLocation";
 
@@ -12,6 +12,7 @@ function RestaurantDetailScreen() {
     getRestaurant(id).then((restaurant) => setRestaurant(restaurant));
   }, [id]);
 
+  console.log(restaurant)
 
   if (!restaurant) {
     return (
@@ -24,7 +25,6 @@ function RestaurantDetailScreen() {
     );
   }
 
-  console.log( )
   return (
     <>
       <TitleBar to="/" title={restaurant.name} />
@@ -35,7 +35,7 @@ function RestaurantDetailScreen() {
           {...restaurant}
           setRestaurant={setRestaurant}
         ></HeroImage>
-        <div className="d-flex row justify-content-center text-center py-5">
+        <div className="d-flex row m-0 justify-content-center text-center py-5">
           <div className="col-10 mt-4">
             <p> {restaurant.description}</p>
 
@@ -52,39 +52,36 @@ function RestaurantDetailScreen() {
 
       <hr className="m-0" />
 
-      <div className="full-height d-flex row justify-content-center align-items-start  m-0 py-5 ">
-        <div className="col-10 ">
+      <div className="full-height d-flex row justify-content-center align-items-start  m-0 py-3 ">
+        
+        <div className="col-10 my-3 py-3">
           <Section title="The Popular Ones!" />
         </div>
 
-        <div className="col-10">
+        <hr className="m-0" />
+
+        <div className="col-10 my-3 py-3">
           <Section title="Schedules" />
           {restaurant.schedules && restaurant.schedules.map((days)=>{
               return (
-                <>
-                <p key={days.id} >{days.dayOfWeek}</p>
-                {days.hours && days.hours.map((hour)=>{
-                    return (
-                      <>
-                        <p key={hour.id}>{hour.openHours}</p>
-                        <p key={hour.id}>{hour.openHours}</p>
-                      </>
-
-
-                    )
-                  })}
-                <p> {days.hours[0].openHours}</p>
-                  
+                <>    
+                {days.dayOfWeek &&  <ScheduleTab key={days.id} {...days}/>}
                 </>
               )
           })}
         </div>
 
-        <div className="col-10">
+        <hr className="m-0" />
+
+
+        <div className="col-10 my-3 py-3">
           <Section title="Meet Our Restaurat" />
+          <GalleryRestaurant {...restaurant} restaurant={restaurant} setRestaurant={setRestaurant}/>
         </div>
 
-        <div className="col-10">
+        <hr className="m-0" />
+
+        <div className="col-10 my-3 pt-3 pb-5">
           <Section title="Let's Go!" />
           <RestaurantLocation />
           <div className="mt-4">

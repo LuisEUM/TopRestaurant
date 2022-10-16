@@ -50,6 +50,11 @@ export function getRestaurant(id) {
   return http.get(`/restaurants/${id}`);
 }
 
+export function getZones(id) {
+  return http.get(`/zones/${id}`);
+}
+
+
 export function createRestaurant(restaurant) {
   return http.post("/restaurants", restaurant);
 }
