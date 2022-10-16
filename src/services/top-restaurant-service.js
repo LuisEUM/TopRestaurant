@@ -64,6 +64,11 @@ export function followRestaurant(id) {
   return http.post(`/follow/${id}`);
 }
 
+export function getFollow(id) {
+  return http.get(`/follow/${id}`);
+}
+
+
 export function commentRestaurant(id, text) {
   return http.post(`/restaurants/${id}/comments`, { text });
 }

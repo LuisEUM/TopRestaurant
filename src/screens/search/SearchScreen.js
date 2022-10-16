@@ -17,13 +17,20 @@ function SearchScreen() {
   }, []);
 
   return (
-    <div className='d-flex flex-row justify-content-center align-items-baseline  mt-5 py-5 '>
-    <Section className={'col-10'} title="Categories:" >
-      <AddressBar to="/" address="Av. Cortes Valencianas 50."/>
-        <SearchBar  restaurants={restaurants} setRestaurants={setRestaurants}/>
-        <RestaurantFilter restaurants={restaurants} setRestaurants={setRestaurants}/>
-    </Section>
-  </div>
+    <>
+      <div>
+        <AddressBar to="/" address="Av. Cortes Valencianas 50."/>
+      </div>
+      <div className='d-flex row justify-content-center align-items-baseline  mt-5 py-5  '>
+        <div className={'col-10 mb-3'} title="Search:" >
+          <SearchBar  restaurants={restaurants} setRestaurants={setRestaurants}/>
+        </div>
+        <Section className={'col-10'} title="Categories:" >
+          <AddressBar to="/" address="Av. Cortes Valencianas 50."/>
+            <RestaurantFilter restaurants={restaurants} setRestaurants={setRestaurants}/>
+        </Section>   
+      </div>
+    </>
   )
 }
 

@@ -12,9 +12,23 @@
   background-size: 100%;
 }
 
+.restaurant-card-2{
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-size: 100%;
+  margin-top: -250px;
+}
+
+
+
 .circle-image-logo{
-  width: 80px;
+  min-width: 80px;
+  min-height: 80px;
   max-width: 80px;
+  max-height: 80px;
   object-fit: cover;
   clip-path: circle();
 }

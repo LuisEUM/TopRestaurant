@@ -81,7 +81,7 @@ function LoginScreen() {
 
           <div className="d-grid mt-2">
             <button className="btn btn-primary" type="submit" disabled={!isValid}>
-              Login
+              Login 
             </button>
           </div>
         </form>

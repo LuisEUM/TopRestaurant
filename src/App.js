@@ -19,7 +19,6 @@ function App() {
   return (
     <>
       <NavBar />
-
         <Routes>
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen/>} />
@@ -32,7 +31,6 @@ function App() {
               </AuthGuard>
             }
           />
-
           
           <Route
             path="/profile"
@@ -81,6 +79,15 @@ function App() {
           />
           <Route
             path="/restaurants/:id"
+            element={
+              <AuthGuard>
+                <RestaurantDetailScreen />
+              </AuthGuard>
+            }
+          />
+
+          <Route
+            path="/menus/:id"
             element={
               <AuthGuard>
                 <RestaurantDetailScreen />

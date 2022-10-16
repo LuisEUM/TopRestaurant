@@ -12,6 +12,7 @@ function  RestaurantsList  () {
       .catch(error => console.error(error));
   }, [])
 
+
   if (restaurants === []) {
     return (
       <>
