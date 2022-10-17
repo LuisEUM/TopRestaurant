@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: "http://localhost:4001/api/v1",
+  baseURL: "https://intense-basin-23349.herokuapp.com/api/v1",
   withCredentials: true,
 });
 
