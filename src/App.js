@@ -1,11 +1,12 @@
 import { NavBar } from "./components";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { CreateRestaurantScreen, LoginScreen, FavoritesScreen, RegisterScreen, AccountScreen, ProfileScreen, SearchScreen, RestaurantListScreen } from "./screens";
+import { CreateRestaurantScreen, LoginScreen, FavoritesScreen,
+         RegisterScreen, AccountScreen, ProfileScreen,
+         SearchScreen, RestaurantListScreen, Menu, 
+         Products, RestaurantDetailScreen } from "./screens";
 import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
-import RestaurantDetailScreen from "./screens/restaurant/detail-restaurant/RestaurantDetailScreen";
 import "./app.css"
-
 function AuthGuard({ children }) {
   const { user } = useContext(AuthContext);
 
@@ -21,10 +22,11 @@ function App() {
       <NavBar />
         <Routes>
           <Route path="/login" element={<LoginScreen />} />
+          <Route path="/" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen/>} />
 
           <Route
-            path="/"
+            path="/discovery"
             element={
               <AuthGuard>
                 <RestaurantListScreen />
@@ -87,10 +89,19 @@ function App() {
           />
 
           <Route
-            path="/menus/:id"
+            path="/menu/:id"
             element={
               <AuthGuard>
-                <RestaurantDetailScreen />
+                  <Menu />
+              </AuthGuard>
+            }
+          />
+
+          <Route
+            path="/products/:id"
+            element={
+              <AuthGuard>
+                  <Products />
               </AuthGuard>
             }
           />

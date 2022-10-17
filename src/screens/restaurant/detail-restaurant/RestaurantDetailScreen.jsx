@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { GalleryRestaurant, HeroImage, ScheduleTab, Section, TitleBar } from "../../../components";
 import { getRestaurant } from "../../../services/top-restaurant-service";
 import RestaurantLocation from "../location-restaurant/RestaurantLocation";
@@ -12,12 +12,10 @@ function RestaurantDetailScreen() {
     getRestaurant(id).then((restaurant) => setRestaurant(restaurant));
   }, [id]);
 
-  console.log(restaurant)
-
   if (!restaurant) {
     return (
       <>
-        <TitleBar to="/" title="Loading..." />
+        <TitleBar to="/discovery" title="Loading..." />
         <div className="full-height d-flex justify-content-center align-items-center bg-primary ">
           <p className="text-white">loading...</p>
         </div>
@@ -27,7 +25,7 @@ function RestaurantDetailScreen() {
 
   return (
     <>
-      <TitleBar to="/" title={restaurant.name} />
+      <TitleBar to="/discovery" title={restaurant.name} />
 
       <div className="padding-top-nav ">
         <HeroImage
@@ -35,17 +33,17 @@ function RestaurantDetailScreen() {
           {...restaurant}
           setRestaurant={setRestaurant}
         ></HeroImage>
-        <div className="d-flex row m-0 justify-content-center text-center py-5">
+        <div className="d-flex row m-0 justify-content-center text-center py-5 ">
           <div className="col-10 mt-4">
             <p> {restaurant.description}</p>
 
-            <button className="btn btn-primary col-12 mt-3">
+            {/* <button className="btn btn-primary col-12 mt-3">
               Reserve a table!
-            </button>
+            </button> */}
 
-            <button className="btn btn-secondary col-12 mt-3">
+            <Link to={`/menu/${id}`} className="btn btn-primary col-12 mt-3 text-white">
               Check menu
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -54,11 +52,11 @@ function RestaurantDetailScreen() {
 
       <div className="full-height d-flex row justify-content-center align-items-start  m-0 py-3 ">
         
-        <div className="col-10 my-3 py-3">
+        {/* <div className="col-10 my-3 py-3">
           <Section title="The Popular Ones!" />
         </div>
 
-        <hr className="m-0" />
+        <hr className="m-0" /> */}
 
         <div className="col-10 my-3 py-3">
           <Section title="Schedules" />

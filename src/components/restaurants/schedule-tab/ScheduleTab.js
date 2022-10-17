@@ -17,11 +17,11 @@ import weekday from "../../../data/week.days"
    return (
      <div className="window">
        <nav>
-         <ul>
+         <ul className="schedules">
            {dayOfWeek.map((day) => (
              <li
                key={day.id}
-               className={day === selectedTab ? "selected" : ""}
+               className={day === selectedTab ? "selected schedules" : "schedules"}
                onClick={() => setSelectedTab(day)}
              >
                {`${day[0].toUpperCase()}${day[1]}${day[2]}`}

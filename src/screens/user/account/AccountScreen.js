@@ -9,7 +9,7 @@ function AccountScreen() {
       <AddressBar  address="Av. Cortes Valencianas 50. " to="/" />
       <InfoAccount/>
       <NavAccount/>
-      <p className='text-center pt-5'>Proyecto desarrollado por @LuisEUM</p>
+      <p className='text-center pt-5'>Proyecto desarrollado por Pedrito</p>
     </>
   )
 }

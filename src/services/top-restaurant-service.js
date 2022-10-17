@@ -46,8 +46,16 @@ export function getRestaurants() {
   return http.get("/restaurants");
 }
 
+export function getFavorites() {
+  return http.get("/follow");
+}
+
 export function getRestaurant(id) {
   return http.get(`/restaurants/${id}`);
+}
+
+export function getMenu(id) {
+  return http.get(`/menu/${id}`);
 }
 
 export function getZones(id) {

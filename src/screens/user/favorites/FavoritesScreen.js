@@ -1,12 +1,12 @@
 import React from 'react'
 import TitleBar from '../../../components/ui/title-bar/TitleBar'
-import FavoriteService from './FavoriteService'
+import MyFavorites from './MyFavorites'
 
 function FavoritesScreen() {
   return (
     <>
-      <TitleBar to="/login" title="Favorites" />
-      <FavoriteService/>
+      <TitleBar to="/account" title="Favorites" />
+      <MyFavorites/>
     </>
   )
 }
