@@ -1,11 +1,18 @@
 const { Product, Menu } = require("../models");
 
 module.exports.list = (req, res, next) => {
-  Product.find()
+
+  const menu = req.params.id
+
+  if(menu === undefined){
+    return res.json(undefined)
+  }else{
+    Product.find({menu})
     .then(products => {
         return res.json(products)
     })
     .catch(next)
+  }
 
 }
 

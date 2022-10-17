@@ -3,12 +3,17 @@ const { Restaurant } = require("../models");
 const Follow = require("../models/follow.model");
 
 module.exports.userFollowList = (req, res, next) => {
-    const user = req.user.id;
+    const owner = req.user.id;
   
-    Follow.find({ user })
-        .populate("restaurant")
+    Follow.find({ owner })
+        .populate({
+            path: "restaurant",
+            populate:{
+                path: "review",
+                path: "follow",
+                path: "review",
+            }})
         .then((follow) => {
-                
             return res.json(follow)
             
         })

@@ -4,7 +4,7 @@ const secure = require("../middlewares/secure.mid.js");
 const {products} = require('../controllers');
 
 
-router.get("/", secure.isAuthenticated ,  products.list);
+router.get("/list/:id", secure.isAuthenticated ,  products.list);
 router.get("/:id", secure.isAuthenticated ,  products.detail);
 //menu id in the create
 router.post("/:id", secure.isAuthenticated , secure.ismenuOwnedByUser , products.create);
