@@ -5,12 +5,14 @@ import { AuthContext } from "../../../contexts/AuthContext";
 
 
 function NavAccount() {
-const { setUser } = useContext(AuthContext);
+const { setUser, user } = useContext(AuthContext);
   
+console.log(user.id)
+
+
 const logout = () => {
   restaurantsService.logout()
       .then(() => {
-        console.log('hola')
         setUser(null)
       } )
       .catch((error) => setUser(null));
@@ -77,6 +79,22 @@ const logout = () => {
             &nbsp; My Address
           </NavLink>
         </div> */}
+
+
+        <div className="d-flex col-10 py-3 border-bottom">
+          <NavLink
+            to={`/admin/${user.id}`}
+            className={({ isActive }) =>
+              isActive
+              ? " justify-content-center  active text-left  link-secondary  text-decoration-none"
+                : " link-secondary  nav-item  text-center text-decoration-none"
+            }
+          >
+            <i className="fa fa-key fa-fw fa-fw" />
+            &nbsp; Admin (Control Panel)
+          </NavLink>
+        </div>
+
 
         <div className="d-flex col-10 py-3 border-bottom">
           <NavLink

@@ -1,5 +1,5 @@
 export { default as RestaurantListScreen } from "./restaurant/list-restaurants/RestaurantListScreen";
-export { default as CreateRestaurantScreen } from "./admin/create-restaurant/CreateRestaurantScreen";
+
 export { default as LoginScreen } from "./auth/login/LoginScreen";
 export { default as RegisterScreen } from "./auth/register/RegisterScreen";
 export { default as FavoritesScreen } from "./user/favorites/FavoritesScreen";
@@ -11,3 +11,5 @@ export { default as RestaurantLocation } from "./restaurant/location-restaurant/
 export { default as Menu } from "./restaurant/menu/menu";
 export { default as Products } from "./restaurant/menu/product/Products";
 
+export { default as ControlPanel} from "./admin/control-panel/ControlPanel";
+export { default as CreateRestaurantScreen } from "./admin/create-restaurant/CreateRestaurantScreen";

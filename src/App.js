@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { CreateRestaurantScreen, LoginScreen, FavoritesScreen,
          RegisterScreen, AccountScreen, ProfileScreen,
          SearchScreen, RestaurantListScreen, Menu, 
-         Products, RestaurantDetailScreen } from "./screens";
+         Products, RestaurantDetailScreen, ControlPanel } from "./screens";
 import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 import "./app.css"
@@ -105,7 +105,17 @@ function App() {
               </AuthGuard>
             }
           />
-        </Routes>
+
+
+          <Route
+            path="/admin/:id"
+            element={
+              <AuthGuard>
+                  <ControlPanel/>
+              </AuthGuard>
+            }
+          />
+        </Routes> 
     </>
   );
 }
