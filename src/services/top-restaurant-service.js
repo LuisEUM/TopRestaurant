@@ -40,11 +40,15 @@ export function updateProfile(data) {
   return http.patch("/update", data);
 }
 
+export function getRestaurantSettings(id){
+  return http.get(`/restaurant_settings/${id}`);
 
+}
 
 export function getRestaurants() {
   return http.get("/restaurants");
 }
+
 
 export function getFavorites() {
   return http.get("/follow");
@@ -89,3 +93,4 @@ export function authenticate(data) {
 export function postRegister(data) {
   return http.post("/register", data);
 }
+

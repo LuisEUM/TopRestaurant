@@ -20,7 +20,7 @@ function LoginScreen() {
     authenticate(data)
       .then((data) => {
         value.setUser(data);
-        navigation("/");
+        navigation("/discovery");
       })
       .catch((error) => {
         if (error.response?.data?.errors) {
@@ -57,7 +57,9 @@ function LoginScreen() {
               })}
             />
             {errors.identifier && (
-              <div className="invalid-feedback">{errors.identifier.message}</div>
+              <div className="invalid-feedback">
+                <p>{errors.identifier.message}</p>
+              </div>
             )}
           </div>
 

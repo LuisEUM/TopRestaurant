@@ -16,7 +16,9 @@ a, input, button{
 .full-height{
   min-height: 100vh;
 }
-
+.border-primary{
+  border-color: #508CB5 !important;
+}
 .padding-top-nav{
   padding-top: 60px;
 }
@@ -24,7 +26,7 @@ a, input, button{
 .btn-primary{
   color: white;
   border: #669ABE solid;
-  background-color: #669ABE ;
+  background-color: #24549C ;
   transition: all 0.5s ease-in-out;
   overflow: hidden !important;
 }
@@ -93,4 +95,10 @@ a, input, button{
   color: #505A5B o !important
 }
 
+.fa-close:hover{
+  color: #dc3545 !important;
+  fill: #dc3545;
+  stroke: #dc3545;
+
+}
 

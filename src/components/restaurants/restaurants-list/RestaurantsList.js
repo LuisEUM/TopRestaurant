@@ -17,7 +17,7 @@ function  RestaurantsList  () {
     return (
       <>
         <AddressBar to="/" title="Loading..." />
-        <div className="full-height d-flex justify-content-center align-items-center bg-primary ">
+        <div className="full-height d-flex justify-content-center align-items-center bg-primary  ">
           <p className="text-white">loading...</p>
         </div>
       </>

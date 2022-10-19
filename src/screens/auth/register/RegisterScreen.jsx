@@ -20,7 +20,7 @@ function LoginScreen() {
     postRegister(data)
       .then((data) => {
         value.setUser(data);
-        navigation("/");
+        navigation("/discovery");
       })
       .catch((error) => {
         if (error.response?.data?.errors) {
@@ -31,7 +31,7 @@ function LoginScreen() {
           });
         }
       });
-  };
+  }; 
 
   return (
     <>

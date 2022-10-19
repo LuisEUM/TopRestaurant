@@ -52,21 +52,24 @@ function  MyFavorites() {
           </div>
         </div>
       </div>
-
       }
-      {restaurants && restaurants.map((follows) => (
+
+      {restaurants && (
         <div className='mt-5 py-5'>
           <div className='d-flex flex-row justify-content-center'>
-            <div className={'col-10'} >
-              <div className="row row-cols-1 justify-content-center row-cols-sm-2 row-cols-md-3">
-              <div className="col mb-4" key={follows.id} >
-                <RestaurantItem {...follows.restaurant} />
-              </div>
-              </div>
+          <div className={'col-10'} >
+            {restaurants.map((follows) => (
+                <div className="row row-cols-1 justify-content-center row-cols-sm-2 row-cols-md-3">
+                  <div className="col mb-4" key={follows.id} >
+                    <RestaurantItem {...follows.restaurant} />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-        ))}
+        </div>  
+        )}
+        
     </>
 
 

@@ -37,11 +37,11 @@ function RestaurantDetailScreen() {
           <div className="col-10 mt-4">
             <p> {restaurant.description}</p>
 
-            {/* <button className="btn btn-primary col-12 mt-3">
+            <Link to={`/bookings/${id}`} className="btn btn-primary col-12 mt-3 text-white">
               Reserve a table!
-            </button> */}
+            </Link> 
 
-            <Link to={`/menu/${id}`} className="btn btn-primary col-12 mt-3 text-white">
+            <Link to={`/menu/${id}`} className="btn btn-secondary col-12 mt-3 text-white">
               Check menu
             </Link>
           </div>

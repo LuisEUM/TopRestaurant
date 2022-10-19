@@ -3,9 +3,11 @@ export { default as RestaurantsList } from './restaurants/restaurants-list/Resta
 export { default as RestaurantForm } from './restaurants/restaurant-form/restaurantForm';
 export { default as Section } from './section/Section';
 export { default as ScheduleTab } from './restaurants/schedule-tab/ScheduleTab';
+export { default as RestaurantZones } from './restaurants/restaurant-zones/RestaurantZones';
 
 export { default as GalleryRestaurant } from '../screens/restaurant/gallery-restaurant/GalleryRestaurant';
 
+export { default as SelectList } from './ui/select-list/SelectList';
 
 export { default as TitleBar } from './ui/title-bar/TitleBar';
 export { default as AddressBar } from './ui/address-bar/AddressBar';

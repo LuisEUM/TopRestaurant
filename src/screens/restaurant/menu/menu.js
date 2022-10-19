@@ -30,7 +30,7 @@ function Menu() {
   }
   return (
     <>
-      <TitleBar to={`/restaurants/${id}`} title={restaurant.name} />
+      <TitleBar to={`/restaurants/${id}`} title={'Menu'} />
 
       <div className="padding-top-nav mb-5 pb-3">
         <HeroImage

@@ -9,6 +9,7 @@ function TitleBar({to, title, className}) {
         <i className="fa fa-chevron-left d-flex align-items-center align-self-center " />
         </Link>
         <h1 className='col-10 text-center m-0 fs-4 d-flex  justify-content-center align-items-center fw-bold'> {title} </h1>
+        
       </div>
   )
 }
