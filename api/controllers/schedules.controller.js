@@ -16,12 +16,8 @@ module.exports.detail = (req, res, next) => {
 }
 
 module.exports.create = (req, res, next) => {
-
   const insertHours = (req, res, next, schedule, hours) => {
-
     const verify = verifyHours(hours)
-
-
     if(verify){
       schedulesHours.createMany( req, res, next, schedule, hours )
     }
@@ -33,8 +29,6 @@ module.exports.create = (req, res, next) => {
         })
       )
     }
-
-
   }
 
   const schedule = req.body;
@@ -47,16 +41,13 @@ module.exports.create = (req, res, next) => {
   schedule.restaurant = req.restaurant.id
   schedule.owner = req.user.id
 
-   Schedule.create(schedule)
-     .then((schedule) => {
-
+  Schedule.create(schedule)
+    .then((schedule) => {
       req.restaurant.schedules.push(schedule._id)
       req.restaurant.save();
       insertHours( req, res, next, schedule, hours)
-
-     })
-     .catch((error) =>  res.status(400).json(error));
-    
+    })
+    .catch((error) =>  res.status(400).json(error));
 };
 
 
@@ -78,7 +69,6 @@ module.exports.update = (req, res, next) => {
 
 
 module.exports.delete = (req, res, next) => {
-  console.log(req.schedule)
   Restaurant.findById(req.schedule.restaurant)
     .then((restaurant) => {
       const restaurantSchedules = restaurant.schedules

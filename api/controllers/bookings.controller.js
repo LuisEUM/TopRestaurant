@@ -3,7 +3,8 @@ const {Booking} = require("../models");
 const moment = require('moment-timezone');
 //moment.tz.names() this return an object with all the list of zone name
 
-module.exports.create = (req, res, next) => {
+module.exports.
+create = (req, res, next) => {
   console.log(req.table === undefined)
   if(req.table === undefined){
     next(
@@ -64,9 +65,7 @@ module.exports.update = (req, res, next) => {
 }
 
 module.exports.getHours = (req, res, next) => {
-
   res.status(200).json( req.AvailableHours )
-
 }
 
 module.exports.getbookings = (req, res, next) => {

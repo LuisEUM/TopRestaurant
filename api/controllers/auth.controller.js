@@ -49,7 +49,7 @@ module.exports.authenticate = (req, res, next) => {
     next(
       createError(400, {
         message: "User validation failed",
-        errors: { email: { message: "Invalid email or password" } },
+        errors: { identifier: { message: "Invalid email or password" } },
       })
     );
   }

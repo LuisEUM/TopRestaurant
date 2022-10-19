@@ -7,7 +7,15 @@ const mongoose = require("mongoose");
 
 require("./config/db.config");
 
+const path = require('path')
+
 const app = express();
+
+// app.use(express.static(path.join(__dirname, "/client/build")));
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+// });
 
 // CORS middleware
 app.use((req, res, next) => {

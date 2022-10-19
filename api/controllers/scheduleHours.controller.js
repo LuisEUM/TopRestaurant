@@ -60,17 +60,17 @@ module.exports.create = ( req, res, next) => {
     .populate("hours")
     .then((schedule) => {
         
-        let Arrhours = []
+        let arrHours = []
 
         //add hours
         if(schedule.hours !== undefined){
-          schedule.hours.forEach((Shour) => {
-            Arrhours.push([Shour.openHours,Shour.closeHours])
+          schedule.hours.forEach((scheHours) => {
+            arrHours.push([scheHours.openHours,scheHours.closeHours])
           })
         }
-        Arrhours.push(hour)
+        arrHours.push(hour)
 
-        const verify = verifyHours(Arrhours)
+        const verify = verifyHours(arrHours)
         //insert new hour if is
 
         if(verify){
@@ -111,19 +111,19 @@ module.exports.update = (req, res, next) => {
   .then((schedule) => {
     const hour = [req.body.openHours, req.body.closeHours]
 
-    let Arrhours = []
+    let arrHours = []
 
     //add hours
     if(schedule.hours !== undefined){
-      schedule.hours.forEach((Shour) => {
-        if(Shour.id !== scheduleHour.id){
-          Arrhours.push([Shour.openHours,Shour.closeHours])
+      schedule.hours.forEach((scheHours) => {
+        if(scheHours.id !== scheduleHour.id){
+          arrHours.push([scheHours.openHours,scheHours.closeHours])
         }
   
       })
     }
-    Arrhours.push(hour)
-    const verify = verifyHours(Arrhours)
+    arrHours.push(hour)
+    const verify = verifyHours(arrHours)
 
     if(verify){
       scheduleHour
