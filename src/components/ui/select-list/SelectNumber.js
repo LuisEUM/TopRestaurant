@@ -13,14 +13,11 @@ const itemVariants = {
   closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 
-
-
-function SelectList() {
+function SelectNumber({bookingMaxPersons}) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   const [zones, setZones] = useState(null);
   const {id} = useParams()
-
 
 
   useEffect(()=>{
@@ -30,7 +27,27 @@ function SelectList() {
     });
   }, [id]);
 
+  const persons = [];
 
+  for (let i = 1; i <= bookingMaxPersons; i++){
+    persons.push(
+        <motion.li
+        key={i}
+        className="select-list"
+          whileHover={{ scale: 1.03, color: "rgb(36, 84, 156)", borderColor:"rgb(36, 84, 156)" }}
+          whileTap={{ scale: 0.97, color: "rgb(36, 84, 156)", borderColor:"rgb(36, 84, 156)" }}
+          variants={itemVariants}
+          onClick={() => {
+            setIsOpen(false);
+            setSelected(i);
+          }}
+        >
+          {i}  
+        </motion.li>
+      )
+  }
+  
+  
   return (
       <motion.nav
         initial={false}
@@ -43,7 +60,7 @@ function SelectList() {
           className="select-list"
         >
         <p className="fs-6 fw-normal text-secondary m-0">
-        {selected || "Zones"}
+        {selected || "Persons"}
         </p>
           <motion.div
             variants={{
@@ -84,26 +101,11 @@ function SelectList() {
           style={{ pointerEvents: isOpen ? "auto" : "none" }}
         >
 
-        {zones && zones.map((zone, i) => ( 
-            <motion.li
-            key={zone.id}
-            className="select-list"
-              whileHover={{ scale: 1.03, color: "rgb(36, 84, 156)", borderColor:"rgb(36, 84, 156)" }}
-              whileTap={{ scale: 0.97, color: "rgb(36, 84, 156)", borderColor:"rgb(36, 84, 156)" }}
-              variants={itemVariants}
-              onClick={() => {
-                setIsOpen(false);
-                setSelected(zone.name);
-              }}
-            >
-              {i+1}. {zone.name}
-            </motion.li>
-          )
-          )}
+        {persons}
   
         </motion.ul>
       </motion.nav>
     );
   }
   
-export default SelectList
+export default SelectNumber

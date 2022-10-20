@@ -71,6 +71,10 @@ export function createRestaurant(restaurant) {
   return http.post("/restaurants", restaurant);
 }
 
+export function getAvailableHours(id) {
+  return http.get(`/bookings/${id}`);
+}
+
 
 export function followRestaurant(id) {
   return http.post(`/follow/${id}`);

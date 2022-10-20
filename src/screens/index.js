@@ -11,11 +11,14 @@ export { default as SearchScreen  } from "./search/SearchScreen";
 
 //Menu Screens
 export { default as RestaurantListScreen } from "./restaurant/list-restaurants/RestaurantListScreen";
+
 export { default as RestaurantDetailScreen  } from "./restaurant/detail-restaurant/RestaurantDetailScreen";
 
 
 
 export { default as RestaurantLocation } from "./restaurant/location-restaurant/RestaurantLocation"; //this should be a component or a service
+
+
 
 //Menu Screens
 export { default as Menu } from "./restaurant/menu/menu";

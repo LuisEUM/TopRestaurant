@@ -151,3 +151,26 @@
   color: #505A5B;
 }
 
+.active-button:hover {
+  background-color: #24549C;
+  border: 1px solid #24549C;
+}
+
+
+.active-button:hover {
+  background-color: #24549C;
+  border: 1px solid #24549C;
+}
+
+.no-active-button {
+  background-color: white ;
+  color: #505A5B;
+  border: 1px solid ;
+}
+
+.no-active-button:hover {
+  background-color: #24549C !important ;
+  border: 1px solid #24549C;
+
+  color: white;
+}

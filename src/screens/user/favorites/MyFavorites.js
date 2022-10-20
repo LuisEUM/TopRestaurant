@@ -2,12 +2,8 @@ import React, { useState, useEffect } from 'react';
 import * as restaurantservice from '../../../services/top-restaurant-service';
 import RestaurantItem from '../../../components/restaurants/restaurant-item/RestaurantItem';
 import TitleBar from '../../../components/ui/title-bar/TitleBar';
-import * as LottiePlayer from "@lottiefiles/lottie-player";
+import "@lottiefiles/lottie-player";
 import { Link } from 'react-router-dom';
-
-
-
-
 
 
 function  MyFavorites() {

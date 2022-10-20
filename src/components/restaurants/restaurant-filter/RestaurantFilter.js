@@ -30,8 +30,7 @@ function RestaurantFilter({ restaurants, setRestaurants }) {
   useEffect(()=>{
     const categoriesDiv = document.getElementById('categories');
     setCategoriesWidth(categoriesDiv.offsetWidth)
-    
-
+  
   },[])
 
   const handleClick = (event) => {

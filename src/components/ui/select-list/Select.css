@@ -1,17 +1,20 @@
 
-::-webkit-scrollbar {
+.select-list ::-webkit-scrollbar {
   height: 5px;
   width: 5px;
   background: white;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #24549C;
+.select-list ::-webkit-scrollbar-thumb {
+  background: white;
 }
 
-::-webkit-scrollbar-corner {
+.select-list ::-webkit-scrollbar-corner {
   background: #fff3;
 }
+
+
+
 
 .refresh {
   padding: 5px;
@@ -50,9 +53,8 @@
 ul.select-list {
   display: flex;
   flex-direction: column;
-  gap: 5px;
   background: transparent;
-  max-height: 300px;
+  max-height: 150px;
   overflow-y: scroll;
   clip-path: inset(0% round 0px);
 }
@@ -64,6 +66,7 @@ li.select-list {
   border-right: 0;
   border-left: 0;
   border-top: 0;
+  background: white;
 }
 
 ul.select-list,
