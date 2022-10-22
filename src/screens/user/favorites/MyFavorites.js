@@ -24,9 +24,9 @@ function  MyFavorites() {
     return (
       <>
         <TitleBar to="/accaount" title="Loading..." />
-        <div className="full-height d-flex justify-content-center align-items-center bg-primary ">
+        <div className="full-height d-flex justify-content-center align-items-center ">
 
-          <p className="text-white">loading...</p>
+        <img src="/assets/icons/loader/loader.svg" alt='loader'  className="m-5"></img>
         </div>
       </>
     );

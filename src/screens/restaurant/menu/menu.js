@@ -22,8 +22,8 @@ function Menu() {
     return (
       <>
         <TitleBar to="/discovery" title="Loading..." />
-        <div className="full-height d-flex justify-content-center align-Categoriess-center bg-primary ">
-          <p className="text-white">loading...</p>
+        <div className="full-height d-flex justify-content-center align-Categoriess-center ">
+        <img src="/assets/icons/loader/loader.svg" alt='loader'  className="m-5"></img>
         </div>
       </>
     );

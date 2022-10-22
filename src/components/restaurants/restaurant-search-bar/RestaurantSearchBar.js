@@ -1,22 +1,12 @@
 
-function SearchBar({restaurants, setRestaurants}) {
-  
-  function getChecked() {
-    const searchBar = document.getElementById('searchedProduct').value;
-    if (searchBar !== ''){
-      
-      searchBar.toLowerCase()
-      const searchedList = restaurants.filter((restaurant) => {
-        
-            const names = restaurant.name.toLowerCase()
-            
-            return names.includes(searchBar)
-          })
-          setRestaurants(searchedList)
-    } else {
-      setRestaurants(restaurants)
-    }
+function SearchBar({searchString}) {
+
+  function getChecked(event) {
+    const searchBar = event.target.value;
+    searchString(searchBar)
   }
+
+
 
   // function getCheckedStock () {
   //   const onStock = document.getElementById('restaurantsOnStock').checked;

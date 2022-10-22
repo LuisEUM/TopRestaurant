@@ -1,16 +1,18 @@
 import { createContext, useState, useEffect } from "react";
 import moment from "moment";
 import { useParams } from "react-router-dom";
-import { getRestaurant, getRestaurantSettings } from "../services/top-restaurant-service";
+import {  getRestaurantSettings } from "../services/top-restaurant-service";
 
 export const BookingContext = createContext();
 
 function BookingContextProvider({ children }) {
   const [maxMonth, setMaxMonth] = useState();
   const { id } = useParams();
-  const [restaurant, setRestaurant] = useState(null);
   const [restaurantSettings, setRestaurantSettings] = useState(null);
   const [today, setToday] = useState();
+  const [stepOne, setStepOne] = useState(false);
+  const [stepTwo, setStepTwo] = useState(false);
+  const [stepThree, setStepThree] = useState(false);
 
 
   useEffect(()=>{
@@ -25,9 +27,7 @@ function BookingContextProvider({ children }) {
     })
     .catch((error) => console.log(error))
 
-    getRestaurant(id).then((restaurant) => {
-      setRestaurant(restaurant);
-    })
+
     .catch((error) => console.log(error))
 
   }, [id]);
@@ -36,12 +36,16 @@ function BookingContextProvider({ children }) {
     maxMonth,
     setMaxMonth,
     id,
-    restaurant,
-    setRestaurant,
     restaurantSettings,
     setRestaurantSettings,
     today,
-    setToday
+    setToday,
+    stepOne,
+    setStepOne,
+    stepTwo,
+    setStepTwo,
+    stepThree,
+    setStepThree
   };
 
   console.log(Booking)

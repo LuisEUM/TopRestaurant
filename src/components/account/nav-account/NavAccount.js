@@ -1,12 +1,11 @@
 import React, { useContext }from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import * as restaurantsService from '../../../services/top-restaurant-service';
 import { AuthContext } from "../../../contexts/AuthContext";
 
 
 function NavAccount() {
 const { setUser, user } = useContext(AuthContext);
-  
 console.log(user.id)
 
 

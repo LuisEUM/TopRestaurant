@@ -7,21 +7,40 @@ import * as restaurantservice from "../../services/top-restaurant-service";
 
 function SearchScreen() {
   const [restaurants, setRestaurants] = useState(null);
+  const [searchedRestaurant, setSearchedRestaurant] = useState(null);
 
 
   useEffect(() => {
     restaurantservice
       .getRestaurants()
-      .then((restaurants) => setRestaurants(restaurants))
+      .then((restaurants) => {
+        setRestaurants(restaurants)
+        setSearchedRestaurant(restaurants)
+      })
       .catch((error) => console.error(error));
   }, []);
+
+
+const searchString = (searchBar) =>{
+  if (searchBar !== ''){   
+    searchBar.toLowerCase()
+    const searchedList = restaurants.filter((restaurant) => {
+          const names = restaurant.name.toLowerCase()
+          return names.includes(searchBar)
+        })
+    setSearchedRestaurant(searchedList)
+  } else {
+    setSearchedRestaurant(restaurants)
+  }
+}
+
 
   if (!restaurants) {
     return (
       <>
         <TitleBar to="/accaount" title="Loading..." />
-        <div className="full-height d-flex justify-content-center align-items-center bg-primary ">
-          <p className="text-white">loading...</p>
+        <div className="full-height d-flex justify-content-center align-items-center ">
+        <img src="/assets/icons/loader/loader.svg" alt='loader'  className="m-5"></img>
         </div>
       </>
     );
@@ -32,13 +51,13 @@ function SearchScreen() {
       <AddressBar to="/" address="Av. Cortes Valencianas 50."/>
         <div className='d-flex flex-row justify-content-center'>
           <div className='col-10 '>
-            <SearchBar  restaurants={restaurants} setRestaurants={setRestaurants}/>
+            <SearchBar  searchString={searchString}/>
           </div>
         </div>
         <div className='d-flex flex-row justify-content-center mt-3'>
             <Section className={'col-10'} title="Categories:" >
                 <AddressBar to="/" address="Av. Cortes Valencianas 50."/>
-                <RestaurantFilter restaurants={restaurants} setRestaurants={setRestaurants}/>
+                <RestaurantFilter restaurants={searchedRestaurant} setRestaurants={setSearchedRestaurant} />
             </Section>   
       </div> 
     </div>

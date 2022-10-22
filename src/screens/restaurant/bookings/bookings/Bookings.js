@@ -58,17 +58,31 @@ function Bookings() {
     return (
       <>
         <TitleBar to={`/restaurants/${id}`} title="Loading..." />
-        <div className="full-height d-flex justify-content-center align-items-center bg-primary ">
-          <p className="text-white">loading...</p>
+        <div className="full-height d-flex justify-content-center align-items-center ">
+        <img src="/assets/icons/loader/loader.svg" alt='loader'  className="m-5"></img>
         </div>
       </>
     );
   }
 
   return (
-    <BookingContextProvider>
-      <StepFormComponent tabs={tabs} />
-    </BookingContextProvider>
+    <>
+    <TitleBar to={`/restaurants/${id}`} title={'Menu'} />
+    <div className="padding-top-nav mb-5 pb-3">
+      <HeroImage
+        restaurant={restaurant}
+        {...restaurant}
+        setRestaurant={setRestaurant}
+      ></HeroImage>
+    </div>
+    <div className='container'>
+      <BookingContextProvider >
+        <StepFormComponent tabs={tabs}  />
+      </BookingContextProvider>
+      </div>
+
+    </>
+
   )
   
 

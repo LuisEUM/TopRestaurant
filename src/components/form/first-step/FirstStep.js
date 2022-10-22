@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { getRestaurant, getRestaurantSettings } from "../../../services/top-restaurant-service";
-import moment from "moment";
-import { useParams } from "react-router-dom";
 import DatePicker from "react-date-picker";
 import SelectList from "../../ui/select-list/SelectList";
 import SelectNumber from "../../ui/select-list/SelectNumber";
 import TitleBar from "../../ui/title-bar/TitleBar";
+import { BookingContext } from "../../../contexts/BookingContextProvider";
 
 const tabContentVariant = {
   active: {
@@ -41,36 +39,15 @@ const cardVariant = {
 
 function FormContent({ id : newId, active }) {
   const [requestedDate, onChange] = useState(new Date());
-  const [today, setToday] = useState();
-  const [maxMonth, setMaxMonth] = useState();
-  const { id } = useParams();
-  const [restaurant, setRestaurant] = useState(null);
-  const [restaurantSettings, setRestaurantSettings] = useState(null);
-
-  useEffect(()=>{
-    const d = new Date();
-    setToday(d)
-
-    getRestaurantSettings(id).then((settings) => {
-      const  settingMaxMonth = (moment().add(settings.maximumMonthBookings, 'months')._d)
-      setMaxMonth(settingMaxMonth)
-      setRestaurantSettings(settings)
-    });
-
-    getRestaurant(id).then((restaurant) => {
-      setRestaurant(restaurant);
-    });
-
-  }, [id]);
-    
+  const  {id, today,  maxMonth,  restaurantSettings}  = useContext(BookingContext);
 
 
-  if (!restaurant) {
+  if (!restaurantSettings) {
     return (
       <>
         <TitleBar to={`/restaurants/${id}`} title="Loading..." />
-        <div className="full-height d-flex justify-content-center align-items-center bg-primary ">
-          <p className="text-white">loading...</p>
+        <div className="height-200 d-flex justify-content-center align-items-center ">
+          <img src="/assets/icons/loader/loader.svg" alt='loader'  className="m-5" ></img>
         </div>
       </>
     );
@@ -87,38 +64,40 @@ return(
   animate={active ? "active" : "inactive"}
   initial="inactive"
   >
-      <div>
-      <div className='d-flex row m-0 justify-content-center text-center '>
-        <div className='col-10 d-flex justify-content-center align-items-center flex-column '>
+      <motion.div>
+      <div  className='d-flex row m-0 justify-content-center text-center '>
 
-          <p><strong> Welcome to {restaurant.name}!</strong> <br/> Do you want a date with us, rigth? 😉 <br/>  Follow the next steps and we will meet us soon 🎉!  </p>
+        <motion.div   variants={cardVariant} className='col-10 d-flex justify-content-center align-items-center flex-column' >
+          <p><strong> Welcome! </strong> <br/> Do you want a date with us, rigth? 😉 <br/>  Follow the next steps and we will meet us soon 🎉!  </p>
+        </motion.div>
 
+        <motion.div  variants={cardVariant} className='col-10 d-flex justify-content-center align-items-center flex-column' >
           <div class="circle-around fs-6 p-0 d-flex justify-content-center align-items-center align-content-center border-primary bg-primary mt-3">
             <p className='m-0 text-white'>1</p>
           </div>
           <p>Pick your favorite date:</p>
           <DatePicker className={'rounded d-flex justify-content-center align-items-center '} onChange={onChange} value={requestedDate} calendarIcon={<i className="fa fa-calendar fa-fw "/>} clearIcon={<i className="fa fa-close fa-fw text-secondary "/>}   minDate={today} maxDate={maxMonth}  closeCalendar={false} />
-        </div>
+        </motion.div>
 
 
-        <div className='col-10 d-flex justify-content-center align-items-center flex-column mt-5 mt-3'>
+        <motion.div  variants={cardVariant} className='col-10 d-flex justify-content-center align-items-center flex-column mt-5 mt-3'>
           <div class="circle-around fs-6 p-0 d-flex justify-content-center align-items-center align-content-center border-primary bg-primary mt-3">
               <p className='m-0 text-white'>2</p>
           </div>
           <p>Wich zone do you prefer?</p>
           <SelectList id={id} style={{zIndex:'100'}}/>
-        </div>
+        </motion.div>
 
-        <div className='col-10 d-flex justify-content-center align-items-center flex-column mt-5 mt-3 '>
+        <motion.div variants={cardVariant} className='col-10 d-flex justify-content-center align-items-center flex-column mt-5 mt-3 '>
           <div class="circle-around fs-6 p-0 d-flex justify-content-center align-items-center align-content-center border-primary bg-primary mt-3">
               <p className='m-0 text-white'>3</p>
           </div>
           <p>How big is your group?</p>
           <SelectNumber id={id} {...restaurantSettings} />
-        </div>
+        </motion.div>
 
       </div>
-    </div>
+    </motion.div>
 
 
   </motion.div>

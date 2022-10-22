@@ -69,9 +69,9 @@ function RestaurantFilter({ restaurants, setRestaurants }) {
           }}
         >
           <button
-            className={`btn border-light me-1  text-secondary mb-1 ${
+            className={`btn border-light me-1  mb-1 ${
               search === "All"
-                ? "btn-secondary text-light"
+                ? "btn-secondary text-white"
                 : "btn-light text-secondary"
             }`}
             value="All"
@@ -86,9 +86,9 @@ function RestaurantFilter({ restaurants, setRestaurants }) {
               return (
                 <button
                   key={category.id}
-                  className={`btn row border-light  mb-1 text-secondary mx-2 w-25 ${
+                  className={`btn row border-light  mb-1  mx-2 w-25 ${
                     search === category.name
-                      ? "btn-secondary text-light"
+                      ? "btn-secondary text-white"
                       : "btn-light text-secondary"
                   }`}
                   name={category.name}
@@ -104,7 +104,9 @@ function RestaurantFilter({ restaurants, setRestaurants }) {
                     </div>
 
                     <div className="">
-                      <p className="m-0 font-tiny">{category.name}</p>
+                      <p className={`m-0 font-tiny ${search === category.name
+                      ? "btn-secondary text-white"
+                      : "btn-light text-secondary"}`}>{category.name}</p>
                     </div>
                   </div>
                 </button>

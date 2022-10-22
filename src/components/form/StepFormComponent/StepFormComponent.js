@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import cn from "classnames";
 import { motion } from "framer-motion";
 import "./StepFormComponent.css";
+import { BookingContext } from "../../../contexts/BookingContextProvider";
 
 const tabVariant = {
   active: {
@@ -45,6 +46,7 @@ const tabTextVariant = {
 
 const StepFormComponent = ({ tabs, defaultIndex = 0 }) => {
   const [activeTabIndex, setActiveTabIndex] = useState(defaultIndex);
+  const  {stepOne, stepTwo, stepThree}  = useContext(BookingContext);
 
   useEffect(() => {
     document.documentElement.style.setProperty(
@@ -66,8 +68,8 @@ const StepFormComponent = ({ tabs, defaultIndex = 0 }) => {
   };
 
   return (
-    <div className="container">
-    <div className="tabs-component">
+    <div className="d-flex row justify-content-center align-items-center mb-5 pb-5">
+    <div className="tabs-component col-10">
       <ul className="tab-links" role="tablist">
         {tabs.map((tab, index) => (
           <motion.li
@@ -83,6 +85,7 @@ const StepFormComponent = ({ tabs, defaultIndex = 0 }) => {
             </a>
           </motion.li>
         ))}
+
       </ul>
       {tabs.map((tab, index) => (
         <tab.content
@@ -91,6 +94,10 @@ const StepFormComponent = ({ tabs, defaultIndex = 0 }) => {
           active={activeTabIndex === index}
         />
       ))}
+      <div className="d-flex justify-content-end align-items-center mt-5">
+        <button className={`btn btn-primary ${stepOne ? "" : "disabled"}`}> Next</button>
+      </div>
+
     </div>
   </div>
   )
