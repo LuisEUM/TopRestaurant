@@ -25,7 +25,7 @@ module.exports.create = (req, res, next, restaurant) => {
 
   RestaurantSetting.create(restaurantSetting)
     .then((setting) => {  
-        restaurant.settings.push(setting)
+        restaurant.settings = setting
         restaurant.save();
         res.status(201).json(restaurant)
     })

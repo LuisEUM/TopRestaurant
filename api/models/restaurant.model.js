@@ -89,10 +89,8 @@ const restaurantSchema = new Schema ({
         ref: 'Timeslot',
     },
     settings : {
-        type: [{
             type: Schema.Types.ObjectId,
             ref: 'RestaurantSetting',
-        }]
     },
 },
     {

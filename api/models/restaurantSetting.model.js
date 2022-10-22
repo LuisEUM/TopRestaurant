@@ -20,6 +20,11 @@ const schema = new Schema(
     max: 8,
     default: 3
   },
+  bookingMaxPersons: {
+    type: Number,
+    max: 12,
+    default: 4
+  },
     restaurant: {
       type: Schema.Types.ObjectId,
       ref: 'Restaurant',

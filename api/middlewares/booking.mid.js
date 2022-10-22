@@ -45,12 +45,8 @@ module.exports.getHours = (req, res, next) => {
 
                             AvailableHoursTable = [...timeslots.hours]
 
-                            console.log(table.bookings)
-
                             table.bookings.forEach(booking =>{
-                                
                                 AvailableHoursTable = AvailableHoursTable.filter( ( el ) => !booking.hours.includes( el ) );
-    
                             });
     
                             AvailableHoursTable = AvailableHoursTable.filter( (hour, index) => {
