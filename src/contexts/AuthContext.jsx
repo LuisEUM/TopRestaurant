@@ -8,24 +8,34 @@ function AuthContextProvider({ children }) {
   const [user, setUser] = useState(undefined); // undefined means loading
 
   useEffect(() => {
-    getProfile()
+    const isLoaded = localStorage.getItem('user-loaded') === "true";
+
+    if(isLoaded) {
+      getProfile()
       .then((user) => setUser(user))
       .catch((error) => setUser(null));
+    } else {
+      setUser(null)
+    }
+    
   }, []);
+
+
+const authenticatedUser = () =>{
+  localStorage.setItem('user-loaded', 'true');
+  setUser(user)
+}
 
   const value = {
     user,
-    setUser,
+    setUser: authenticatedUser,
   };
 
   if (user === undefined) {
     return <></>;
   }
 
-  if (user === null) {
-    return <Navigate to={"/login"}></Navigate>;
-  }
-
+ 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
