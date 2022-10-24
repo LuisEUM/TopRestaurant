@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import DatePicker from "react-date-picker";
 import SelectList from "../../ui/select-list/SelectList";
@@ -39,7 +39,7 @@ const cardVariant = {
 
 function FormContent({ id : newId, active }) {
   const [requestedDate, onChange] = useState(new Date());
-  const  {id, today,  maxMonth,  restaurantSettings}  = useContext(BookingContext);
+  const  {id, today,  maxMonth,  restaurantSettings, stepOne, setActiveTabIndex}  = useContext(BookingContext);
 
 
   if (!restaurantSettings) {
@@ -54,9 +54,12 @@ function FormContent({ id : newId, active }) {
   }
 
 
+const goToStepTwo = () => {
+  setActiveTabIndex(1)
+}
 
 return(
-  <motion.div
+<motion.div
   role="tabpanel"
   id={newId}
   className="tab-content"
@@ -96,34 +99,15 @@ return(
           <SelectNumber id={id} {...restaurantSettings} />
         </motion.div>
 
+
+      <div className="d-flex justify-content-end align-items-center mt-5">
+        <button className={`btn btn-primary ${stepOne ? "" : "disabled"}`} onClick={goToStepTwo}> Next</button>
+      </div>
+
       </div>
     </motion.div>
-
-
-  </motion.div>
+</motion.div>
 )
-
-
-
-
-  if(false) return (
-    <motion.div
-    role="tabpanel"
-    id={newId}
-    className="tab-content"
-    variants={tabContentVariant}
-    animate={active ? "active" : "inactive"}
-    initial="inactive"
-  >
-    <div className="cards">
-    <motion.div variants={cardVariant} className="content-card">
-          <div className="info">
-            <h3>From $800</h3>
-          </div>
-        </motion.div>
-    </div>
-  </motion.div>
-  )
 }
 
 export default FormContent

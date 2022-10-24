@@ -6,6 +6,7 @@ import {  getRestaurantSettings } from "../services/top-restaurant-service";
 export const BookingContext = createContext();
 
 function BookingContextProvider({ children }) {
+
   const [maxMonth, setMaxMonth] = useState();
   const { id } = useParams();
   const [restaurantSettings, setRestaurantSettings] = useState(null);
@@ -13,6 +14,7 @@ function BookingContextProvider({ children }) {
   const [stepOne, setStepOne] = useState(false);
   const [stepTwo, setStepTwo] = useState(false);
   const [stepThree, setStepThree] = useState(false);
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
 
 
   useEffect(()=>{
@@ -45,10 +47,11 @@ function BookingContextProvider({ children }) {
     stepTwo,
     setStepTwo,
     stepThree,
-    setStepThree
+    setStepThree,
+    activeTabIndex,
+    setActiveTabIndex
   };
 
-  console.log(Booking)
   return <BookingContext.Provider value={Booking}>{children}</BookingContext.Provider>;
 }
 

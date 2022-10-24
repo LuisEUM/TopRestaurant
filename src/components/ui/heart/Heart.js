@@ -9,7 +9,6 @@ useEffect(()=>{
   getFollow(id)
       .then((data) => {
         const follow = data.followB ? ` btn-danger` : ` btn-secondary`
-        console.log(follow)
         setLiked(follow)
       })
 },[])
@@ -19,8 +18,6 @@ useEffect(()=>{
   const handleFollow = () => {
     followRestaurant(id)
       .then((data) => {
-      console.log(data)
-
     })
     .then(() =>{
       getFollow(id)

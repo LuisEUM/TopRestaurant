@@ -10,7 +10,6 @@ function Menu() {
   const [menu, setMenu] = useState(null);
   const { id } = useParams();
 
-  console.log(restaurant);
   useEffect(() => {
     getRestaurant(id).then((restaurant) => {
       setRestaurant(restaurant);

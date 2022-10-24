@@ -6,7 +6,6 @@ import { AuthContext } from "../../../contexts/AuthContext";
 
 function NavAccount() {
 const { setUser, user } = useContext(AuthContext);
-console.log(user.id)
 
 
 const logout = () => {

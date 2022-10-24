@@ -39,7 +39,6 @@ const cards = ["Yosemite", "New York", "Chicago", "Miami"];
 function FormContent({ id, active }) {
 
   const  Booking  = useContext(BookingContext);
-  console.log(Booking)
 
   return (
     <motion.div

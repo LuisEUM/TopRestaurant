@@ -11,13 +11,11 @@ function RestaurantForm() {
   const { register, handleSubmit, setError, control, formState: { errors, isValid } } = useForm({ mode: 'onTouched' });
 
   const handleCreaterestaurantsubmit = (data) => {
-    console.log(data);
     restaurantsService.createRestaurant(data)
       .then(restaurant => navigation('/'))
       .catch(error => {
         if (error.response?.data?.errors) {
           const { errors } = error.response.data;
-          console.log(errors);
           Object.keys(error.response.data.errors)
             .forEach((error) => {
               setError(error, {  message: errors[error].message })

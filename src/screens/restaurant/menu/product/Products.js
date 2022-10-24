@@ -14,8 +14,6 @@ const Products = () => {
     });
   }, [id]);
 
-  console.log(menu)
-
   if (!menu) {
     return (
       <>

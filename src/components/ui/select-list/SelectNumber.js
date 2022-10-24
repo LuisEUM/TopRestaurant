@@ -22,7 +22,6 @@ function SelectNumber({bookingMaxPersons}) {
 
   useEffect(()=>{
     getZones(id).then((zones) => {
-      console.log(zones)
       setZones(zones);
     });
   }, [id]);

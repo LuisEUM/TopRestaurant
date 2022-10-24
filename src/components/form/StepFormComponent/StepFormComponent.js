@@ -45,8 +45,7 @@ const tabTextVariant = {
 };
 
 const StepFormComponent = ({ tabs, defaultIndex = 0 }) => {
-  const [activeTabIndex, setActiveTabIndex] = useState(defaultIndex);
-  const  {stepOne, stepTwo, stepThree}  = useContext(BookingContext);
+  const  {stepOne, stepTwo, stepThree, activeTabIndex, setActiveTabIndex}  = useContext(BookingContext);
 
   useEffect(() => {
     document.documentElement.style.setProperty(
@@ -63,9 +62,12 @@ const StepFormComponent = ({ tabs, defaultIndex = 0 }) => {
     setActiveTabIndex(tabFromHash !== -1 ? tabFromHash : defaultIndex);
   }, [tabs, defaultIndex]);
 
+  console.log(activeTabIndex)
+
   const onTabClick = (index) => {
     setActiveTabIndex(index);
   };
+
 
   return (
     <div className="d-flex row justify-content-center align-items-center mb-5 pb-5">
@@ -94,9 +96,7 @@ const StepFormComponent = ({ tabs, defaultIndex = 0 }) => {
           active={activeTabIndex === index}
         />
       ))}
-      <div className="d-flex justify-content-end align-items-center mt-5">
-        <button className={`btn btn-primary ${stepOne ? "" : "disabled"}`}> Next</button>
-      </div>
+
 
     </div>
   </div>

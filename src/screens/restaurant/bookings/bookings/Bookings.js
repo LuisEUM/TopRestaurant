@@ -24,7 +24,6 @@ function Bookings() {
   const handleClick = (event)=>{
     const { name } = event.currentTarget;
     setActvieHourButton(name)
-    console.log(activeHourButton)
 }
 
 

@@ -25,7 +25,6 @@ function LoginScreen() {
       .catch((error) => {
         if (error.response?.data?.errors) {
           const { errors } = error.response.data;
-          console.log(errors);
           Object.keys(error.response.data.errors).forEach((error) => {
             setError(error, { message: errors[error].message });
           });
