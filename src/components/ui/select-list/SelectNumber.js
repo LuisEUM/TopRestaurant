@@ -13,9 +13,8 @@ const itemVariants = {
   closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 
-function SelectNumber({bookingMaxPersons}) {
+function SelectNumber({bookingMaxPersons, selectedNumber, setSelectedNumber}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(null);
   const [zones, setZones] = useState(null);
   const {id} = useParams()
 
@@ -38,7 +37,7 @@ function SelectNumber({bookingMaxPersons}) {
           variants={itemVariants}
           onClick={() => {
             setIsOpen(false);
-            setSelected(i);
+            setSelectedNumber(i);
           }}
         >
           {i}  
@@ -59,7 +58,7 @@ function SelectNumber({bookingMaxPersons}) {
           className="select-list"
         >
         <p className="fs-6 fw-normal text-secondary m-0">
-        {selected || "Persons"}
+        {selectedNumber || "Persons"}
         </p>
           <motion.div
             variants={{

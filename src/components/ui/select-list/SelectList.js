@@ -15,9 +15,8 @@ const itemVariants = {
 
 
 
-function SelectList() {
+function SelectList({selectedZone, setSelectedZone}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(null);
   const [zones, setZones] = useState(null);
   const {id} = useParams()
 
@@ -42,7 +41,7 @@ function SelectList() {
           className="select-list"
         >
         <p className="fs-6 fw-normal text-secondary m-0">
-        {selected || "Zones"}
+        {selectedZone || "Zones"}
         </p>
           <motion.div
             variants={{
@@ -92,7 +91,7 @@ function SelectList() {
               variants={itemVariants}
               onClick={() => {
                 setIsOpen(false);
-                setSelected(zone.name);
+                setSelectedZone(zone.name);
               }}
             >
               {i+1}. {zone.name}

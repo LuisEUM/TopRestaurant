@@ -12,9 +12,19 @@ function BookingContextProvider({ children }) {
   const [restaurantSettings, setRestaurantSettings] = useState(null);
   const [today, setToday] = useState();
   const [stepOne, setStepOne] = useState(false);
+  const [stepOneData, setStepOneData] = useState({});
   const [stepTwo, setStepTwo] = useState(false);
   const [stepThree, setStepThree] = useState(false);
   const [activeTabIndex, setActiveTabIndex] = useState(0);
+
+  // const handleBookingCreated = (task) => {
+  //   setBooking((bokingData) => {
+  //     return [
+  //       ...tasks,
+  //       bokingData
+  //     ]
+  //   })
+  // }
 
 
   useEffect(()=>{
@@ -44,6 +54,8 @@ function BookingContextProvider({ children }) {
     setToday,
     stepOne,
     setStepOne,
+    stepOneData,
+    setStepOneData,
     stepTwo,
     setStepTwo,
     stepThree,

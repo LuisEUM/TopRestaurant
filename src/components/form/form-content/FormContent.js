@@ -36,14 +36,15 @@ const cardVariant = {
 const cards = ["Yosemite", "New York", "Chicago", "Miami"];
 
 
-function FormContent({ id, active }) {
+function FormContent({ id: tabId, active }) {
+  const  {stepOneData}  = useContext(BookingContext);
 
-  const  Booking  = useContext(BookingContext);
+console.log(stepOneData)
 
   return (
     <motion.div
     role="tabpanel"
-    id={id}
+    id={tabId}
     className="tab-content"
     variants={tabContentVariant}
     animate={active ? "active" : "inactive"}

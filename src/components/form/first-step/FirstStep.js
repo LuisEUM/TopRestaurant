@@ -5,6 +5,7 @@ import SelectList from "../../ui/select-list/SelectList";
 import SelectNumber from "../../ui/select-list/SelectNumber";
 import TitleBar from "../../ui/title-bar/TitleBar";
 import { BookingContext } from "../../../contexts/BookingContextProvider";
+import { getAvailableHours } from "../../../services/top-restaurant-service";
 
 const tabContentVariant = {
   active: {
@@ -39,7 +40,9 @@ const cardVariant = {
 
 function FormContent({ id : newId, active }) {
   const [requestedDate, onChange] = useState(new Date());
-  const  {id, today,  maxMonth,  restaurantSettings, stepOne, setActiveTabIndex}  = useContext(BookingContext);
+  const  {id, today,  maxMonth,  restaurantSettings, stepOne, setStepOne, setActiveTabIndex,  setStepOneData}  = useContext(BookingContext);
+  const [selectedZone, setSelectedZone] = useState(null);
+  const [selectedNumber, setSelectedNumber] = useState(null);
 
 
   if (!restaurantSettings) {
@@ -53,12 +56,38 @@ function FormContent({ id : newId, active }) {
     );
   }
 
+if(requestedDate && selectedZone && selectedNumber) {
+  setStepOne(true)
+} 
+
+if (!requestedDate || !selectedZone || !selectedNumber ){
+  setStepOne(false)
+}
+
 
 const goToStepTwo = () => {
-  setActiveTabIndex(1)
+
+  getAvailableHours(id)
+  .then((availableHours) => {
+
+    if(availableHours === []){
+      console.error('EMPTY')
+    } else {
+      const  data = {
+        ...availableHours,
+        requestedDate,
+        selectedZone,
+        selectedNumber
+      }
+      setStepOneData(data)
+      setActiveTabIndex(1)
+    }
+  })
+  .catch(error => console.error(error))
 }
 
 return(
+  <>
 <motion.div
   role="tabpanel"
   id={newId}
@@ -88,7 +117,7 @@ return(
               <p className='m-0 text-white'>2</p>
           </div>
           <p>Wich zone do you prefer?</p>
-          <SelectList id={id} style={{zIndex:'100'}}/>
+          <SelectList selectedZone={selectedZone} setSelectedZone={setSelectedZone} id={id} style={{zIndex:'100'}}/>
         </motion.div>
 
         <motion.div variants={cardVariant} className='col-10 d-flex justify-content-center align-items-center flex-column mt-5 mt-3 '>
@@ -96,17 +125,19 @@ return(
               <p className='m-0 text-white'>3</p>
           </div>
           <p>How big is your group?</p>
-          <SelectNumber id={id} {...restaurantSettings} />
+          <SelectNumber  selectedNumber={selectedNumber} setSelectedNumber={setSelectedNumber} id={id} {...restaurantSettings} />
         </motion.div>
-
-
-      <div className="d-flex justify-content-end align-items-center mt-5">
-        <button className={`btn btn-primary ${stepOne ? "" : "disabled"}`} onClick={goToStepTwo}> Next</button>
-      </div>
-
+      {stepOne &&  
+        <motion.div variants={cardVariant} className="d-flex justify-content-end align-items-center mt-5">
+          <button className={`btn btn-primary ${stepOne ? "" : "disabled"}`} onClick={goToStepTwo}> Next</button>
+        </motion.div>
+      }
       </div>
     </motion.div>
 </motion.div>
+
+</>
+
 )
 }
 
