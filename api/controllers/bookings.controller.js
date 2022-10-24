@@ -5,7 +5,6 @@ const moment = require('moment-timezone');
 
 module.exports.
 create = (req, res, next) => {
-  console.log(req.table === undefined)
   if(req.table === undefined){
     next(
       createError(400, {
@@ -37,7 +36,6 @@ create = (req, res, next) => {
 }
 
 module.exports.update = (req, res, next) => {
-  console.log(req.table === undefined)
   if(req.table === undefined){
     next(
       createError(400, {

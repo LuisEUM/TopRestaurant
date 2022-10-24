@@ -26,12 +26,7 @@ module.exports.getHours = (req, res, next) => {
         .populate("settings")
         .then((restaurant) => {
             const { zones, timeslots  } = restaurant
-
-            // console.log(timeslots.date, timeslots.month)
-            // console.log(bookingdate.getDate(),bookingdate.getMonth(), bookingdate.getFullYear())
             
-            // console.log(timeslots.date.includes(bookingdate.getDate()) && timeslots.month.includes(bookingdate.getMonth()))
-
             let AvailableHours = new Set()
             const horastotales = new Set([...timeslots.hours])
 

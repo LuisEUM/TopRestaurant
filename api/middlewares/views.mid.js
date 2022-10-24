@@ -31,7 +31,6 @@ module.exports.view = (req, res, next) => {
             },
         })
         .then((restaurant) => {
-        console.log(restaurant)
         if (restaurant) {
 
             Views.create(detail);

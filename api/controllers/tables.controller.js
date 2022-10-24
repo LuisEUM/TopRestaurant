@@ -33,7 +33,6 @@ module.exports.create = (req, res, next) => {
           let totalChairs = zone.tables.reduce((sum, table)=>{
             return sum += Number(table.size)
           }, 0)
-          console.log(totalChairs, "total chairs")
 
           if(totalChairs + Number(table.size) <= zone.maxCapacity){
             zone.tables.push(table._id)
@@ -65,7 +64,6 @@ module.exports.update = (req, res, next) => {
 
 
 module.exports.delete = (req, res, next) => {
-  console.log(req.table)
   Zone.findById(req.table.zone)
     .then((zone) => {
       const zoneTables = zone.tables

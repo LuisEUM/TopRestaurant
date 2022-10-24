@@ -68,7 +68,6 @@ module.exports.like = (req, res, next) => {
         errorProduct(next)
 
     Product.countDocuments({_id: detail.product}, function (err, count){
-        console.log(!(count>0)) 
         if(!(count>0)){
             errorProduct(next)
         }

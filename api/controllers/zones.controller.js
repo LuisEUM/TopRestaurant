@@ -58,7 +58,6 @@ module.exports.update = (req, res, next) => {
 
 
 module.exports.delete = (req, res, next) => {
-  console.log(req.zone)
   Restaurant.findById(req.zone.restaurant)
     .then((restaurant) => {
       const restaurantZones = restaurant.zones

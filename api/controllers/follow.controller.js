@@ -69,7 +69,6 @@ module.exports.follow = (req, res, next) => {
         errorProduct(next)
 
     Restaurant.countDocuments({_id: req.params.restaurantId}, function (err, count){
-        console.log(!(count>0)) 
         if(!(count>0)){
             errorProduct(next)
         }
