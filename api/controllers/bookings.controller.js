@@ -58,7 +58,7 @@ module.exports.update = (req, res, next) => {
     booking
       .save()
       .then((booking) => res.json(booking))
-      .catch(next);
+      .catch((error) =>  res.status(400).json("error"));
   }
 }
 
@@ -77,7 +77,7 @@ module.exports.updateNote = (req, res, next) => {
     booking
       .save()
       .then((booking) => res.json(booking))
-      .catch(next);
+      .catch((error) =>  res.status(400).json("error"));
 }
 
 module.exports.getHours = (req, res, next) => {
@@ -87,6 +87,15 @@ module.exports.getHours = (req, res, next) => {
 module.exports.getbookings = (req, res, next) => {
 
     Booking.find({ owner: req.user.id })
+    .populate({
+      path: "table",
+      populate: {
+          path: "zone",
+              populate: {
+                  path: "restaurant",
+                  },
+      },
+  })
       .then((bookings) => res.json(bookings))
       .catch((error) => next(error));
 
