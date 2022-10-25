@@ -58,6 +58,10 @@ export function getRestaurant(id) {
   return http.get(`/restaurants/${id}`);
 }
 
+export function getBookings() {
+  return http.get(`/bookings/`);
+}
+
 export function getMenu(id) {
   return http.get(`/menu/${id}`);
 }
@@ -66,6 +70,9 @@ export function getZones(id) {
   return http.get(`/zones/${id}`);
 }
 
+export function patchBookingNotes(id, notes) {
+  return http.patch(`/bookings/${id}`, notes );
+}
 
 export function createRestaurant(restaurant) {
   return http.post("/restaurants", restaurant);

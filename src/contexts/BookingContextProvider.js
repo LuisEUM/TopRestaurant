@@ -13,7 +13,7 @@ function BookingContextProvider({ children }) {
   const [today, setToday] = useState();
   const [stepOne, setStepOne] = useState(false);
   const [stepOneData, setStepOneData] = useState(false);
-  const [stepTwo, setStepTwo] = useState(false);
+  const [stepTwoData, setStepTwoData] = useState(false);
   const [stepThree, setStepThree] = useState(false);
   const [activeTabIndex, setActiveTabIndex] = useState(2);
 
@@ -55,8 +55,8 @@ function BookingContextProvider({ children }) {
     setStepOne,
     stepOneData,
     setStepOneData,
-    stepTwo,
-    setStepTwo,
+    stepTwoData,
+    setStepTwoData,
     stepThree,
     setStepThree,
     activeTabIndex,

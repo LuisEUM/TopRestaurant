@@ -2,6 +2,8 @@
 export { default as LoginScreen } from "./auth/login/LoginScreen";
 export { default as RegisterScreen } from "./auth/register/RegisterScreen";
 export { default as FavoritesScreen } from "./user/favorites/FavoritesScreen";
+export { default as MyBookingsList } from "./user/my-bookings/MyBookingsList";
+
 export { default as AccountScreen } from "./user/account/AccountScreen";
 export { default as ProfileScreen } from "./user/edit-profile/ProfileScreen";
 export { default as SearchScreen  } from "./search/SearchScreen";
@@ -23,7 +25,7 @@ export { default as Products } from "./restaurant/menu/product/Products";
 
 //Bookings Screens
 export { default as Bookings } from "./restaurant/bookings/bookings/Bookings";
-export { default as MyBookings } from "./restaurant/bookings/my-bookings/MyBookings";
+export { default as MyBookingsScreen } from "./user/my-bookings/MyBookingsSreen";
 
 
 //Admin Only  Screens

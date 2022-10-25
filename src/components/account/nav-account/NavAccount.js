@@ -36,7 +36,7 @@ const logout = () => {
           </NavLink>
         </div>
 
-        {/* <div className="d-flex col-10 py-3 border-bottom">
+        <div className="d-flex col-10 py-3 border-bottom">
           <NavLink
             to="/my_bookings"
             className={({ isActive }) =>
@@ -48,7 +48,7 @@ const logout = () => {
             <i className="fa fa-calendar-o fa-fw fa-fw" />
             &nbsp; My Bookings
           </NavLink>
-        </div> */}
+        </div>
 
         <div className="d-flex col-10 py-3 border-bottom">
           <NavLink
@@ -79,7 +79,7 @@ const logout = () => {
         </div> */}
 
 
-        <div className="d-flex col-10 py-3 border-bottom">
+        {/* <div className="d-flex col-10 py-3 border-bottom">
           <NavLink
             to={`/admin/${user.id}`}
             className={({ isActive }) =>
@@ -91,7 +91,7 @@ const logout = () => {
             <i className="fa fa-key fa-fw fa-fw" />
             &nbsp; Admin (Control Panel)
           </NavLink>
-        </div>
+        </div> */}
 
 
         <div className="d-flex col-10 py-3 border-bottom">

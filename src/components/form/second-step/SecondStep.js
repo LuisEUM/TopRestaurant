@@ -36,11 +36,13 @@ const cardVariant = {
 };
 
 function SecondStep({ id: tabId, active }) {
-  const [activeHourButton, setActvieHourButton] = useState();
-  const  {id, stepOneData, setStepOneData, setActiveTabIndex}  = useContext(BookingContext);
+  const [activeHourButton, setActvieHourButton] = useState(false);
+  const  {id, stepOneData, setStepOneData, setActiveTabIndex, setStepTwoData}  = useContext(BookingContext);
 
   const handleClick = (event)=>{
     const { name } = event.currentTarget;
+    console.log(activeHourButton, dataHours, name)
+
     setActvieHourButton(name)
   }
 
@@ -53,6 +55,7 @@ function SecondStep({ id: tabId, active }) {
       postBooking(id,stepOneData)
         .then((booking) => {
           setActiveTabIndex(2)
+          setStepTwoData(booking.id)
         })
         .then(() => {
           setStepOneData(false)
@@ -82,14 +85,14 @@ function SecondStep({ id: tabId, active }) {
             <motion.div variants={cardVariant} className='d-flex justify-content-center align-content-center flex-wrap col-10 mt-3  '>
               {stepOneData.availableHours && stepOneData.availableHours.map((hour)=>(
                   <motion.div variants={cardVariant}>
-                    <button key={hour} name={hour} onClick={handleClick} value={activeHourButton} className={activeHourButton === dataHours[hour]  ? `m-2 bg-secondary rounded-1 border-0 active-button text-white` : `m-2 bg-white rounded-1   no-active-button` } > {dataHours[hour]}</button>
+                    <button key={hour} name={hour} onClick={handleClick} value={activeHourButton} className={activeHourButton == hour  ? `m-2 bg-secondary rounded-1 border-0 active-button text-white` : `m-2 bg-white rounded-1 no-active-button` } > {dataHours[hour]}</button>
                   </motion.div>
                 ))}
             </motion.div>
   
-            {true &&  
+            {activeHourButton &&  
               <motion.div variants={cardVariant} className="d-flex justify-content-end align-items-center mt-5">
-                <button className={`btn btn-primary ${true ? "" : "disabled"}`} onClick={goToStepThree}> Next</button>
+                <button className={`btn btn-primary ${activeHourButton ? "" : "disabled"}`} onClick={goToStepThree}> Next</button>
               </motion.div>
             }
           </motion.div>

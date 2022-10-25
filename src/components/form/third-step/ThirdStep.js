@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
-import { BookingContext } from "../../../contexts/BookingContextProvider";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { updateProfile } from "../../../services/top-restaurant-service";
+import { patchBookingNotes } from "../../../services/top-restaurant-service";
+import { BookingContext } from "../../../contexts/BookingContextProvider";
 
 const tabContentVariant = {
   active: {
@@ -37,6 +37,7 @@ const cardVariant = {
 
 function ThirdStep({ id: tabId, active }) {
   const navigation = useNavigate();
+  const  {stepTwoData}  = useContext(BookingContext);
 
   const {
     register,
@@ -46,9 +47,9 @@ function ThirdStep({ id: tabId, active }) {
   } = useForm({ mode: "onTouched" });
 
   const handleLogin = (data) => {
-    updateProfile(data)
-      .then((data) => {
-        navigation("/");
+    patchBookingNotes(stepTwoData, data)
+      .then(() => {
+        navigation("/my_bookings");
       })
       .catch((error) => {
         if (error.response?.data?.errors) {
@@ -73,9 +74,9 @@ function ThirdStep({ id: tabId, active }) {
       <div className="d-flex row row-cols-1 g-0 text-center justify-content-center align-items-center align-content-center">
 
         <form onSubmit={handleSubmit(handleLogin)} className='col-10'>
-          <div className="input-group mb-3 " >
-            <input
-              type="textarea"
+          <motion.div className="input-group mb-3 "  variants={cardVariant} >
+            <textarea 
+              rows="2"
               className={`form-control rounded-0 border-top-0 border-start-0 border-end-0 ${errors.note ? "is-invalid" : ""}`}
               placeholder="Note..."
               {...register("note", {
@@ -84,9 +85,9 @@ function ThirdStep({ id: tabId, active }) {
             {errors.note && (
               <div className="invalid-feedback">{errors.note.message}</div>
             )}
-          </div>
+          </motion.div>
 
-          <div className="input-group mb-3 " >
+          <motion.div className="input-group mb-3 " variants={cardVariant}>
             <input
               type="number"
               className={`form-control rounded-0 border-top-0 border-start-0 border-end-0 ${errors.phoneNumber ? "is-invalid" : ""}`}
@@ -97,9 +98,9 @@ function ThirdStep({ id: tabId, active }) {
             {errors.phoneNumber && (
               <div className="invalid-feedback">{errors.phoneNumber.message}</div>
             )}
-          </div>
+          </motion.div>
           
-          <div className="input-group mb-3 " >
+          <motion.div className="input-group mb-3 " variants={cardVariant}>
             <input
               type="text"
               className={`form-control rounded-0 border-top-0 border-start-0 border-end-0 ${errors.prefixNumber ? "is-invalid" : ""}`}
@@ -110,28 +111,31 @@ function ThirdStep({ id: tabId, active }) {
             {errors.prefixNumber && (
               <div className="invalid-feedback">{errors.prefixNumber.message}</div>
             )}
-          </div>
+          </motion.div>
 
-          <div className="input-group mb-3">
+          <motion.div className="form-check mt-4" variants={cardVariant}>
             <input
                 type='checkbox'
                 placeholder='January'
                 checked={true/false}
-                className={`rounded-0 border-top-0 border-start-0 border-end-0 ${errors.newsletter ? "is-invalid" : ""}`}
+                className={` form-check-input rounded-0 border-top-0 border-start-0 border-end-0 ${errors.newsletter ? "is-invalid" : ""}`}
                 //onChange={changeHandler}
               {...register("newsletter", {
               })}
             />
+            <label htmlFor="newsletter" className="fs-7 form-check-label text-start">
+              Do you want to receive emails about this booking and our promotions?
+            </label>
             {errors.newsletter && (
               <div className="invalid-feedback">{errors.newsletter.message}</div>
             )}
-          </div>
+          </motion.div>
 
-          <div className="d-grid mt-5 text-center justify-content-center align-items-center align-content-center ">
+          <motion.div className="d-grid mt-5 text-center justify-content-center align-items-center align-content-center " variants={cardVariant}>
             <button className="btn btn-primary" type="submit" disabled={!isValid}>
               Save changes
             </button>
-          </div>
+          </motion.div>
         </form>
 
       </div>    
