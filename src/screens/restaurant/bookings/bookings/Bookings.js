@@ -1,57 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import DatePicker from 'react-date-picker'
 import { useParams } from 'react-router-dom';
-import { getAvailableHours, getRestaurant } from '../../../../services/top-restaurant-service';
+import { getRestaurant } from '../../../../services/top-restaurant-service';
 import './Bookings.css'
 // import Moment from 'react-moment';
-import moment from 'moment';
-import { HeroImage, SelectList, SelectNumber, StepFormComponent, TitleBar } from '../../../../components';
-import dataHours from '../../../../data/time.slot.json'
+import { HeroImage, StepFormComponent, TitleBar } from '../../../../components';
 import tabs from "../../../../components/form/tabs/steps.form";
 import BookingContextProvider from "../../../../contexts/BookingContextProvider.js";
 
 
 function Bookings() {
-  const [requestedDate, onChange] = useState(new Date());
-  // const [today, setToday] = useState();
-  // const [maxMonth, setMaxMonth] = useState();
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState(null);
-  // const [restaurantSettings, setRestaurantSettings] = useState(null);
-  const [availableHours, setAvailableHours] = useState(null);
-  const [activeHourButton, setActvieHourButton] = useState();
-
-  const handleClick = (event)=>{
-    const { name } = event.currentTarget;
-    setActvieHourButton(name)
-}
-
 
   useEffect(()=>{
-    // const d = new Date();
-    // setToday(d)
-
-    // getRestaurantSettings(id).then((settings) => {
-    //   const  settingMaxMonth = (moment().add(settings.maximumMonthBookings, 'months')._d)
-    //   setMaxMonth(settingMaxMonth)
-    //   setRestaurantSettings(settings)
-    // });
 
     getRestaurant(id).then((restaurant) => {
       setRestaurant(restaurant);
     });
 
-    getAvailableHours(id).then((availableHours) => {
-      const freeHours = availableHours.map((hour)=>(
-          <button key={hour} name={dataHours[hour]} onClick={handleClick} value={activeHourButton} className={activeHourButton === dataHours[hour]  ? `m-2 bg-secondary rounded-1 border-0 active-button text-white` : `m-2 bg-white rounded-1   no-active-button` } > {dataHours[hour]}</button>
-      ))
-      setAvailableHours(freeHours);
-    });
-
-  }, [id, activeHourButton]);
-    
-
-
+  }, [id]);
 
   if (!restaurant) {
     return (

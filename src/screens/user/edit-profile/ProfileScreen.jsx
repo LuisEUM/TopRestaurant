@@ -73,7 +73,7 @@ function LoginScreen() {
 
           <div className="input-group mb-3 " >
             <input
-              type="upload"
+              type="text"
               className={`form-control rounded-0 border-top-0 border-start-0 border-end-0 ${errors.image ? "is-invalid" : ""}`}
               placeholder="Select you profile image..."
               {...register("image", {

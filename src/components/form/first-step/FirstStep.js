@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
+import toast, { Toaster } from 'react-hot-toast';
 import DatePicker from "react-date-picker";
 import SelectList from "../../ui/select-list/SelectList";
 import SelectNumber from "../../ui/select-list/SelectNumber";
@@ -67,18 +68,19 @@ if (!requestedDate || !selectedZone || !selectedNumber ){
 
 const goToStepTwo = () => {
 
-  getAvailableHours(id)
+  const  data = {
+    startDate: new Date(requestedDate.toDateString()).getTime(),
+    zones: selectedZone.id,
+    persons: selectedNumber
+  }
+
+  getAvailableHours(id,data)
   .then((availableHours) => {
 
     if(availableHours === []){
-      console.error('EMPTY')
+      toast.error("This didn't work.")
     } else {
-      const  data = {
-        ...availableHours,
-        requestedDate,
-        selectedZone,
-        selectedNumber
-      }
+      data.availableHours = [...availableHours]
       setStepOneData(data)
       setActiveTabIndex(1)
     }
@@ -88,6 +90,11 @@ const goToStepTwo = () => {
 
 return(
   <>
+<Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
+
 <motion.div
   role="tabpanel"
   id={newId}
@@ -104,7 +111,7 @@ return(
         </motion.div>
 
         <motion.div  variants={cardVariant} className='col-10 d-flex justify-content-center align-items-center flex-column' >
-          <div class="circle-around fs-6 p-0 d-flex justify-content-center align-items-center align-content-center border-primary bg-primary mt-3">
+          <div className="circle-around fs-6 p-0 d-flex justify-content-center align-items-center align-content-center border-primary bg-primary mt-3">
             <p className='m-0 text-white'>1</p>
           </div>
           <p>Pick your favorite date:</p>
@@ -113,22 +120,22 @@ return(
 
 
         <motion.div  variants={cardVariant} className='col-10 d-flex justify-content-center align-items-center flex-column mt-5 mt-3'>
-          <div class="circle-around fs-6 p-0 d-flex justify-content-center align-items-center align-content-center border-primary bg-primary mt-3">
+          <div className="circle-around fs-6 p-0 d-flex justify-content-center align-items-center align-content-center border-primary bg-primary mt-3">
               <p className='m-0 text-white'>2</p>
           </div>
           <p>Wich zone do you prefer?</p>
-          <SelectList selectedZone={selectedZone} setSelectedZone={setSelectedZone} id={id} style={{zIndex:'100'}}/>
+          <SelectList selectedZone={selectedZone && selectedZone.name} setSelectedZone={setSelectedZone} id={id} style={{zIndex:'100'}}/>
         </motion.div>
 
         <motion.div variants={cardVariant} className='col-10 d-flex justify-content-center align-items-center flex-column mt-5 mt-3 '>
-          <div class="circle-around fs-6 p-0 d-flex justify-content-center align-items-center align-content-center border-primary bg-primary mt-3">
+          <div className="circle-around fs-6 p-0 d-flex justify-content-center align-items-center align-content-center border-primary bg-primary mt-3">
               <p className='m-0 text-white'>3</p>
           </div>
           <p>How big is your group?</p>
           <SelectNumber  selectedNumber={selectedNumber} setSelectedNumber={setSelectedNumber} id={id} {...restaurantSettings} />
         </motion.div>
       {stepOne &&  
-        <motion.div variants={cardVariant} className="d-flex justify-content-end align-items-center mt-5">
+        <motion.div variants={cardVariant} className="d-flex justify-content-center align-items-center mt-5">
           <button className={`btn btn-primary ${stepOne ? "" : "disabled"}`} onClick={goToStepTwo}> Next</button>
         </motion.div>
       }

@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { BookingContext } from "../../../contexts/BookingContextProvider";
+
 
 const tabContentVariant = {
   active: {
@@ -37,9 +37,6 @@ const cards = ["Yosemite", "New York", "Chicago", "Miami"];
 
 
 function FormContent({ id: tabId, active }) {
-  const  {stepOneData}  = useContext(BookingContext);
-
-console.log(stepOneData)
 
   return (
     <motion.div

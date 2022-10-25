@@ -71,10 +71,9 @@ export function createRestaurant(restaurant) {
   return http.post("/restaurants", restaurant);
 }
 
-export function getAvailableHours(id) {
-  return http.get(`/bookings/${id}`);
+export function getAvailableHours(id,data) {
+  return http.post(`/bookings/${id}`, data);
 }
-
 
 export function followRestaurant(id) {
   return http.post(`/follow/${id}`);
@@ -96,5 +95,9 @@ export function authenticate(data) {
 
 export function postRegister(data) {
   return http.post("/register", data);
+}
+
+export function postBooking(id, data) {
+  return http.post(`/bookings/create/${id}`, data);
 }
 

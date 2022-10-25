@@ -93,10 +93,10 @@ function  GalleryRestaurant({id}) {
         />
       </AnimatePresence>
       <div className="next" onClick={() => paginate(1)}>
-        {<i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>}
+        {<i className="fa fa-angle-right fa-fw" aria-hidden="true"></i>}
       </div>
       <div className="prev" onClick={() => paginate(-1)}>
-      {<i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>}
+      {<i className="fa fa-angle-right fa-fw" aria-hidden="true"></i>}
       </div>
     </div>
   );

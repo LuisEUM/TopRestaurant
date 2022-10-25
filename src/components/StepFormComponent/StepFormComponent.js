@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import cn from "classnames";
 import { motion } from "framer-motion";
 import "./StepFormComponent.css";

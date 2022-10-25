@@ -86,12 +86,13 @@ function SelectList({selectedZone, setSelectedZone}) {
             <motion.li
             key={zone.id}
             className="select-list"
-              whileHover={{ scale: 1.03, color: "rgb(36, 84, 156)", borderColor:"rgb(36, 84, 156)" }}
-              whileTap={{ scale: 0.97, color: "rgb(36, 84, 156)", borderColor:"rgb(36, 84, 156)" }}
+              whileHover={{ scale: 1.03, color: "#24549c", borderColor:"#24549c" }}
+              whileTap={{ scale: 0.97, color: "#24549c", borderColor:"#24549c" }}
               variants={itemVariants}
+              value={zone.id}
               onClick={() => {
                 setIsOpen(false);
-                setSelectedZone(zone.name);
+                setSelectedZone(zone);
               }}
             >
               {i+1}. {zone.name}

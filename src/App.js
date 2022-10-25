@@ -2,8 +2,8 @@ import { NavBar } from "./components";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { CreateRestaurantScreen, LoginScreen, FavoritesScreen,
          RegisterScreen, AccountScreen, ProfileScreen,
-         SearchScreen, RestaurantListScreen, Menu, 
-         Products, RestaurantDetailScreen, ControlPanel, Bookings } from "./screens";
+         SearchScreen, RestaurantListScreen,
+         Products, RestaurantDetailScreen, ControlPanel, Bookings, Menu } from "./screens";
 import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 import "./app.css"
