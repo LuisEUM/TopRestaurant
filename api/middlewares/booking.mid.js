@@ -3,22 +3,23 @@ const { Restaurant, Booking } = require('../models');
 
 module.exports.getHours = (req, res, next) => {
 
-    const bookingdate = new Date(2022, 10, 15);
-    const size = 4
-
-       //size <=  tama;o - 2
+    const bookingdate = new Date(req.body.startDate);
+    const size = req.body.persons
     const { id } = req.params;
+       //size <=  tama;o - 2
+    
     if (id === undefined)
         next(createError(401))
 
     Restaurant.findById(id)
         .populate({
             path: "zones",
+            match: { _id: req.body.zones },
             populate: {
                 path: "tables",
                     populate: {
                         path: "bookings",
-                        match: { startDate: 1665957600000 }
+                        match: { startDate: req.body.startDate }
                         },
             },
         })
@@ -31,13 +32,12 @@ module.exports.getHours = (req, res, next) => {
             const horastotales = new Set([...timeslots.hours])
 
             if(timeslots.date.includes(bookingdate.getDate()) && timeslots.month.includes(bookingdate.getMonth())){
+                console.log(zones)
                 zones.some(zone => {
                     zone.tables.some(table => {
-                        
                         let AvailableHoursTable = []
 
                         if(size  <= table.size && size >=  table.size - 2){
-
                             AvailableHoursTable = [...timeslots.hours]
 
                             table.bookings.forEach(booking =>{
@@ -80,14 +80,13 @@ module.exports.confirmHour = (req, res, next) => {
     const { id } = req.params;
     const size = req.body.persons
 
-
-       //size <=  tama;o - 2
     if (id === undefined)
         next(createError(401))
 
     Restaurant.findById(id)
         .populate({
             path: "zones",
+            match: { _id: req.body.zones },
             populate: {
                 path: "tables",
                     populate: {

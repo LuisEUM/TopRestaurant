@@ -1,0 +1,1278 @@
+{
+	"info": {
+		"_postman_id": "a969d9aa-a1d3-4a2b-ac2a-9b7953d21098",
+		"name": "TopRestaurant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4593843"
+	},
+	"item": [
+		{
+			"name": "Restaurant Settings COMPLETED",
+			"item": [
+				{
+					"name": "Detail Zones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}restaurant_settings/6342daadbe42d8077ef9a1c5",
+							"host": [
+								"{{urlV1}}restaurant_settings"
+							],
+							"path": [
+								"6342daadbe42d8077ef9a1c5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Zones",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"maximumMonthBookings\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{urlV1}}restaurant_settings/6342daadbe42d8077ef9a1c7",
+							"host": [
+								"{{urlV1}}restaurant_settings"
+							],
+							"path": [
+								"6342daadbe42d8077ef9a1c7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Schedules COMPLETED",
+			"item": [
+				{
+					"name": "Detail Timeslots",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}schedules/63416bbcdba0eb759f12d649",
+							"host": [
+								"{{urlV1}}schedules"
+							],
+							"path": [
+								"63416bbcdba0eb759f12d649"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Timeslots",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hours\": [[\"13:00\",\"19:00\"],[\"20:00\",\"21:00\"]],\r\n    \"dayOfWeek\": \"saturday\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}schedules/634829c500e0c0e3b930d296",
+							"host": [
+								"{{urlV1}}schedules"
+							],
+							"path": [
+								"634829c500e0c0e3b930d296"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Timeslots",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"openHours\": [\"13:00\",\"19:00\"],\r\n    \"closeHours\": [\"16:00\",\"23:00\"],\r\n    \"dayOfWeek\": \"sunday\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}schedules/6342a02cae750037272da45f",
+							"host": [
+								"{{urlV1}}schedules"
+							],
+							"path": [
+								"6342a02cae750037272da45f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Timeslots",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}schedules/6342a22734bbfaa96ec64880",
+							"host": [
+								"{{urlV1}}schedules"
+							],
+							"path": [
+								"6342a22734bbfaa96ec64880"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Zone COMPLETED",
+			"item": [
+				{
+					"name": "Detail Zones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}zones/63416bbcdba0eb759f12d649",
+							"host": [
+								"{{urlV1}}zones"
+							],
+							"path": [
+								"63416bbcdba0eb759f12d649"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Zones",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Terrace\",\r\n    \"maxCapacity\": 40\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}zones/63416bbcdba0eb759f12d649",
+							"host": [
+								"{{urlV1}}zones"
+							],
+							"path": [
+								"63416bbcdba0eb759f12d649"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Zones",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Vip EDITED\",\r\n    \"maxCapacity\": 18\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}zones/634170e621e1f045766c85b0",
+							"host": [
+								"{{urlV1}}zones"
+							],
+							"path": [
+								"634170e621e1f045766c85b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Zones",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}zones/6342a24234bbfaa96ec64885",
+							"host": [
+								"{{urlV1}}zones"
+							],
+							"path": [
+								"6342a24234bbfaa96ec64885"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tables COMPLETED falta agregar bookings",
+			"item": [
+				{
+					"name": "Detail Tables",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}tables/634170b621e1f045766c858f",
+							"host": [
+								"{{urlV1}}tables"
+							],
+							"path": [
+								"634170b621e1f045766c858f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Tables",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"size\": 2,\r\n    \"name\": \"Mesa 6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}tables/634170b621e1f045766c858f",
+							"host": [
+								"{{urlV1}}tables"
+							],
+							"path": [
+								"634170b621e1f045766c858f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Tables",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mesa 6 EDITED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}tables/63418a95fccc7ad379f0f48e",
+							"host": [
+								"{{urlV1}}tables"
+							],
+							"path": [
+								"63418a95fccc7ad379f0f48e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Tables",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}tables/6341853a82212f5b59fe85aa",
+							"host": [
+								"{{urlV1}}tables"
+							],
+							"path": [
+								"6341853a82212f5b59fe85aa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Timeslots WORKING",
+			"item": [
+				{
+					"name": "List Timeslots Done",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}timeslots",
+							"host": [
+								"{{urlV1}}timeslots"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Timeslots",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}timeslots/6349f60e530787af6b404d76",
+							"host": [
+								"{{urlV1}}timeslots"
+							],
+							"path": [
+								"6349f60e530787af6b404d76"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Timeslots",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hours\": [[\"13:00\",\"19:00\"],[\"20:00\",\"21:00\"]],\r\n    \"date\": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22],\r\n    \"month\": [1,2,3,4,5,6,7,8,9,10,11,12]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}timeslots/634829c500e0c0e3b930d296",
+							"host": [
+								"{{urlV1}}timeslots"
+							],
+							"path": [
+								"634829c500e0c0e3b930d296"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Timeslots",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": \"Luis Urdaneta\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}633c919861b43cc5ada8d48f",
+							"host": [
+								"{{urlV1}}633c919861b43cc5ada8d48f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Timeslots",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}633c919861b43cc5ada8d48f",
+							"host": [
+								"{{urlV1}}633c919861b43cc5ada8d48f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings WORKING",
+			"item": [
+				{
+					"name": "List hours",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}bookings/634829c500e0c0e3b930d296",
+							"host": [
+								"{{urlV1}}bookings"
+							],
+							"path": [
+								"634829c500e0c0e3b930d296"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}bookings/634829c500e0c0e3b930d296",
+							"host": [
+								"{{urlV1}}bookings"
+							],
+							"path": [
+								"634829c500e0c0e3b930d296"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookings detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}bookings/634829c500e0c0e3b930d296",
+							"host": [
+								"{{urlV1}}bookings"
+							],
+							"path": [
+								"634829c500e0c0e3b930d296"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bookings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zones\": [\"ESCOGEMOS ENTRE LAS OPCIONES DEL MODELO\"],\r\n    \"owner\": \"se crea solo\",\r\n    \"status\": \"Pending por defecto\",\r\n    \"dineStart\": \"2022-10-07T21:36:51.797Z\",\r\n    \"timeLimit\": \"solo lo puede hacer el administrador, tiene un valor por defacto\",\r\n    \"persons\": 4,\r\n    \"prefixNumber\": \"+34\",\r\n    \"phoneNumber\": \"5112032050\",\r\n    \"note\": \"I'ts my birthday!\",\r\n    \"newsletter\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}bookings",
+							"host": [
+								"{{urlV1}}bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bookings test",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zones\": [\"ESCOGEMOS ENTRE LAS OPCIONES DEL MODELO\"],\r\n    \"owner\": \"se crea solo\",\r\n    \"status\": \"Pending por defecto\",\r\n    \"dineStart\": \"2022-10-07T21:36:51.797Z\",\r\n    \"timeLimit\": \"solo lo puede hacer el administrador, tiene un valor por defacto\",\r\n    \"persons\": 4,\r\n    \"prefixNumber\": \"+34\",\r\n    \"phoneNumber\": \"5112032050\",\r\n    \"note\": \"I'ts my birthday!\",\r\n    \"newsletter\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}bookings",
+							"host": [
+								"{{urlV1}}bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bookings Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zones\": [\"ESCOGEMOS ENTRE LAS OPCIONES DEL MODELO\"],\r\n    \"owner\": \"se crea solo\",\r\n    \"status\": \"Pending por defecto\",\r\n    \"dineStart\": \"2022-10-07T21:36:51.797Z\",\r\n    \"timeLimit\": \"solo lo puede hacer el administrador, tiene un valor por defacto\",\r\n    \"persons\": 4,\r\n    \"prefixNumber\": \"+34\",\r\n    \"phoneNumber\": \"5112032050\",\r\n    \"note\": \"I'ts my birthday!\",\r\n    \"newsletter\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}bookings",
+							"host": [
+								"{{urlV1}}bookings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}profile",
+							"host": [
+								"{{urlV1}}profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"luis\",\r\n    \"username\": \"luis\",\r\n    \"password\" : \"12345678\",\r\n    \"email\": \"luis@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}/register",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identifier\": \"luis\",\r\n    \"password\" : \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}/authenticate",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}/logout",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restaurants",
+			"item": [
+				{
+					"name": "List Restaurants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}restaurants",
+							"host": [
+								"{{urlV1}}restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Restaurant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}restaurants/634829c500e0c0e3b930d296",
+							"host": [
+								"{{urlV1}}restaurants"
+							],
+							"path": [
+								"634829c500e0c0e3b930d296"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Restaurant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"schedules\": [],\r\n        \"zones\": [],\r\n        \"name\": \"THE BIG TEST\",\r\n        \"types\": [\r\n            \"Italian\"\r\n        ],\r\n        \"backgroundHero\": \"https://loremflickr.com/640/480/abstract?47304\",\r\n        \"logo\": \"https://loremflickr.com/640/480/abstract?47304\",\r\n        \"phoneNumber\": 12345678,\r\n        \"delivery\": true,\r\n        \"address\": \"direccion de prueba\",\r\n        \"description\": \"Luis creo este restaurante\",\r\n        \"services\": [\r\n            \"Wi-Fi\"\r\n        ]\r\n }"
+						},
+						"url": {
+							"raw": "{{urlV1}}restaurants/63416bbcdba0eb759f12d649",
+							"host": [
+								"{{urlV1}}restaurants"
+							],
+							"path": [
+								"63416bbcdba0eb759f12d649"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Restaurant",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"types\": [\"Asian\"]\r\n}"
+						},
+						"url": {
+							"raw": "{{urlV1}}restaurants/6342d1c8ca51392b3331769b",
+							"host": [
+								"{{urlV1}}restaurants"
+							],
+							"path": [
+								"6342d1c8ca51392b3331769b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Restaurant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}restaurants/6342d1c8ca51392b3331769b",
+							"host": [
+								"{{urlV1}}restaurants"
+							],
+							"path": [
+								"6342d1c8ca51392b3331769b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Create Comments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rate\" : \"3\",\r\n    \"text\": \"mi primer comentario nuevo papa\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}review/633d67409e822a125df15c29",
+							"host": [
+								"{{urlV1}}review"
+							],
+							"path": [
+								"633d67409e822a125df15c29"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Comments",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rate\" : \"4\",\r\n    \"text\": \"mi primer comentario editado\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}review/633d6bdf799027bff43b8cfd",
+							"host": [
+								"{{urlV1}}review"
+							],
+							"path": [
+								"633d6bdf799027bff43b8cfd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comments Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}review/633d810b35c9b4125f74583b",
+							"host": [
+								"{{urlV1}}review"
+							],
+							"path": [
+								"633d810b35c9b4125f74583b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Follows",
+			"item": [
+				{
+					"name": "add or delete follow",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    \r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}follow/634829c500e0c0e3b930d296",
+							"host": [
+								"{{urlV1}}follow"
+							],
+							"path": [
+								"634829c500e0c0e3b930d296"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get follows of users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}follow/633d46b1fad2d0ab474f0994",
+							"host": [
+								"{{urlV1}}follow"
+							],
+							"path": [
+								"633d46b1fad2d0ab474f0994"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "boolean like Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}like/633ec04eeec47b9521ad9f18",
+							"host": [
+								"{{urlV1}}like"
+							],
+							"path": [
+								"633ec04eeec47b9521ad9f18"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Menu",
+			"item": [
+				{
+					"name": "Create Menu",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Hamburguesas\",\r\n    \"description\": \"las mejores Hamburguesas\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}menu/6347f9d1fa22d26f901627a6",
+							"host": [
+								"{{urlV1}}menu"
+							],
+							"path": [
+								"6347f9d1fa22d26f901627a6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Menu",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"perros\",\r\n    \"description\": \"las mejores perros\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}menu/633fe1a56d47d2ea3e3eff0e",
+							"host": [
+								"{{urlV1}}menu"
+							],
+							"path": [
+								"633fe1a56d47d2ea3e3eff0e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Menu",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}menu/633fe7f127d3184b7cfe9fae",
+							"host": [
+								"{{urlV1}}menu"
+							],
+							"path": [
+								"633fe7f127d3184b7cfe9fae"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Menu",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}menu/633feaa44a606ebfacb403ae",
+							"host": [
+								"{{urlV1}}menu"
+							],
+							"path": [
+								"633feaa44a606ebfacb403ae"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Menu",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}menu",
+							"host": [
+								"{{urlV1}}menu"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Procuct",
+			"item": [
+				{
+					"name": "Post Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Hamburguesas 2\",\r\n    \"description\": \"las mejores Hamburguesas 2\",\r\n    \"price\" : \"30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}product/63483c7cad94074ecf75eb33",
+							"host": [
+								"{{urlV1}}product"
+							],
+							"path": [
+								"63483c7cad94074ecf75eb33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"perro sabroso\",\r\n    \"description\": \"el perro con salchicha mas grande\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}product/633ffd5ee11e25e06470387e",
+							"host": [
+								"{{urlV1}}product"
+							],
+							"path": [
+								"633ffd5ee11e25e06470387e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}product/634002486250bbe0e46cf958",
+							"host": [
+								"{{urlV1}}product"
+							],
+							"path": [
+								"634002486250bbe0e46cf958"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}product/63400696c083f90a9a68a128",
+							"host": [
+								"{{urlV1}}product"
+							],
+							"path": [
+								"63400696c083f90a9a68a128"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}product",
+							"host": [
+								"{{urlV1}}product"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Likes",
+			"item": [
+				{
+					"name": "add or delete like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}like/634829c500e0c0e3b930d296",
+							"host": [
+								"{{urlV1}}like"
+							],
+							"path": [
+								"634829c500e0c0e3b930d296"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "boolean like",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}like/6342daadbe42d8077ef9a1c5",
+							"host": [
+								"{{urlV1}}like"
+							],
+							"path": [
+								"6342daadbe42d8077ef9a1c5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List like",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}like",
+							"host": [
+								"{{urlV1}}like"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hour Schema",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"openHours\": \"23:00\",\r\n    \"closeHours\": \"23:30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}schedule_hours/63484bfbc6de7c697ac15a9b",
+							"host": [
+								"{{urlV1}}schedule_hours"
+							],
+							"path": [
+								"63484bfbc6de7c697ac15a9b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"openHours\": \"12:00\",\r\n    \"closeHours\": \"23:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}schedule_hours/6345eb398e737b265a311065",
+							"host": [
+								"{{urlV1}}schedule_hours"
+							],
+							"path": [
+								"6345eb398e737b265a311065"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlV1",
+			"value": "http://localhost:4001/api/v1/",
+			"type": "default"
+		}
+	]
+}

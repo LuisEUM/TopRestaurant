@@ -24,11 +24,23 @@ module.exports.register = (req, res, next) => {
     .catch(next);
 };
 
+//clean update body
+function clean(obj) {
+  for (var propName in obj) {
+    if (obj[propName] === null || obj[propName] === undefined || obj[propName] === "") {
+      delete obj[propName];
+    }
+  }
+  return obj
+}
+
 module.exports.update = (req, res, next) => {
 
-    const user = Object.assign(req.user, req.body);
-    
-    req.body.image = req.file.path
+    // if(req.file.path !== undefined){
+    //   req.body.image = req.file.path
+    // }
+
+    const user = Object.assign(req.user,clean(req.body) );
 
     user
       .save()

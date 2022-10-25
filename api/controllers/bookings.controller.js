@@ -21,7 +21,7 @@ create = (req, res, next) => {
     data.hours = req.hours
     data.owner = req.user.id
     data.table = req.table.id
-    
+
     Booking.create(data)
       .then((booking) => {
   
@@ -60,6 +60,24 @@ module.exports.update = (req, res, next) => {
       .then((booking) => res.json(booking))
       .catch(next);
   }
+}
+
+module.exports.updateNote = (req, res, next) => {
+    const data = Object.fromEntries(Object.entries(req.body).filter(([_, v]) => v != null));
+ 
+    delete data.owner
+    delete data.table
+    delete data.status
+    delete data.startDate
+    delete data.hours
+    delete data.person
+    
+
+    const booking = Object.assign(req.booking, data); 
+    booking
+      .save()
+      .then((booking) => res.json(booking))
+      .catch(next);
 }
 
 module.exports.getHours = (req, res, next) => {

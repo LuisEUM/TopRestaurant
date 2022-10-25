@@ -15,12 +15,9 @@ const schema = new Schema ({
         required: true
     },
     status: {
-        type: {
-            type: String,
-            enum: status,
-            required: true,
-            default: "Pending"
-        }
+        type: String,
+        enum: status,
+        default: "Pending"
     },
     startDate: {
         type: Number,
@@ -39,7 +36,6 @@ const schema = new Schema ({
     prefixNumber: {
         type: String,
         enum: prefixNumbers.map((prefix) => prefix.dial_code),
-        required: true
     },        
     phoneNumber: {
         type: Number
