@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "0a1263ec-77fb-445a-92b1-8a88397372fa",
-		"name": "TopRestaurant",
+		"_postman_id": "595198bd-2106-4ac0-9a9b-27c98a651751",
+		"name": "Top Top",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Restaurant Settings COMPLETED",
+			"name": "Restaurant Settings",
 			"item": [
 				{
 					"name": "Detail Zones",
@@ -52,7 +52,7 @@
 			]
 		},
 		{
-			"name": "Schedules COMPLETED",
+			"name": "Schedules",
 			"item": [
 				{
 					"name": "Detail Timeslots",
@@ -152,7 +152,7 @@
 			]
 		},
 		{
-			"name": "Zone COMPLETED falta agregar bookings",
+			"name": "Zone",
 			"item": [
 				{
 					"name": "Detail Zones",
@@ -252,7 +252,7 @@
 			]
 		},
 		{
-			"name": "Tables COMPLETED falta agregar bookings",
+			"name": "Tables",
 			"item": [
 				{
 					"name": "Detail Tables",
@@ -352,7 +352,7 @@
 			]
 		},
 		{
-			"name": "Timeslots WORKING",
+			"name": "Timeslots",
 			"item": [
 				{
 					"name": "List Timeslots Done",
@@ -457,7 +457,7 @@
 			]
 		},
 		{
-			"name": "Bookings WORKING",
+			"name": "Bookings",
 			"item": [
 				{
 					"name": "List Bookings Done",
