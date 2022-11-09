@@ -7,19 +7,16 @@ const mongoose = require("mongoose");
 
 require("./config/db.config");
 
-const path = require('path')
 
 const app = express();
 
-// app.use(express.static(path.join(__dirname, "/client/build")));
+app.use(express.static(`${__dirname}/react-app`));
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
-// });
+
 
 // CORS middleware
 app.use((req, res, next) => {
-  res.set("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.set("Access-Control-Allow-Origin", process.env.CORS_ORIGIN || "http://localhost:3000");
   res.set("Access-Control-Allow-Headers", "content-type");
   res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PATCH, DELETE");
   res.set("Access-Control-Allow-Credentials", "true");
@@ -37,9 +34,9 @@ app.use(loadUser);
 const routes = require("./config/routes.config.js");
 app.use("/api/v1", routes);
 
-
-app.use((req, res, next) => next(createError(404, "Route not found")));
-
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/react-app/index.html`);
+})
 
 app.use((error, req, res, next) => {
   const data = {};

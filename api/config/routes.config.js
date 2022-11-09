@@ -1,4 +1,5 @@
 const express = require("express");
+const createError = require("http-errors");
 const {Auth, Restaurants, User, Review, Follow, Menu, Product, Like, Bookings, Timeslot, Tables, Zones, Schedules, RestaurantSettings, SchedulesHours } = require('../routes');
 const router = express.Router();
 
@@ -17,6 +18,10 @@ router.use('/zones', Zones);
 router.use('/schedules', Schedules);
 router.use('/schedule_hours', SchedulesHours);
 router.use('/restaurant_settings', RestaurantSettings);
+
+
+
+router.use((req, res, next) => next(createError(404, "Route not found")));
 
 
 module.exports = router;
