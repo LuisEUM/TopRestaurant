@@ -1,0 +1,5 @@
+.title-bar{
+  height: 60px;
+  z-index: 10;
+  background-color: white !important;
+}

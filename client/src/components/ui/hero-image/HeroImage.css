@@ -1,0 +1,19 @@
+.circle-image-hero-logo{
+  width: 100px;
+  max-width: 100px;
+  object-fit: cover;
+  clip-path: circle();
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  margin: 0 auto;
+  transform: translate(-50%);
+}
+
+.menu-restaurant-hero{
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-size: 100%;
+  min-height: 250px;
+}

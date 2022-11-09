@@ -1,0 +1,142 @@
+
+.select-list ::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: white;
+}
+
+.select-list ::-webkit-scrollbar-thumb {
+  background: white;
+}
+
+.select-list ::-webkit-scrollbar-corner {
+  background: #fff3;
+}
+
+
+
+
+.refresh {
+  padding: 5px;
+  position: absolute;
+  border: 1px dotted #24549C;
+  border-radius: 5px;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.refresh path {
+  fill: #24549C;
+}
+
+.box {
+  min-width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #24549C;
+  margin: 0;
+}
+
+.menu {
+  min-width: 200px;
+  width: 200px;
+
+  border-color:  #505A5B
+}
+
+ul.select-list {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  max-height: 150px;
+  overflow-y: scroll;
+  clip-path: inset(0% round 0px);
+}
+
+li.select-list {
+  display: block;
+  cursor: pointer;
+  border:  1px solid #505A5B;
+  border-right: 0;
+  border-left: 0;
+  border-top: 0;
+  background: white;
+}
+
+ul.select-list,
+li.select-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+}
+
+button.select-list {
+  background: transparent;
+  color: #505A5B;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button.select-list path {
+  fill: #24549C;
+}
+
+input.select-list {
+  accent-color: #24549C;
+}
+
+.controls.select-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  padding-bottom: 50px;
+  align-items: center;
+}
+
+label.select-list {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+
+.example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.item {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: #24549c00;
+  color: #24549C;
+  font-size: 240px;
+  line-height: 260px;
+  font-weight: 700;
+  border-radius: 30px;
+}
+
+nav.select-list {
+  background-color: white;
+}

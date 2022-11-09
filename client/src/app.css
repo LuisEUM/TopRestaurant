@@ -1,0 +1,105 @@
+
+h1, h2, h3, h4, h5, h6, p {
+  color: #505A5B;
+  font-family: 'Lato', sans-serif;
+}
+
+a, input, button{
+  font-family: 'Lato', sans-serif;
+}
+
+.text-primary, a{
+  color: #24549C !important;
+}
+
+.fs-7 {
+  font-size: 0.5rem;
+}
+.full-height{
+  min-height: 100vh;
+}
+.border-primary{
+  border-color: #508CB5 !important;
+}
+.padding-top-nav{
+  padding-top: 60px;
+}
+
+.btn-primary{
+  color: white;
+  border: #24549C solid;
+  background-color: #24549C ;
+  transition: all 0.5s ease-in-out;
+  overflow: hidden !important;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus{
+  background-color: #24549C;
+  color:  rgb(255, 255, 255);
+  border: #24549C solid;
+}
+
+.btn-check:focus+.btn, .btn:focus{
+  box-shadow:none;
+}
+
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    pointer-events: none;
+    background-color: #669ABE;
+    border-color: #669ABE
+}
+
+.circle-image{
+  min-width: 150px;
+  min-height: 150px;
+  border-radius: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+.circle-image-profile {
+  width: 100%;
+  object-fit: cover;
+  border: 0px solid #2B2B2B;
+  clip-path: circle();
+}
+
+
+
+.tex-white{
+  color: white !important;
+}
+
+
+.bg-primary {
+  color:  rgb(255, 255, 255);
+  background-color: #669ABE !important;
+}
+
+.bg-secondary {
+  color:  rgb(255, 255, 255);
+  background-color: #24549C !important;
+}
+
+.bg-info {
+  color:  rgb(255, 255, 255);
+  background-color: #508CB5 !important;
+}
+
+.rounded-bottom{
+  border-bottom-right-radius: 25px !important;
+  border-bottom-left-radius: 25px !important;
+}
+
+
+.no_color_link{
+  color: #505A5B  !important
+}
+
+.fa-close:hover{
+  color: #dc3545 !important;
+  fill: #dc3545;
+  stroke: #dc3545;
+}
+

@@ -1,0 +1,26 @@
+.restaurant-item .views {
+  width: 100%;
+  max-width: 55px;
+}
+
+.booking-card{
+  min-height: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-size: 100%;
+  border-radius: 5px !important;
+}
+
+.fs-8 {
+  font-size: 0.7rem;
+}
+
+.rounded-left-date {
+  border-radius: 5px 0px 0px 5px !important ;
+}
+
+.rounded-right-date {
+  border-radius: 0px 5px 5px 0px !important ;
+}

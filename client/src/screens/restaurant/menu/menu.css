@@ -1,0 +1,44 @@
+ul.category-box ,
+li.category-box  {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.category-box {
+  width: 100%;
+  background: white;
+  padding: 20px;
+  border-radius: 25px;
+}
+
+li.category-box  {
+  box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+li.category-box:last-child {
+  margin-bottom: 0px;
+}
+
+.avatar {
+    min-width: 80px;
+    min-height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    object-fit: cover;
+    clip-path: circle();
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.menu-mh-80{
+    min-height: 80px;
+}

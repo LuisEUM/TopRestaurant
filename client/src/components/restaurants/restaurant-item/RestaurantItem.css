@@ -1,0 +1,48 @@
+.restaurant-item .views {
+  width: 100%;
+  max-width: 55px;
+}
+
+.restaurant-card{
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-size: 100%;
+}
+
+.restaurant-card-2{
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-size: 100%;
+  margin-top: -250px;
+}
+
+.negative-margin{
+  margin-top: -250px;
+}
+
+.circle-image-logo{
+  min-width: 80px;
+  min-height: 80px;
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: cover;
+  clip-path: circle();
+}
+
+
+.follow-heart{
+  height: 50px;
+  width: 50px;
+  right: 0;
+  top: 0;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  position: absolute;
+  z-index: 1;
+}
