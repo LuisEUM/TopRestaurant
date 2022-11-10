@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TopRestaurant/static/css/main.7db9d89c.css",
+    "main.js": "/TopRestaurant/static/js/main.ef93f720.js",
+    "index.html": "/TopRestaurant/index.html",
+    "main.7db9d89c.css.map": "/TopRestaurant/static/css/main.7db9d89c.css.map",
+    "main.ef93f720.js.map": "/TopRestaurant/static/js/main.ef93f720.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7db9d89c.css",
+    "static/js/main.ef93f720.js"
+  ]
+}
