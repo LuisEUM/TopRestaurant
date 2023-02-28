@@ -28,7 +28,6 @@ const avergare = (review) =>{
 } 
 
 
-
   return (
   <div className=" m-0">
   <Link to={`/restaurants/${id}`}  className="text-decoration-none d-flex">

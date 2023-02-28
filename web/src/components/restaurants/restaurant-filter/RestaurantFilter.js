@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import RestaurantItem from "../restaurant-item/RestaurantItem";
 import dataCategory from "../../../data/categories.restaurant";
 import "./RestaurantFilter.css";
-import { motion, useDragControls, useMotionValue, useTransform } from "framer-motion";
+import { motion, useDragControls, useMotionValue} from "framer-motion";
 import Section from "../../section/Section";
 
 // function categoryList(restaurants) {
@@ -22,7 +22,6 @@ function RestaurantFilter({ restaurants, setRestaurants }) {
   const [search, setSearch] = useState("All");
   const controls = useDragControls();
   const handleX = useMotionValue(0);
-  const progressScaleX = useTransform(handleX, [0, 300], [0, 1]);
   const [categoriesWidth, setCategoriesWidth] = useState("All");
   const constraintsRef = useRef(null);
 
@@ -48,7 +47,6 @@ function RestaurantFilter({ restaurants, setRestaurants }) {
     <>
       <div
         onPointerDown={startDrag}
-        style={{ scaleX: progressScaleX }}
         ref={constraintsRef}
         className="mb-3  d-flex justify-content-start align-items-center text-center category-height overflow-hidden py-1"
       >
@@ -86,7 +84,7 @@ function RestaurantFilter({ restaurants, setRestaurants }) {
               return (
                 <button
                   key={category.id}
-                  className={`btn row border-light  mb-1  mx-2 w-25 ${
+                  className={`btn  border-light  mb-1 m-0 font-tiny text-center  mx-2 w-25 ${
                     search === category.name
                       ? "btn-secondary text-white"
                       : "btn-light text-secondary"
@@ -94,21 +92,14 @@ function RestaurantFilter({ restaurants, setRestaurants }) {
                   name={category.name}
                   onClick={handleClick}
                 >
-                  <div className="col w-100">
-                    <div>
+                  <div className="col">
                       <img
                         src={category.src}
                         alt={category.name}
                         className="category-icon"
                       />
-                    </div>
-
-                    <div className="">
-                      <p className={`m-0 font-tiny ${search === category.name
-                      ? "btn-secondary text-white"
-                      : "btn-light text-secondary"}`}>{category.name}</p>
-                    </div>
                   </div>
+                    {category.name} 
                 </button>
               );
             })}
