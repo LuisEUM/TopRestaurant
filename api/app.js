@@ -7,16 +7,14 @@ const mongoose = require("mongoose");
 
 require("./config/db.config");
 
-
 const app = express();
 
 app.use(express.static(`${__dirname}/react-app`));
 
-
-
 // CORS middleware
 app.use((req, res, next) => {
   res.set("Access-Control-Allow-Origin", process.env.CORS_ORIGIN || "http://localhost:3000");
+  res.set("Access-Control-Allow-Origin", process.env.CORS_ORIGIN || "http://localhost:3001");
   res.set("Access-Control-Allow-Headers", "content-type");
   res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PATCH, DELETE");
   res.set("Access-Control-Allow-Credentials", "true");
