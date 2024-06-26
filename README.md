@@ -1,15 +1,15 @@
-Sure, here is the README for the `TopRestaurant` repository:
-
----
-
 # TopRestaurant
 
 ![Top Restaurant 1](https://lh3.googleusercontent.com/d/1RXElI694I-yzJCrVeOXfZIPO6A29peFc)
 ![Top Restaurant 2](https://lh3.googleusercontent.com/d/1S1RowUGmlYH1acdEEP17Xl_zhyXubt-C)
 ![Top Restaurant 3](https://lh3.googleusercontent.com/d/12u3dFEUBzBQUA5SB_lrLqf88JQc5f_YH)
 
+Top Top Restaurants is a mobile web application that redefines the dining experience by allowing users to discover nearby restaurants as if it were a social network, and easily manage reservations.          
+
+  - [Website](https://toprestaurant-production.up.railway.app/)
+
 ## Overview
-TopRestaurant is a web application developed to facilitate the management and optimization of restaurant operations. The project is designed to help restaurant owners and managers efficiently handle their business, improve user experience, and streamline processes.
+In my third project during the Ironhack web development bootcamp, I created a mobile web application that served as a social platform for exploring nearby restaurants, adding them to favorites, and accessing their menus and reservations.
 
 ## Features
 - **Menu Management**: Easily create, update, and delete menu items.
@@ -64,8 +64,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📞 Contact
 Project Link: [https://github.com/LuisEUM/TopRestaurant](https://github.com/LuisEUM/TopRestaurant)
-
----
-
-
-create this in code for 
